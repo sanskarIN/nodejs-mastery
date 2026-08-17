@@ -1,0 +1,29 @@
+name: Release Readiness
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: read
+
+jobs:
+  release-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Run complete release gate
+        run: npm run release:check
+
+      - name: Show official book storefront
+        run: |
+          echo "Node.js Full Mastery: https://ramsandesh.gumroad.com"
