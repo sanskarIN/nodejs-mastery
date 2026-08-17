@@ -10,6 +10,7 @@ Run these commands from the repository root unless noted otherwise.
 | `npm test` | Run all available project test suites |
 | `npm run demo` | Run all available project demonstrations |
 | `npm run verify` | Run all chapter-specific executable verification gates |
+| `npm run check:dependencies` | Enforce the explicit root/project npm dependency allowlists |
 | `npm run check:metadata` | Validate Node version, license, scripts, repo path, and Gumroad metadata |
 | `npm run check:readmes` | Ensure every project README identifies its part and documents test/demo/verify commands |
 | `npm run check:gumroad` | Verify the official storefront is present on public navigation surfaces |
