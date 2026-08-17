@@ -4,10 +4,19 @@
   "private": true,
   "description": "Dependency-free Node.js 20+ lab for durable background execution and workflow orchestration.",
   "type": "module",
-  "engines": { "node": ">=20" },
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "test": "node --test",
     "demo": "node src/demo.js",
     "verify": "node scripts/verify.js"
-  }
+  },
+  "homepage": "https://ramsandesh.gumroad.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sanskarIN/nodejs-mastery.git",
+    "directory": "projects/part-119"
+  },
+  "license": "MIT"
 }
