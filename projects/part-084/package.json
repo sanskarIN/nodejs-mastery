@@ -2,10 +2,21 @@
   "name": "directforge",
   "version": "1.0.0",
   "private": true,
+  "description": "Educational preference-optimization evidence laboratory for Node.js Full Mastery Part 84.",
   "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "test": "node --test",
     "demo": "node src/demo.js",
     "verify": "node src/verify.js"
-  }
+  },
+  "homepage": "https://ramsandesh.gumroad.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sanskarIN/nodejs-mastery.git",
+    "directory": "projects/part-084"
+  },
+  "license": "MIT"
 }
