@@ -21,9 +21,10 @@
     "check:isolation": "node scripts/check-project-isolation.mjs",
     "check:sensitive": "node scripts/check-sensitive-files.mjs",
     "check:secrets": "node scripts/check-secret-patterns.mjs",
+    "check:sbom": "npm run sbom && node scripts/check-sbom.mjs",
     "check:boundary": "node scripts/check-commercial-boundary.mjs",
-    "check": "node scripts/repo-check.mjs && npm run check:dependencies && npm run check:metadata && npm run check:readmes && npm run check:gumroad && npm run check:links && npm run check:isolation && npm run check:sensitive && npm run check:secrets && npm run check:boundary",
-    "release:check": "npm test && npm run verify && npm run demo && npm run check && npm run sbom"
+    "check": "node scripts/repo-check.mjs && npm run check:dependencies && npm run check:metadata && npm run check:readmes && npm run check:gumroad && npm run check:links && npm run check:isolation && npm run check:sensitive && npm run check:secrets && npm run check:sbom && npm run check:boundary",
+    "release:check": "npm test && npm run verify && npm run demo && npm run check"
   },
   "homepage": "https://ramsandesh.gumroad.com",
   "repository": {
