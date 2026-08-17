@@ -7,13 +7,15 @@ Version 1.1.0 is a repository-hardening release for the public companion code. I
 ## Highlights
 
 - Dynamic discovery of all `projects/part-NNN` laboratories.
-- Complete root release gate with tests, demonstrations, verification, metadata checks, Gumroad-link checks, and commercial-artifact boundary enforcement.
+- Complete root release gate with tests, demonstrations, verification, and repository-policy enforcement.
 - Consistent Node.js 20+ / MIT / repository-directory / Gumroad metadata across all currently available labs.
+- Explicit third-party npm dependency allowlists; the current public labs remain dependency-free.
+- Runnable-project README validation, Gumroad-link checks, relative Markdown-link integrity, cross-part isolation checks, sensitive-file screening, and commercial-artifact boundary enforcement.
 - CodeQL, dependency review, Dependabot, CODEOWNERS, runtime pinning, and cross-platform file normalization.
 - CI verification on Node.js 20 and Node.js 22.
 - Concurrency controls that cancel obsolete workflow runs during rapid commit sequences.
 - Explicit provenance policy distinguishing recovered, reconstructed, and unavailable historical companion projects.
-- Expanded README, architecture, testing, security, CI, development, release, troubleshooting, FAQ, roadmap, command reference, and project-index documentation.
+- Privacy, accessibility, versioning, GitHub settings, architecture, testing, security, CI, development, release, troubleshooting, FAQ, roadmap, command-reference, and project-index documentation.
 - Structured issue templates for bugs, features, documentation feedback, and historical project recovery.
 
 ## Available public labs
@@ -25,6 +27,7 @@ Parts 77, 84, and 118–125 are currently represented in the repository. Parts 7
 - Node.js: 20+
 - CI matrix: Node.js 20 and Node.js 22
 - Public source-code license: MIT
+- Third-party npm dependencies currently allowlisted: none
 
 ## Commercial edition boundary
 
