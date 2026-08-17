@@ -1,0 +1,16 @@
+{
+  "name": "nodejs-full-mastery-part-124-lab",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Observability, performance, capacity, and cost laboratory",
+  "scripts": {
+    "test": "node --test",
+    "demo": "node demo.js",
+    "verify": "node verify.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "license": "MIT"
+}

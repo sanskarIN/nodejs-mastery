@@ -1,0 +1,1 @@
+import fs from 'node:fs'; import crypto from 'node:crypto'; const files=['package.json','src/ops.js','test/ops.test.js','demo.js']; for(const f of files)if(!fs.existsSync(f))throw new Error(`missing ${f}`); console.log(JSON.stringify({ok:true,files:files.length,opsSha256:crypto.createHash('sha256').update(fs.readFileSync('src/ops.js')).digest('hex')},null,2));
