@@ -1,0 +1,5 @@
+This companion source code is distributed under the repository root MIT License.
+Copyright (c) 2026 Sanskar / Ram Sandesh.
+
+The commercial Node.js Full Mastery eBook is separate proprietary content and is not licensed under MIT.
+Official storefront: https://ramsandesh.gumroad.com
