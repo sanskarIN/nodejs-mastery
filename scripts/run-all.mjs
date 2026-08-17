@@ -1,29 +1,34 @@
 import { spawnSync } from 'node:child_process';
-import { existsSync, readFileSync } from 'node:fs';
-import { resolve } from 'node:path';
+import { listProjects } from './project-registry.mjs';
 
 const command = process.argv[2] ?? 'test';
-const parts = ['077','084','118','119','120','121','122','123','124','125'];
+const projects = listProjects();
 let failed = 0;
 
-for (const part of parts) {
-  const cwd = resolve(`projects/part-${part}`);
-  const pkgPath = resolve(cwd, 'package.json');
-  if (!existsSync(pkgPath)) {
-    console.error(`[part-${part}] missing package.json`);
+if (projects.length === 0) {
+  console.error('No companion projects were discovered under projects/part-NNN.');
+  process.exit(1);
+}
+
+for (const project of projects) {
+  if (!project.package) {
+    console.error(`[${project.id}] missing package.json`);
     failed++;
     continue;
   }
-  const pkg = JSON.parse(readFileSync(pkgPath, 'utf8'));
-  if (!pkg.scripts?.[command]) {
-    console.log(`[part-${part}] skip: no ${command} script`);
+
+  if (!project.package.scripts?.[command]) {
+    console.log(`[${project.id}] skip: no ${command} script`);
     continue;
   }
-  console.log(`\n=== part-${part}: npm run ${command} ===`);
-  const result = spawnSync(process.platform === 'win32' ? 'npm.cmd' : 'npm', ['run', command], {
-    cwd,
-    stdio: 'inherit'
-  });
+
+  console.log(`\n=== ${project.id}: npm run ${command} ===`);
+  const result = spawnSync(
+    process.platform === 'win32' ? 'npm.cmd' : 'npm',
+    ['run', command],
+    { cwd: project.cwd, stdio: 'inherit' }
+  );
+
   if (result.status !== 0) failed++;
 }
 
@@ -31,4 +36,5 @@ if (failed) {
   console.error(`\n${failed} project(s) failed '${command}'.`);
   process.exit(1);
 }
-console.log(`\nAll available companion projects passed '${command}'.`);
+
+console.log(`\nAll ${projects.length} available companion projects passed '${command}'.`);
