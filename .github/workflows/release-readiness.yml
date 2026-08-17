@@ -8,6 +8,9 @@ on:
 
 permissions:
   contents: read
+  id-token: write
+  attestations: write
+  artifact-metadata: write
 
 jobs:
   release-check:
@@ -23,6 +26,11 @@ jobs:
 
       - name: Run complete release gate
         run: npm run release:check
+
+      - name: Attest SBOM build provenance
+        uses: actions/attest@v4
+        with:
+          subject-path: dist/nodejs-mastery-sbom.cdx.json
 
       - name: Upload CycloneDX SBOM
         uses: actions/upload-artifact@v7
