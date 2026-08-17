@@ -24,6 +24,7 @@
 ## Maintenance and releases
 
 - [`DEVELOPMENT.md`](DEVELOPMENT.md) — local development workflow.
+- [`MAINTENANCE_STATUS.md`](MAINTENANCE_STATUS.md) — source-controlled vs host-controlled completion boundary.
 - [`GITHUB_SETTINGS.md`](GITHUB_SETTINGS.md) — canonical host-level GitHub settings checklist.
 - [`HOST_RELEASE_CHECKLIST.md`](HOST_RELEASE_CHECKLIST.md) — final host-only v1.1.0 publication/settings checklist.
 - [`VERSIONING.md`](VERSIONING.md) — semantic versioning and book-edition boundaries.
