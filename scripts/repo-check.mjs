@@ -62,6 +62,7 @@ const required = [
   'scripts/check-project-isolation.mjs',
   'scripts/check-sensitive-files.mjs',
   'scripts/check-secret-patterns.mjs',
+  'scripts/check-sbom.mjs',
   'scripts/check-commercial-boundary.mjs',
   'scripts/generate-sbom.mjs'
 ];
@@ -83,6 +84,8 @@ if (pkg.license !== 'MIT') throw new Error('Root package license must be MIT');
 if (!String(pkg.engines?.node ?? '').includes('>=20')) throw new Error('Root package must require Node.js 20+');
 if (!pkg.scripts?.sbom?.includes('generate-sbom.mjs')) throw new Error('Root package is missing the SBOM generator command');
 if (!pkg.scripts?.['check:secrets']?.includes('check-secret-patterns.mjs')) throw new Error('Root package is missing committed secret scanning');
+if (!pkg.scripts?.['check:sbom']?.includes('check-sbom.mjs')) throw new Error('Root package is missing SBOM validation');
+if (!pkg.scripts?.check?.includes('check:sbom')) throw new Error('Root repository check must include SBOM validation');
 
 const ci = readFileSync('.github/workflows/ci.yml', 'utf8');
 const codeql = readFileSync('.github/workflows/codeql.yml', 'utf8');
@@ -117,5 +120,6 @@ console.log(JSON.stringify({
   versioningPolicy: true,
   secretPatternScanning: true,
   sbomGeneration: true,
+  sbomValidation: true,
   githubActionsV7: true
 }, null, 2));
