@@ -48,7 +48,11 @@ const required = [
   'scripts/project-registry.mjs',
   'scripts/list-projects.mjs',
   'scripts/check-project-metadata.mjs',
+  'scripts/check-project-readmes.mjs',
   'scripts/check-gumroad-links.mjs',
+  'scripts/check-markdown-links.mjs',
+  'scripts/check-project-isolation.mjs',
+  'scripts/check-sensitive-files.mjs',
   'scripts/check-commercial-boundary.mjs'
 ];
 
@@ -76,5 +80,6 @@ console.log(JSON.stringify({
   ciBadge: true,
   codeqlBadge: true,
   hostSettingsDocumented: true,
-  releaseNotesPrepared: true
+  releaseNotesPrepared: true,
+  advancedPolicyChecks: true
 }, null, 2));
