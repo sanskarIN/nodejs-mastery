@@ -1,0 +1,1 @@
+import {relativeMargin,logisticScore,manifest,releaseGate} from './directforge.js'; const r=relativeMargin(-1,-2,-1.2,-1.8); console.log({relativeMargin:r,score:logisticScore(r,.5),manifest:manifest({dataset:'prefs-v1',objective:'DPO'}),gate:releaseGate({holdout:.72,approved:true})});

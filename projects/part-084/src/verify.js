@@ -1,0 +1,1 @@
+import fs from 'node:fs'; const required=['package.json','README.md','src/directforge.js','src/demo.js','test/directforge.test.js']; const missing=required.filter(p=>!fs.existsSync(new URL('../'+p,import.meta.url))); if(missing.length)throw new Error('missing '+missing); console.log('verify ok');

@@ -1,0 +1,13 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {validatePair,margin,relativeMargin,logisticScore,objectives,manifest,releaseGate} from '../src/directforge.js';
+test('valid pair',()=>assert.equal(validatePair({id:'1',prompt:'p',chosen:'a',rejected:'b'}),true));
+test('equal candidates rejected',()=>assert.throws(()=>validatePair({id:'1',prompt:'p',chosen:'a',rejected:'a'})));
+test('margin',()=>assert.equal(margin(-1,-3),2));
+test('relative margin',()=>assert.equal(relativeMargin(-1,-3,-2,-3),1));
+test('score center',()=>assert.equal(logisticScore(0,1),.5));
+test('beta validation',()=>assert.throws(()=>logisticScore(1,0)));
+test('DPO reference',()=>assert.equal(objectives.DPO.reference,true));
+test('ORPO reference-free descriptor',()=>assert.equal(objectives.ORPO.reference,false));
+test('manifest deterministic',()=>assert.equal(manifest({a:'x',b:'y'}).sha256,manifest({b:'y',a:'x'}).sha256));
+test('gate pass',()=>assert.equal(releaseGate({holdout:.8,approved:true}).allowed,true));
+test('critical blocks',()=>assert.equal(releaseGate({criticalFailures:1,holdout:.9,approved:true}).allowed,false));
+test('approval blocks',()=>assert.equal(releaseGate({holdout:.9,approved:false}).allowed,false));
