@@ -80,7 +80,9 @@ npm run verify
 | [Project index](docs/PROJECT_INDEX.md) | Quick index of public companion projects |
 | [Architecture](docs/ARCHITECTURE.md) | Repository layers, isolation, and dependency direction |
 | [Development](docs/DEVELOPMENT.md) | Local setup and maintainer workflow |
+| [Command reference](docs/COMMAND_REFERENCE.md) | Root and per-project command contract |
 | [Testing](docs/TESTING.md) | Tests vs demos vs verification evidence |
+| [CI and automation](docs/CI.md) | Node matrix, CodeQL, dependency review, and release gates |
 | [Companion project standard](docs/COMPANION_PROJECT_STANDARD.md) | Requirements for adding a lab |
 | [Recovery policy](docs/RECOVERY_POLICY.md) | Recovered vs reconstructed vs unavailable |
 | [Security model](docs/SECURITY_MODEL.md) | Trust boundaries and automated protections |
