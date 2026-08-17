@@ -17,10 +17,12 @@
 - [`CI.md`](CI.md) — GitHub Actions, CodeQL, and automation.
 - [`SECURITY_MODEL.md`](SECURITY_MODEL.md) — trust boundaries and protections.
 
-## Maintenance
+## Maintenance and releases
 
 - [`DEVELOPMENT.md`](DEVELOPMENT.md) — local development workflow.
+- [`GITHUB_SETTINGS.md`](GITHUB_SETTINGS.md) — canonical host-level GitHub settings checklist.
 - [`RELEASE_PROCESS.md`](RELEASE_PROCESS.md) — public release procedure.
+- [`RELEASE_NOTES_v1.1.0.md`](RELEASE_NOTES_v1.1.0.md) — prepared v1.1.0 public release notes.
 - [`ROADMAP.md`](ROADMAP.md) — repository maintenance direction.
 - [`TROUBLESHOOTING.md`](TROUBLESHOOTING.md) — common failures.
 - [`FAQ.md`](FAQ.md) — common licensing and availability questions.
