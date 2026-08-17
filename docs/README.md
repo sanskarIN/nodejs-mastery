@@ -14,6 +14,7 @@
 - [`ARCHITECTURE.md`](ARCHITECTURE.md) — repository architecture and isolation.
 - [`COMPANION_PROJECT_STANDARD.md`](COMPANION_PROJECT_STANDARD.md) — requirements for new labs.
 - [`DEPENDENCY_POLICY.md`](DEPENDENCY_POLICY.md) — explicit third-party dependency allowlisting.
+- [`SUPPLY_CHAIN.md`](SUPPLY_CHAIN.md) — secret checks, CodeQL, SBOMs, and release supply-chain evidence.
 - [`TESTING.md`](TESTING.md) — evidence model and test philosophy.
 - [`CI.md`](CI.md) — GitHub Actions, CodeQL, and automation.
 - [`SECURITY_MODEL.md`](SECURITY_MODEL.md) — trust boundaries and protections.
