@@ -102,7 +102,15 @@ for (const [name, workflow] of [
 }
 if (!ci.includes('actions/setup-node@v7')) throw new Error('CI must use actions/setup-node@v7');
 if (!releaseReadiness.includes('actions/setup-node@v7')) throw new Error('Release Readiness must use actions/setup-node@v7');
+for (const phase of ['init', 'autobuild', 'analyze']) {
+  if (!codeql.includes(`github/codeql-action/${phase}@v4`)) throw new Error(`CodeQL ${phase} must use github/codeql-action@v4`);
+}
+if (!dependencyReview.includes('actions/dependency-review-action@v5.0.0')) throw new Error('Dependency Review must use actions/dependency-review-action@v5.0.0');
+if (!releaseReadiness.includes('actions/attest@v4')) throw new Error('Release Readiness must attest the SBOM with actions/attest@v4');
 if (!releaseReadiness.includes('actions/upload-artifact@v7')) throw new Error('Release Readiness must upload the SBOM with actions/upload-artifact@v7');
+for (const permission of ['id-token: write', 'attestations: write', 'artifact-metadata: write']) {
+  if (!releaseReadiness.includes(permission)) throw new Error(`Release Readiness is missing permission: ${permission}`);
+}
 
 console.log(JSON.stringify({
   verified: true,
@@ -121,5 +129,8 @@ console.log(JSON.stringify({
   secretPatternScanning: true,
   sbomGeneration: true,
   sbomValidation: true,
-  githubActionsV7: true
+  githubActionsV7: true,
+  codeqlActionV4: true,
+  dependencyReviewV5: true,
+  sbomAttestation: true
 }, null, 2));
