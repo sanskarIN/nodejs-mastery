@@ -10,6 +10,7 @@ Run these commands from the repository root unless noted otherwise.
 | `npm test` | Run all available project test suites |
 | `npm run demo` | Run all available project demonstrations |
 | `npm run verify` | Run all chapter-specific executable verification gates |
+| `npm run sbom` | Generate the CycloneDX 1.5 repository SBOM in `dist/` |
 | `npm run check:dependencies` | Enforce the explicit root/project npm dependency allowlists |
 | `npm run check:metadata` | Validate Node version, license, scripts, repo path, and Gumroad metadata |
 | `npm run check:readmes` | Ensure every project README identifies its part and documents test/demo/verify commands |
@@ -17,9 +18,10 @@ Run these commands from the repository root unless noted otherwise.
 | `npm run check:links` | Verify relative Markdown links resolve to repository files |
 | `npm run check:isolation` | Reject relative source imports that escape one companion project into another |
 | `npm run check:sensitive` | Reject credential-like files and private-key/container formats |
+| `npm run check:secrets` | Scan tracked text for high-confidence private-key and provider-token patterns |
 | `npm run check:boundary` | Reject paid-book artifact formats/names from the public repository |
 | `npm run check` | Run root structural checks plus every repository policy check |
-| `npm run release:check` | Run tests, verifiers, demos, and every repository policy check |
+| `npm run release:check` | Run tests, verifiers, demos, policy checks, secret scanning, and SBOM generation |
 
 ## One-project commands
 
