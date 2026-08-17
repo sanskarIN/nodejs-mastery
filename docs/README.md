@@ -25,6 +25,7 @@
 
 - [`DEVELOPMENT.md`](DEVELOPMENT.md) — local development workflow.
 - [`GITHUB_SETTINGS.md`](GITHUB_SETTINGS.md) — canonical host-level GitHub settings checklist.
+- [`HOST_RELEASE_CHECKLIST.md`](HOST_RELEASE_CHECKLIST.md) — final host-only v1.1.0 publication/settings checklist.
 - [`VERSIONING.md`](VERSIONING.md) — semantic versioning and book-edition boundaries.
 - [`RELEASE_PROCESS.md`](RELEASE_PROCESS.md) — public release procedure.
 - [`RELEASE_NOTES_v1.1.0.md`](RELEASE_NOTES_v1.1.0.md) — prepared v1.1.0 public release notes.
