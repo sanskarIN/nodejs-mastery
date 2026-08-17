@@ -19,6 +19,8 @@ npm run verify
 npm run check
 ```
 
+The repository check includes structural files, dependency allowlists, package metadata, runnable project READMEs, Gumroad visibility, Markdown links, companion-project isolation, sensitive-file screening, and the commercial-book boundary.
+
 The workflow also prints the official Gumroad learning-edition link so the public-code/commercial-book relationship remains visible in automation output.
 
 ## CodeQL
@@ -29,11 +31,15 @@ CodeQL findings are security signals, not proof that the code is production-safe
 
 ## Dependency Review
 
-Runs on pull requests and checks newly introduced dependency changes against GitHub's dependency-review data.
+Runs on pull requests and checks newly introduced dependency changes against GitHub's dependency-review data. Repository policy independently requires third-party npm packages to be listed in `config/dependency-policy.json`.
 
 ## Dependabot
 
-Checks GitHub Actions and root npm dependency metadata weekly. The current companion labs intentionally keep dependency usage minimal.
+Checks GitHub Actions and root npm dependency metadata weekly. The current companion labs intentionally keep the npm dependency allowlist empty.
+
+## Concurrency
+
+CI and CodeQL cancel obsolete in-progress runs for the same ref so a rapid sequence of small, reviewable commits does not consume unnecessary runner capacity. The newest commit remains the authoritative verification target.
 
 ## Release Readiness
 
