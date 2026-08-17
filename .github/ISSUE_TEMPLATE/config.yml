@@ -1,5 +1,8 @@
-blank_issues_enabled: true
+blank_issues_enabled: false
 contact_links:
   - name: Node.js Full Mastery on Gumroad
     url: https://ramsandesh.gumroad.com
-    about: Get the complete 125-part eBook and commercial learning edition.
+    about: Get the complete 125-part eBook and official commercial learning edition.
+  - name: Repository support guide
+    url: https://github.com/sanskarIN/nodejs-mastery/blob/main/SUPPORT.md
+    about: Check troubleshooting, support routing, and security-reporting guidance before filing an issue.
