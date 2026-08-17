@@ -1,0 +1,1 @@
+import {allocate,Ledger,eligible} from './kernel.js'; console.log({split:allocate(1000,[1,1,1]), eligible:eligible({kyc:'eligible',restricted:false,availableMinor:500,destinationVerified:true})}); const l=new Ledger(); l.post('sale',[{side:'debit',amountMinor:1000},{side:'credit',amountMinor:1000}]); console.log({trialBalance:l.trial()});
