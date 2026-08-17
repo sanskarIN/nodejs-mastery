@@ -1,0 +1,10 @@
+export { EventLog } from './event-log.js';
+export { ConsumerGroup } from './consumer-group.js';
+export { IdempotentProcessor } from './idempotent-processor.js';
+export { Projection } from './projection.js';
+export { SchemaRegistry } from './schema-registry.js';
+export { cdcEnvelope } from './cdc.js';
+export { ReplicaMirror } from './replicator.js';
+export { AuditChain } from './audit-chain.js';
+export { Metrics } from './metrics.js';
+export { partitionForKey } from './partitioner.js';
