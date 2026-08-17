@@ -36,12 +36,17 @@ npm run check
 
 This validates:
 
-- required repository files;
-- project package metadata;
-- Node.js 20+ declarations;
+- required repository files and release documentation;
+- project package metadata and Node.js 20+ declarations;
 - MIT licensing of public code;
+- runnable project READMEs with test/demo/verify instructions;
 - Gumroad storefront references on public navigation surfaces;
-- exclusion of paid commercial-book artifacts.
+- relative Markdown-link integrity;
+- isolation between companion project implementation trees;
+- absence of credential-like key/container files;
+- exclusion of paid commercial-book PDF/DOCX/EPUB and publication artifacts.
+
+Each check is also available independently; see [`COMMAND_REFERENCE.md`](COMMAND_REFERENCE.md).
 
 ## Complete release gate
 
