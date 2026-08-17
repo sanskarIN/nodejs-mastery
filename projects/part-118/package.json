@@ -4,10 +4,19 @@
   "private": true,
   "description": "Dependency-free authoritative multiplayer and deterministic simulation laboratory for Node.js 20+.",
   "type": "module",
-  "engines": {"node": ">=20"},
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "test": "node --test",
     "demo": "node scripts/demo.mjs",
     "verify": "node scripts/verify.mjs"
-  }
+  },
+  "homepage": "https://ramsandesh.gumroad.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sanskarIN/nodejs-mastery.git",
+    "directory": "projects/part-118"
+  },
+  "license": "MIT"
 }
