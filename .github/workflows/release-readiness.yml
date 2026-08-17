@@ -24,6 +24,14 @@ jobs:
       - name: Run complete release gate
         run: npm run release:check
 
+      - name: Upload CycloneDX SBOM
+        uses: actions/upload-artifact@v7
+        with:
+          name: nodejs-mastery-sbom-${{ github.ref_name }}
+          path: dist/nodejs-mastery-sbom.cdx.json
+          if-no-files-found: error
+          retention-days: 30
+
       - name: Show official book storefront
         run: |
           echo "Node.js Full Mastery: https://ramsandesh.gumroad.com"
