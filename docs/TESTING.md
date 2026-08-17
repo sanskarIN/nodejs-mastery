@@ -37,6 +37,7 @@ npm run check
 This validates:
 
 - required repository files and release documentation;
+- explicit third-party npm dependency allowlists;
 - project package metadata and Node.js 20+ declarations;
 - MIT licensing of public code;
 - runnable project READMEs with test/demo/verify instructions;
