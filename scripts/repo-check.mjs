@@ -30,11 +30,13 @@ const required = [
   'docs/COMPANION_PROJECT_STANDARD.md',
   'docs/DEVELOPMENT.md',
   'docs/FAQ.md',
+  'docs/GITHUB_SETTINGS.md',
   'docs/LEARNING_PATH.md',
   'docs/LICENSE_SCOPE.md',
   'docs/PROJECT_INDEX.md',
   'docs/PROJECT_STATUS.md',
   'docs/RECOVERY_POLICY.md',
+  'docs/RELEASE_NOTES_v1.1.0.md',
   'docs/RELEASE_PROCESS.md',
   'docs/ROADMAP.md',
   'docs/RUNNING_PROJECTS.md',
@@ -72,5 +74,7 @@ console.log(JSON.stringify({
   version: pkg.version,
   gumroadHighlighted: true,
   ciBadge: true,
-  codeqlBadge: true
+  codeqlBadge: true,
+  hostSettingsDocumented: true,
+  releaseNotesPrepared: true
 }, null, 2));
