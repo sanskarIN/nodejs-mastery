@@ -1,0 +1,13 @@
+{
+  "name": "nodejs-full-mastery-part-119-lab",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Dependency-free Node.js 20+ lab for durable background execution and workflow orchestration.",
+  "type": "module",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "test": "node --test",
+    "demo": "node src/demo.js",
+    "verify": "node scripts/verify.js"
+  }
+}
