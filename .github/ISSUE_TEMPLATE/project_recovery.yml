@@ -1,0 +1,37 @@
+name: Historical project recovery
+description: Report an authentic historical companion archive that may be eligible for restoration.
+title: "[Recovery]: Part "
+body:
+  - type: markdown
+    attributes:
+      value: "📘 Complete Node.js Full Mastery eBook: https://ramsandesh.gumroad.com\n\nDo not upload proprietary book files, secrets, or unverified third-party code."
+  - type: input
+    id: part
+    attributes:
+      label: Part number
+      placeholder: "085"
+    validations:
+      required: true
+  - type: textarea
+    id: provenance
+    attributes:
+      label: Provenance
+      description: Explain where the archive came from and why it is believed to be part of the original series.
+    validations:
+      required: true
+  - type: textarea
+    id: files
+    attributes:
+      label: Archive contents
+      description: List the source files, tests, README, and package metadata available. Do not paste the paid manuscript.
+    validations:
+      required: true
+  - type: checkboxes
+    id: attestation
+    attributes:
+      label: Attestation
+      options:
+        - label: I am not submitting the paid eBook, PDF, DOCX, EPUB, or proprietary publication package.
+          required: true
+        - label: I understand the maintainer will label material as recovered only after provenance review.
+          required: true
