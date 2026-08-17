@@ -76,6 +76,7 @@ npm run verify
 
 | Guide | Purpose |
 |---|---|
+| [Documentation index](docs/README.md) | Central index for all repository guides |
 | [Learning path](docs/LEARNING_PATH.md) | Suggested order for the currently available labs |
 | [Project index](docs/PROJECT_INDEX.md) | Quick index of public companion projects |
 | [Architecture](docs/ARCHITECTURE.md) | Repository layers, isolation, and dependency direction |
@@ -83,12 +84,14 @@ npm run verify
 | [Command reference](docs/COMMAND_REFERENCE.md) | Root and per-project command contract |
 | [Testing](docs/TESTING.md) | Tests vs demos vs verification evidence |
 | [CI and automation](docs/CI.md) | Node matrix, CodeQL, dependency review, and release gates |
+| [GitHub settings](docs/GITHUB_SETTINGS.md) | Recommended branch protection, topics, security, and release settings |
 | [Companion project standard](docs/COMPANION_PROJECT_STANDARD.md) | Requirements for adding a lab |
 | [Recovery policy](docs/RECOVERY_POLICY.md) | Recovered vs reconstructed vs unavailable |
 | [Security model](docs/SECURITY_MODEL.md) | Trust boundaries and automated protections |
 | [Troubleshooting](docs/TROUBLESHOOTING.md) | Common local/CI problems |
 | [FAQ](docs/FAQ.md) | Licensing, versions, availability, and reuse |
 | [Release process](docs/RELEASE_PROCESS.md) | Public companion release gate and versioning |
+| [v1.1.0 release notes](docs/RELEASE_NOTES_v1.1.0.md) | Prepared public release notes for the hardening release |
 | [Roadmap](docs/ROADMAP.md) | Public repository maintenance direction |
 | [Store](docs/STORE.md) | Official complete-book storefront |
 
