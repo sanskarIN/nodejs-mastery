@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="160" viewBox="0 0 760 160" role="img" aria-labelledby="title desc">
+  <title id="title">Node.js Full Mastery on Gumroad</title>
+  <desc id="desc">Visit ramsandesh.gumroad.com for the complete Node.js Full Mastery eBook.</desc>
+  <rect width="760" height="160" rx="28" fill="#111827"/>
+  <circle cx="84" cy="80" r="52" fill="#ff4fa3"/>
+  <text x="84" y="101" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="70" font-weight="700" fill="#111827">G</text>
+  <text x="160" y="66" font-family="Arial,Helvetica,sans-serif" font-size="32" font-weight="700" fill="#ffffff">Node.js Full Mastery</text>
+  <text x="160" y="103" font-family="Arial,Helvetica,sans-serif" font-size="23" fill="#f9a8d4">Get the complete eBook on Gumroad</text>
+  <text x="160" y="133" font-family="Arial,Helvetica,sans-serif" font-size="21" font-weight="700" fill="#ffffff">ramsandesh.gumroad.com</text>
+</svg>
