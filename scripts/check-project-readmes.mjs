@@ -14,7 +14,7 @@ for (const project of projects) {
   }
 
   const text = readFileSync(readmePath, 'utf8');
-  const partPattern = new RegExp(`part[\\s-_]*0*${project.part}\\b`, 'i');
+  const partPattern = new RegExp(`part[\\s_-]*0*${project.part}\\b`, 'i');
   if (!partPattern.test(text)) errors.push(`${project.id}: README does not identify its part number`);
   if (!text.includes(GUMROAD)) errors.push(`${project.id}: README is missing the Gumroad storefront`);
 
