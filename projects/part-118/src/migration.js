@@ -1,0 +1,3 @@
+export function migrateSession(session,{toRegion,toWorker,expectedEpoch}){if(session.epoch!==expectedEpoch)throw new Error('stale migration epoch');const oldOwner=session.owner;session.epoch+=1;session.region=toRegion;session.owner=`${toRegion}:${toWorker}`;return{session,certificate:{sessionId:session.sessionId,fromOwner:oldOwner,toOwner:session.owner,epoch:session.epoch}};}
+export function fencedWriteAllowed(session,writerEpoch,writerOwner){return session.epoch===writerEpoch&&session.owner===writerOwner;}
+export function migrationPlan({sourceHealthy,targetReady,drained}){if(!targetReady)return'wait-target';if(!sourceHealthy)return'emergency-failover';if(!drained)return'drain-source';return'commit-epoch';}
