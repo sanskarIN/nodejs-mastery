@@ -21,4 +21,5 @@ jobs:
       - run: npm run verify
       - run: npm run check
       - name: Gumroad learning edition
-        run: echo "Complete eBook: https://ramsandesh.gumroad.com"
+        run: |
+          echo "Complete eBook: https://ramsandesh.gumroad.com"
