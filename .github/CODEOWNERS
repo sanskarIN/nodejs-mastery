@@ -1,0 +1,11 @@
+# Default maintainer
+* @sanskarIN
+
+# Security-sensitive automation and policy
+/.github/ @sanskarIN
+/SECURITY.md @sanskarIN
+/BOOK_LICENSE.md @sanskarIN
+/docs/LICENSE_SCOPE.md @sanskarIN
+
+# Companion project implementations
+/projects/ @sanskarIN
