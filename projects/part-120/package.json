@@ -2,12 +2,21 @@
   "name": "nodejs-full-mastery-part-120-stream-lab",
   "version": "1.0.0",
   "private": true,
-  "type": "module",
   "description": "Dependency-free Node.js laboratory for partitioned append-only event streaming contracts.",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "test": "node --test",
     "demo": "node demo.js",
     "verify": "node scripts/verify.js"
   },
-  "engines": { "node": ">=20" }
+  "homepage": "https://ramsandesh.gumroad.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sanskarIN/nodejs-mastery.git",
+    "directory": "projects/part-120"
+  },
+  "license": "MIT"
 }
