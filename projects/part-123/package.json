@@ -12,5 +12,11 @@
   "engines": {
     "node": ">=20"
   },
+  "homepage": "https://ramsandesh.gumroad.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sanskarIN/nodejs-mastery.git",
+    "directory": "projects/part-123"
+  },
   "license": "MIT"
 }
