@@ -1,0 +1,40 @@
+name: Feature request
+description: Propose an improvement to the public companion code or repository tooling.
+title: "[Feature]: "
+body:
+  - type: markdown
+    attributes:
+      value: "📘 Complete Node.js Full Mastery eBook: https://ramsandesh.gumroad.com"
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Companion project
+        - Repository tooling
+        - CI / security
+        - Documentation
+        - Accessibility / learning experience
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or learning need
+      description: Explain the concrete problem this proposal would solve.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed change
+      description: Describe the smallest useful change and how it could be verified.
+    validations:
+      required: true
+  - type: checkboxes
+    id: boundary
+    attributes:
+      label: Public repository boundary
+      options:
+        - label: This request does not require publishing the paid eBook or proprietary publication files.
+          required: true
