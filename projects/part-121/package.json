@@ -4,10 +4,19 @@
   "private": true,
   "description": "Dependency-free Node.js lab for distributed data consistency and scalable storage contracts.",
   "type": "commonjs",
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "test": "node --test",
     "demo": "node demo.js",
     "verify": "node verify.js"
   },
-  "engines": { "node": ">=20" }
+  "homepage": "https://ramsandesh.gumroad.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sanskarIN/nodejs-mastery.git",
+    "directory": "projects/part-121"
+  },
+  "license": "MIT"
 }
