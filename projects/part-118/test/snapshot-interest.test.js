@@ -1,0 +1,11 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {initialState} from '../src/authority.js';import {makeSnapshot,verifySnapshot,SnapshotRing} from '../src/snapshot.js';import {createPlayerDelta,applyPlayerDelta,estimateDeltaValue} from '../src/delta.js';import {visiblePlayers,diffInterest,cellFor} from '../src/interest.js';
+test('21 snapshot verifies',()=>assert.equal(verifySnapshot(makeSnapshot(initialState(['p']))),true));
+test('22 tampered snapshot fails',()=>{const s=makeSnapshot(initialState(['p']));s.tick=99;assert.equal(verifySnapshot(s),false)});
+test('23 ring returns latest',()=>{const r=new SnapshotRing();const s=makeSnapshot(initialState(['p']));r.push(s);assert.equal(r.latest().snapshotId,s.snapshotId)});
+test('24 ring bounds size',()=>{const r=new SnapshotRing(2);for(let i=0;i<3;i++){const s=initialState(['p']);s.tick=i;r.push(makeSnapshot(s))}assert.equal(r.items.length,2)});
+test('25 delta round-trips',()=>{const a=initialState(['p']);const b=structuredClone(a);b.tick=1;b.players.p.x=2;assert.deepEqual(applyPlayerDelta(a,createPlayerDelta(a,b)),b)});
+test('26 delta value counts changes',()=>{const a=initialState(['p']);const b=structuredClone(a);b.tick=1;b.players.p.x=2;assert.equal(estimateDeltaValue(createPlayerDelta(a,b)),1)});
+test('27 baseline mismatch rejected',()=>{const a=initialState(['p']);const b=structuredClone(a);b.tick=1;const d=createPlayerDelta(a,b);a.tick=4;assert.throws(()=>applyPlayerDelta(a,d))});
+test('28 interest includes viewer',()=>assert.deepEqual(visiblePlayers(initialState(['p']),'p',0),['p']));
+test('29 interest diff detects entry and leave',()=>{const d=diffInterest(['a','b'],['b','c']);assert.deepEqual(d.entered,['c']);assert.deepEqual(d.left,['a'])});
+test('30 cell mapping stable',()=>assert.equal(cellFor({x:12,y:-1},10),'1:-1'));

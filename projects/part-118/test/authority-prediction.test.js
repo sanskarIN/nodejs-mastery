@@ -1,0 +1,13 @@
+import test from 'node:test';import assert from 'node:assert/strict';
+import {initialState,applyCommand,simulateTick,stateDigest} from '../src/authority.js';import {predict,reconcile,correctionDistance} from '../src/prediction.js';import {createCommand} from '../src/commands.js';
+const c=(seq,dx=1)=>createCommand({sessionId:'s',playerId:'p',seq,tick:seq+1,dx});
+test('11 initial state contains player',()=>assert.ok(initialState(['p']).players.p));
+test('12 apply command moves authoritative player',()=>{const s=initialState(['p']);assert.equal(applyCommand(s,c(0)).applied,true);assert.equal(s.players.p.x,.25)});
+test('13 duplicate apply is idempotent',()=>{const s=initialState(['p']);applyCommand(s,c(0));assert.equal(applyCommand(s,c(0)).applied,false)});
+test('14 unknown player rejected',()=>{const s=initialState([]);assert.equal(applyCommand(s,c(0)).reason,'unknown-player')});
+test('15 simulate tick increments tick',()=>assert.equal(simulateTick(initialState(['p']),[]).state.tick,1));
+test('16 deterministic command order',()=>{const a=initialState(['a','b']);const ca=createCommand({sessionId:'s',playerId:'a',seq:0,tick:1,dx:1});const cb=createCommand({sessionId:'s',playerId:'b',seq:0,tick:1,dy:1});assert.equal(stateDigest(simulateTick(a,[cb,ca]).state),stateDigest(simulateTick(a,[ca,cb]).state))});
+test('17 prediction applies pending',()=>assert.equal(predict(initialState(['p']),[c(0),c(1)]).players.p.x,.5));
+test('18 reconcile removes acked',()=>{const a=initialState(['p']);applyCommand(a,c(0));const r=reconcile({authoritativeState:a,pendingCommands:[c(0),c(1)],ackSeq:0,playerId:'p'});assert.equal(r.pending.length,1)});
+test('19 correction distance zero for same state',()=>{const s=initialState(['p']);assert.equal(correctionDistance(s,s,'p'),0)});
+test('20 digest changes with state',()=>{const s=initialState(['p']);const d=stateDigest(s);applyCommand(s,c(0));assert.notEqual(stateDigest(s),d)});

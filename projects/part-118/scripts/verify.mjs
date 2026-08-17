@@ -1,0 +1,6 @@
+import {readdir,readFile} from 'node:fs/promises';import {join} from 'node:path';import {RELEASE_GATES} from '../src/release-gates.js';
+const root=new URL('..',import.meta.url);async function walk(url){let out=[];for(const e of await readdir(url,{withFileTypes:true})){const u=new URL(e.name+(e.isDirectory()?'/':''),url);if(e.isDirectory())out=out.concat(await walk(u));else out.push(u);}return out;}
+const files=await walk(root);const json=files.filter(f=>f.pathname.includes('/schemas/')&&f.pathname.endsWith('.json'));const docs=files.filter(f=>f.pathname.includes('/docs/')&&f.pathname.endsWith('.md'));
+for(const f of json)JSON.parse(await readFile(f,'utf8'));
+const expectedArtifacts=56;if(files.length!==expectedArtifacts)throw new Error(`artifact count ${files.length}, expected ${expectedArtifacts}`);if(json.length!==13)throw new Error('expected 13 JSON contracts');if(docs.length!==16)throw new Error('expected 16 documentation contracts');if(RELEASE_GATES.length!==16)throw new Error('expected 16 release gates');
+console.log(JSON.stringify({artifacts:files.length,jsonContracts:json.length,documentationContracts:docs.length,releaseGates:RELEASE_GATES.length,status:'verified'},null,2));

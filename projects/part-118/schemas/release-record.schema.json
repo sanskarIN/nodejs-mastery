@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Release Record",
+  "type": "object",
+  "required": [
+    "releaseId",
+    "checks",
+    "approvedAt"
+  ],
+  "additionalProperties": true
+}

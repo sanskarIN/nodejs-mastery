@@ -1,0 +1,12 @@
+import test from 'node:test'; import assert from 'node:assert/strict';
+import {FixedClock,quantize} from '../src/clock.js'; import {createCommand,validateCommand,CommandWindow} from '../src/commands.js';
+test('1 fixed clock advances exact tick',()=>{const c=new FixedClock({tickMs:50});assert.equal(c.advance(50).tick,1)});
+test('2 fixed clock carries remainder',()=>{const c=new FixedClock({tickMs:50});c.advance(75);assert.equal(c.advance(25).tick,2)});
+test('3 catch-up cap drops excess',()=>{const c=new FixedClock({tickMs:10,maxCatchUpTicks:2});assert.equal(c.advance(100).droppedTicks,8)});
+test('4 invalid elapsed rejected',()=>{const c=new FixedClock();assert.throws(()=>c.advance(-1))});
+test('5 quantize stable',()=>assert.equal(quantize(1.23456,1000),1.235));
+test('6 create command validates',()=>assert.equal(createCommand({sessionId:'s',playerId:'p',seq:0,tick:1,dx:1}).dx,1));
+test('7 invalid vector rejected',()=>assert.throws(()=>validateCommand({sessionId:'s',playerId:'p',seq:0,tick:1,dx:2,dy:0,action:'move'})));
+test('8 command window accepts new sequence',()=>{const w=new CommandWindow();assert.equal(w.accept(createCommand({sessionId:'s',playerId:'p',seq:1,tick:2}),2).ok,true)});
+test('9 duplicate sequence rejected',()=>{const w=new CommandWindow();const c=createCommand({sessionId:'s',playerId:'p',seq:1,tick:2});w.accept(c,2);assert.equal(w.accept(c,2).reason,'duplicate-or-old-sequence')});
+test('10 future command bounded',()=>{const w=new CommandWindow({maxAhead:1});const c=createCommand({sessionId:'s',playerId:'p',seq:1,tick:5});assert.equal(w.accept(c,1).reason,'too-far-ahead')});

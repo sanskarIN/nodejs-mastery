@@ -1,0 +1,10 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {Metrics,safeEvent,sloPass} from '../src/observability.js';import {appendAudit,verifyAudit} from '../src/audit.js';import {RELEASE_GATES,evaluateRelease,releasePass} from '../src/release-gates.js';
+test('51 metrics counter increments',()=>{const m=new Metrics();m.inc('x');m.inc('x',2);assert.equal(m.value('x'),3)});
+test('52 metrics percentile returns sample',()=>{const m=new Metrics();[1,2,3,4].forEach(x=>m.observe('x',x));assert.equal(m.percentile('x',.95),3)});
+test('53 safe event removes payload',()=>assert.deepEqual(safeEvent({type:'tick',sessionId:'s',payload:'secret'}),{type:'tick',sessionId:'s'}));
+test('54 slo pass works',()=>assert.equal(sloPass({tickP95Ms:10,disconnectRate:.01,rollbackP95Ticks:3}),true));
+test('55 audit chain verifies',()=>{const c=[];appendAudit(c,{type:'start'});appendAudit(c,{type:'migrate'});assert.equal(verifyAudit(c),true)});
+test('56 audit tampering detected',()=>{const c=[];appendAudit(c,{type:'start'});c[0].event.type='x';assert.equal(verifyAudit(c),false)});
+test('57 release exposes sixteen gates',()=>assert.equal(RELEASE_GATES.length,16));
+test('58 complete evidence passes',()=>{const e=Object.fromEntries(RELEASE_GATES.map(x=>[x,true]));assert.deepEqual(releasePass(e),{ok:true,passed:16,total:16,checks:evaluateRelease(e)})});
+test('59 missing evidence fails',()=>{const e=Object.fromEntries(RELEASE_GATES.map(x=>[x,true]));e.authority=false;assert.equal(releasePass(e).ok,false)});

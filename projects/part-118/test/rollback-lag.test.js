@@ -1,0 +1,12 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {initialState,stateDigest,simulateTick} from '../src/authority.js';import {createCommand} from '../src/commands.js';import {HistoryBuffer,boundedRewindTick,validateProximity} from '../src/lag-comp.js';import {RollbackEngine} from '../src/rollback.js';
+const cmd=(seq,tick,dx=1)=>createCommand({sessionId:'s',playerId:'p',seq,tick,dx});
+test('31 history records state',()=>{const h=new HistoryBuffer();h.record(initialState(['p']));assert.equal(h.stateAt(0).tick,0)});
+test('32 history bounds frames',()=>{const h=new HistoryBuffer(2);for(let i=0;i<3;i++){const s=initialState(['p']);s.tick=i;h.record(s)}assert.equal(h.frames.length,2)});
+test('33 rewind tick clamps old report',()=>assert.equal(boundedRewindTick({serverTick:20,reportedTick:1,maxRewindTicks:6}),14));
+test('34 rewind tick clamps future report',()=>assert.equal(boundedRewindTick({serverTick:20,reportedTick:30}),20));
+test('35 proximity validates distance',()=>{const s=initialState(['a','b']);s.players.b.x=.5;assert.equal(validateProximity(s,'a','b',1),true)});
+test('36 rollback engine steps',()=>{const e=new RollbackEngine(initialState(['p']));e.addCommand(1,cmd(0,1));e.step();assert.equal(e.state.players.p.x,.25)});
+test('37 late command replay changes state',()=>{const e=new RollbackEngine(initialState(['p']));e.step();e.step();e.addCommand(1,cmd(0,1));e.rollbackFrom(1,2);assert.equal(e.state.players.p.x,.25)});
+test('38 rollback parity equals clean replay',()=>{const late=new RollbackEngine(initialState(['p']));late.step();late.step();late.addCommand(1,cmd(0,1));late.addCommand(2,cmd(1,2));late.rollbackFrom(1,2);let clean=initialState(['p']);clean=simulateTick(clean,[cmd(0,1)]).state;clean=simulateTick(clean,[cmd(1,2)]).state;assert.equal(late.digest(),stateDigest(clean))});
+test('39 rollback requires base',()=>{const e=new RollbackEngine(initialState(['p']));assert.throws(()=>e.rollbackFrom(-10,0))});
+test('40 nearest history at or before',()=>{const h=new HistoryBuffer();for(let i=0;i<3;i++){const s=initialState(['p']);s.tick=i;h.record(s)}assert.equal(h.nearestAtOrBefore(1).tick,1)});

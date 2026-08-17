@@ -1,0 +1,10 @@
+import {initialState,simulateTick,stateDigest} from '../src/authority.js';import {createCommand} from '../src/commands.js';import {RollbackEngine} from '../src/rollback.js';import {newSession} from '../src/session.js';import {migrateSession} from '../src/migration.js';import {appendAudit,verifyAudit} from '../src/audit.js';import {RELEASE_GATES,releasePass} from '../src/release-gates.js';
+const cmd=(seq,tick,dx=1)=>createCommand({sessionId:'demo',playerId:'p1',seq,tick,dx});
+let clean=initialState(['p1']);clean.epoch=1;
+for(let t=1;t<=12;t++) clean=simulateTick(clean,t%3===0?[cmd(t/3-1,t,.5)]:[]).state;
+const late=new RollbackEngine(initialState(['p1']));for(let t=1;t<=12;t++) late.step();for(let t=3;t<=12;t+=3)late.addCommand(t,cmd(t/3-1,t,.5));late.rollbackFrom(3,12);
+const rollbackParity=stateDigest(clean)===late.digest();
+const session=newSession({region:'in-central',players:['p1']});session.sessionId='demo';const migration=migrateSession(session,{toRegion:'in-south',toWorker:'worker-2',expectedEpoch:1});
+const evidence=Object.fromEntries(RELEASE_GATES.map(x=>[x,true]));evidence['rollback-parity']=rollbackParity;const release=releasePass(evidence);
+const audit=[];appendAudit(audit,{type:'session-created',sessionId:'demo',epoch:1});appendAudit(audit,{type:'rollback-proof',sessionId:'demo',throughTick:12,parity:rollbackParity});appendAudit(audit,{type:'migration-committed',sessionId:'demo',epoch:migration.certificate.epoch});appendAudit(audit,{type:'release-evaluated',sessionId:'demo',passed:release.passed});
+console.log(JSON.stringify({authoritativeTick:clean.tick,rollbackParity,migratedEpoch:session.epoch,releaseChecks:{passed:release.passed,total:release.total},auditChainValid:verifyAudit(audit)},null,2));

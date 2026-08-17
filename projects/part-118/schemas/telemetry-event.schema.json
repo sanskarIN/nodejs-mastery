@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Telemetry Event",
+  "type": "object",
+  "required": [
+    "type",
+    "sessionId",
+    "tick",
+    "epoch",
+    "region"
+  ],
+  "additionalProperties": true
+}

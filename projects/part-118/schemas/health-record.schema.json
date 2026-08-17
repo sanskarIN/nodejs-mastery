@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Session Health Record",
+  "type": "object",
+  "required": [
+    "sessionId",
+    "tickP95Ms",
+    "disconnectRate",
+    "rollbackP95Ticks"
+  ],
+  "additionalProperties": true
+}

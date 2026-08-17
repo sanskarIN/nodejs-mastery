@@ -1,0 +1,11 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {TokenBucket,validateMotionBudget,suspicionScore,enforcementFor} from '../src/anti-cheat.js';import {newSession,reconnectDecision,canJoin} from '../src/session.js';import {migrateSession,fencedWriteAllowed,migrationPlan} from '../src/migration.js';
+test('41 token bucket allows initial token',()=>{let t=0;const b=new TokenBucket({capacity:1,refillPerSecond:1,now:()=>t});assert.equal(b.take(),true)});
+test('42 token bucket rejects exhaustion',()=>{let t=0;const b=new TokenBucket({capacity:1,refillPerSecond:1,now:()=>t});b.take();assert.equal(b.take(),false)});
+test('43 token bucket refills',()=>{let t=0;const b=new TokenBucket({capacity:1,refillPerSecond:1,now:()=>t});b.take();t=1000;assert.equal(b.take(),true)});
+test('44 motion budget catches diagonal excess',()=>assert.equal(validateMotionBudget({dx:1,dy:1}),false));
+test('45 suspicion score weights impossible motion',()=>assert.equal(suspicionScore({impossibleMotion:1}),5));
+test('46 enforcement escalates',()=>assert.equal(enforcementFor(10),'block'));
+test('47 reconnect changes mode after migration',()=>{const s=newSession();s.epoch=2;assert.equal(reconnectDecision({session:s,clientEpoch:1,lastAckTick:5,historyFloor:0}).mode,'full-snapshot')});
+test('48 join respects duplicate player',()=>{const s=newSession({players:['p']});assert.equal(canJoin(s,'p'),false)});
+test('49 migration increments epoch and fences old owner',()=>{const s=newSession({region:'a'});const old=s.owner;migrateSession(s,{toRegion:'b',toWorker:'worker-9',expectedEpoch:1});assert.equal(s.epoch,2);assert.equal(fencedWriteAllowed(s,1,old),false)});
+test('50 migration plan chooses drain',()=>assert.equal(migrationPlan({sourceHealthy:true,targetReady:true,drained:false}),'drain-source'));
