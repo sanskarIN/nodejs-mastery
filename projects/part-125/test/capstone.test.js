@@ -1,0 +1,14 @@
+import test from 'node:test'; import assert from 'node:assert/strict';
+import {EvidenceBundle,ArchitectureScorecard,ReleaseGate,RecoveryObjective,RiskRegister,ChangeBudget,Certification,dependencyCriticality,migrationReady,chaosResult} from '../src/capstone.js';
+
+test('evidence bundle requires all evidence pass',()=>{const e=new EvidenceBundle();e.add('a',true);e.add('b',true);assert.ok(e.passed());e.add('c',false);assert.equal(e.passed(),false);});
+test('evidence digest changes with evidence',()=>{const a=new EvidenceBundle();a.add('x',true);const d=a.digest();a.add('y',true);assert.notEqual(a.digest(),d);});
+test('scorecard is weighted and bounded',()=>{const s=new ArchitectureScorecard();for(const a of Object.keys(s.weights))s.set(a,5);assert.equal(s.weighted(),1);assert.throws(()=>s.set('security',6));});
+test('release gate finds missing and failing evidence',()=>{const e=new EvidenceBundle();e.add('tests',true);e.add('restore',false);const g=new ReleaseGate(['tests','restore','security']).evaluate(e);assert.equal(g.pass,false);assert.deepEqual(g.missing,['security']);assert.deepEqual(g.failing,['restore']);});
+test('recovery objective validates rpo and rto',()=>{const r=new RecoveryObjective({rpoMs:1000,rtoMs:5000});assert.ok(r.meets({lostMs:500,recoveryMs:3000}));assert.equal(r.meets({lostMs:2000,recoveryMs:3000}),false);});
+test('risk register prioritizes and exposes critical risk',()=>{const r=new RiskRegister();r.add({id:'low',likelihood:1,impact:2,mitigation:'x'});r.add({id:'high',likelihood:4,impact:4,mitigation:'y'});assert.equal(r.priority()[0].id,'high');assert.equal(r.unresolvedCritical().length,1);});
+test('change budget bounds simultaneous risk',()=>{const b=new ChangeBudget(5);assert.ok(b.consume(3));assert.equal(b.consume(3),false);});
+test('certification requires score and evidence',()=>{const s=new ArchitectureScorecard();for(const a of Object.keys(s.weights))s.set(a,5);const e=new EvidenceBundle();e.add('tests',true);e.add('restore',true);const c=new Certification({minScore:.9,requiredEvidence:['tests','restore']}).decide({scorecard:s,evidence:e});assert.ok(c.certified);});
+test('dependency criticality sums explicit dimensions',()=>{assert.equal(dependencyCriticality({availabilityImpact:3,dataImpact:2,securityImpact:4,recoveryComplexity:1}),10);});
+test('migration readiness requires every gate',()=>{assert.ok(migrationReady({backwardCompatible:true,rollbackTested:true,dataBackfillVerified:true,observabilityReady:true}));assert.equal(migrationReady({backwardCompatible:true,rollbackTested:false,dataBackfillVerified:true,observabilityReady:true}),false);});
+test('chaos result rejects data loss',()=>{assert.ok(chaosResult({steadyStateBefore:true,steadyStateDuring:true,recovered:true,unexpectedDataLoss:false}));assert.equal(chaosResult({steadyStateBefore:true,steadyStateDuring:true,recovered:true,unexpectedDataLoss:true}),false);});
