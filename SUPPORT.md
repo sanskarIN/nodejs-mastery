@@ -2,9 +2,33 @@
 
 > 📘 **Get Node.js Full Mastery:** https://ramsandesh.gumroad.com
 
-For repository bugs, open a GitHub issue with the project part, Node.js version, command, expected result, actual result, and minimal reproduction.
+## Repository bugs
 
-For project/business inquiries: **sanskarin@outlook.in**  
-For support: **supportramsandesh@gmail.com**
+Open a GitHub issue using the bug-report template. Include:
 
-**Gumroad:** https://ramsandesh.gumroad.com
+- affected `part-NNN` project or repository path;
+- Node.js version;
+- command that failed;
+- expected result;
+- actual result;
+- minimal reproduction when possible.
+
+Before reporting, check [`docs/TROUBLESHOOTING.md`](docs/TROUBLESHOOTING.md) and [`docs/FAQ.md`](docs/FAQ.md).
+
+## Security issues
+
+Do not post exploit details publicly. Follow [`SECURITY.md`](SECURITY.md).
+
+## Historical companion archives
+
+Use the **Historical project recovery** issue template. Do not upload the paid manuscript or publication package.
+
+## Contact
+
+Project/business inquiries: **sanskarin@outlook.in**  
+Business: **sanskarin.business@gmail.com**  
+Support: **supportramsandesh@gmail.com**
+
+## Complete learning edition
+
+**Official Gumroad storefront:** **https://ramsandesh.gumroad.com**
