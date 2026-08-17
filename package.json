@@ -1,20 +1,34 @@
 {
   "name": "nodejs-mastery-companion",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
   "description": "Public companion code for the Node.js Full Mastery eBook by Ram Sandesh.",
   "type": "module",
-  "engines": { "node": ">=20" },
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
+    "projects": "node scripts/list-projects.mjs",
     "test": "node scripts/run-all.mjs test",
     "demo": "node scripts/run-all.mjs demo",
     "verify": "node scripts/run-all.mjs verify",
-    "check": "node scripts/repo-check.mjs"
+    "check:metadata": "node scripts/check-project-metadata.mjs",
+    "check:gumroad": "node scripts/check-gumroad-links.mjs",
+    "check:boundary": "node scripts/check-commercial-boundary.mjs",
+    "check": "node scripts/repo-check.mjs && npm run check:metadata && npm run check:gumroad && npm run check:boundary",
+    "release:check": "npm test && npm run verify && npm run demo && npm run check"
   },
   "homepage": "https://ramsandesh.gumroad.com",
   "repository": {
     "type": "git",
     "url": "https://github.com/sanskarIN/nodejs-mastery.git"
   },
+  "keywords": [
+    "nodejs",
+    "javascript",
+    "education",
+    "distributed-systems",
+    "companion-code"
+  ],
   "license": "MIT"
 }
