@@ -24,6 +24,8 @@ const required = [
   'MAINTAINERS.md',
   'CITATION.cff',
   'docs/ARCHITECTURE.md',
+  'docs/CI.md',
+  'docs/COMMAND_REFERENCE.md',
   'docs/COMPANION_PROJECT_STANDARD.md',
   'docs/DEVELOPMENT.md',
   'docs/FAQ.md',
