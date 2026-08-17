@@ -1,0 +1,25 @@
+name: Documentation feedback
+description: Report unclear, incomplete, outdated, or broken public documentation.
+title: "[Docs]: "
+body:
+  - type: markdown
+    attributes:
+      value: "📘 Complete Node.js Full Mastery eBook: https://ramsandesh.gumroad.com"
+  - type: input
+    id: location
+    attributes:
+      label: Documentation location
+      placeholder: README.md, docs/TESTING.md, projects/part-125/README.md
+    validations:
+      required: true
+  - type: textarea
+    id: issue
+    attributes:
+      label: What is unclear or incorrect?
+    validations:
+      required: true
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: Suggested improvement
+      description: If possible, describe a clearer wording, example, or link.
