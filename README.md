@@ -29,11 +29,11 @@ npm run projects       # list every discovered public companion lab
 npm test               # run all automated tests
 npm run verify         # run all project verification gates
 npm run demo           # run all project demonstrations
-npm run check          # validate metadata, Gumroad links and repository policy
+npm run check          # validate metadata, dependencies, docs and repository policy
 npm run release:check  # run the complete pre-release gate
 ```
 
-GitHub Actions verifies the normal CI path on **Node.js 20 and Node.js 22**. CodeQL performs static security analysis, Dependabot proposes dependency/workflow updates, and pull requests receive dependency review.
+GitHub Actions verifies the normal CI path on **Node.js 20 and Node.js 22**. CodeQL performs static security analysis, Dependabot proposes dependency/workflow updates, and pull requests receive dependency review. Repository checks also enforce explicit npm dependency allowlists, Markdown-link integrity, project isolation, sensitive-file screening, and the commercial-book boundary.
 
 ## Available companion projects
 
@@ -84,12 +84,16 @@ npm run verify
 | [Command reference](docs/COMMAND_REFERENCE.md) | Root and per-project command contract |
 | [Testing](docs/TESTING.md) | Tests vs demos vs verification evidence |
 | [CI and automation](docs/CI.md) | Node matrix, CodeQL, dependency review, and release gates |
+| [Dependency policy](docs/DEPENDENCY_POLICY.md) | Explicit third-party npm dependency governance |
+| [Security model](docs/SECURITY_MODEL.md) | Trust boundaries and automated protections |
+| [Privacy](docs/PRIVACY.md) | Public repository data-handling expectations |
+| [Accessibility](docs/ACCESSIBILITY.md) | Accessible documentation and terminal conventions |
 | [GitHub settings](docs/GITHUB_SETTINGS.md) | Recommended branch protection, topics, security, and release settings |
 | [Companion project standard](docs/COMPANION_PROJECT_STANDARD.md) | Requirements for adding a lab |
 | [Recovery policy](docs/RECOVERY_POLICY.md) | Recovered vs reconstructed vs unavailable |
-| [Security model](docs/SECURITY_MODEL.md) | Trust boundaries and automated protections |
 | [Troubleshooting](docs/TROUBLESHOOTING.md) | Common local/CI problems |
 | [FAQ](docs/FAQ.md) | Licensing, versions, availability, and reuse |
+| [Versioning](docs/VERSIONING.md) | Semantic versioning and book-edition boundaries |
 | [Release process](docs/RELEASE_PROCESS.md) | Public companion release gate and versioning |
 | [v1.1.0 release notes](docs/RELEASE_NOTES_v1.1.0.md) | Prepared public release notes for the hardening release |
 | [Roadmap](docs/ROADMAP.md) | Public repository maintenance direction |
@@ -101,6 +105,7 @@ npm run verify
 .
 ├── .github/                 # CI, security workflows, ownership, issue templates
 ├── assets/                  # Gumroad/storefront public promotional asset
+├── config/                  # Explicit repository policies such as dependency allowlists
 ├── docs/                    # Architecture, testing, recovery, release and learning guides
 ├── projects/                # Independently runnable companion laboratories
 ├── scripts/                 # Discovery and executable repository-policy checks
