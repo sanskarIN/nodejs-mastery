@@ -23,6 +23,7 @@ const required = [
   'GOVERNANCE.md',
   'MAINTAINERS.md',
   'CITATION.cff',
+  'docs/README.md',
   'docs/ARCHITECTURE.md',
   'docs/CI.md',
   'docs/COMMAND_REFERENCE.md',
