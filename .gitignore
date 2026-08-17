@@ -13,3 +13,14 @@ Thumbs.db
 .idea/
 dist/
 build/
+
+# Commercial book/publication artifacts do not belong in this public code repository.
+*.pdf
+*.docx
+*.epub
+*Complete_Ebook*
+*Complete-Ebook*
+*Publication_Package*
+*Publication-Package*
+*Master_Manuscript*
+*Master-Manuscript*
