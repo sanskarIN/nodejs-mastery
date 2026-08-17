@@ -13,14 +13,18 @@
 
 - [`ARCHITECTURE.md`](ARCHITECTURE.md) — repository architecture and isolation.
 - [`COMPANION_PROJECT_STANDARD.md`](COMPANION_PROJECT_STANDARD.md) — requirements for new labs.
+- [`DEPENDENCY_POLICY.md`](DEPENDENCY_POLICY.md) — explicit third-party dependency allowlisting.
 - [`TESTING.md`](TESTING.md) — evidence model and test philosophy.
 - [`CI.md`](CI.md) — GitHub Actions, CodeQL, and automation.
 - [`SECURITY_MODEL.md`](SECURITY_MODEL.md) — trust boundaries and protections.
+- [`PRIVACY.md`](PRIVACY.md) — public repository data-handling expectations.
+- [`ACCESSIBILITY.md`](ACCESSIBILITY.md) — accessible documentation and terminal conventions.
 
 ## Maintenance and releases
 
 - [`DEVELOPMENT.md`](DEVELOPMENT.md) — local development workflow.
 - [`GITHUB_SETTINGS.md`](GITHUB_SETTINGS.md) — canonical host-level GitHub settings checklist.
+- [`VERSIONING.md`](VERSIONING.md) — semantic versioning and book-edition boundaries.
 - [`RELEASE_PROCESS.md`](RELEASE_PROCESS.md) — public release procedure.
 - [`RELEASE_NOTES_v1.1.0.md`](RELEASE_NOTES_v1.1.0.md) — prepared v1.1.0 public release notes.
 - [`ROADMAP.md`](ROADMAP.md) — repository maintenance direction.
