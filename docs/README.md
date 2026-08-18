@@ -5,14 +5,15 @@
 ## Start here
 
 - [`LEARNING_PATH.md`](LEARNING_PATH.md) — recommended study order.
-- [`PROJECT_INDEX.md`](PROJECT_INDEX.md) — available public labs.
+- [`PROJECT_INDEX.md`](PROJECT_INDEX.md) — recovered/reconstructed numbered public labs.
+- [`SUPPLEMENTAL_PROJECTS.md`](SUPPLEMENTAL_PROJECTS.md) — new post-series Node.js practice labs.
 - [`RUNNING_PROJECTS.md`](RUNNING_PROJECTS.md) — how to execute tests, demos, and verification.
 - [`COMMAND_REFERENCE.md`](COMMAND_REFERENCE.md) — root command contract.
 
 ## Engineering model
 
 - [`ARCHITECTURE.md`](ARCHITECTURE.md) — repository architecture and isolation.
-- [`COMPANION_PROJECT_STANDARD.md`](COMPANION_PROJECT_STANDARD.md) — requirements for new labs.
+- [`COMPANION_PROJECT_STANDARD.md`](COMPANION_PROJECT_STANDARD.md) — requirements for numbered companion labs.
 - [`DEPENDENCY_POLICY.md`](DEPENDENCY_POLICY.md) — explicit third-party dependency allowlisting.
 - [`SUPPLY_CHAIN.md`](SUPPLY_CHAIN.md) — secret checks, CodeQL, SBOMs, and release supply-chain evidence.
 - [`TESTING.md`](TESTING.md) — evidence model and test philosophy.
@@ -26,19 +27,19 @@
 - [`DEVELOPMENT.md`](DEVELOPMENT.md) — local development workflow.
 - [`MAINTENANCE_STATUS.md`](MAINTENANCE_STATUS.md) — source-controlled vs host-controlled completion boundary.
 - [`GITHUB_SETTINGS.md`](GITHUB_SETTINGS.md) — canonical host-level GitHub settings checklist.
-- [`HOST_RELEASE_CHECKLIST.md`](HOST_RELEASE_CHECKLIST.md) — final host-only v1.1.0 publication/settings checklist.
+- [`HOST_RELEASE_CHECKLIST.md`](HOST_RELEASE_CHECKLIST.md) — host-only publication/settings checklist.
 - [`VERSIONING.md`](VERSIONING.md) — semantic versioning and book-edition boundaries.
 - [`RELEASE_PROCESS.md`](RELEASE_PROCESS.md) — public release procedure.
-- [`RELEASE_NOTES_v1.1.0.md`](RELEASE_NOTES_v1.1.0.md) — prepared v1.1.0 public release notes.
+- [`RELEASE_NOTES_v1.1.0.md`](RELEASE_NOTES_v1.1.0.md) — historical prepared hardening notes.
 - [`ROADMAP.md`](ROADMAP.md) — repository maintenance direction.
 - [`TROUBLESHOOTING.md`](TROUBLESHOOTING.md) — common failures.
 - [`FAQ.md`](FAQ.md) — common licensing and availability questions.
 
 ## Provenance and licensing
 
-- [`PROJECT_STATUS.md`](PROJECT_STATUS.md) — recovered/reconstructed/unavailable parts.
+- [`PROJECT_STATUS.md`](PROJECT_STATUS.md) — recovered/reconstructed/unavailable numbered parts.
 - [`RECOVERY_POLICY.md`](RECOVERY_POLICY.md) — historical archive acceptance policy.
 - [`LICENSE_SCOPE.md`](LICENSE_SCOPE.md) — MIT public code vs proprietary book boundary.
 - [`STORE.md`](STORE.md) — official commercial-edition storefront.
 
-The public documentation supports the companion repository. The complete Parts 1–125 curriculum is available at **https://ramsandesh.gumroad.com**.
+The public documentation supports both the historical companion labs and the new supplemental practice projects. The complete Parts 1–125 curriculum is available at **https://ramsandesh.gumroad.com**.
