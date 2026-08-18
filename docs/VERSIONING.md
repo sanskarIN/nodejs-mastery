@@ -12,9 +12,9 @@ Use semantic versioning for public code releases:
 - **MINOR** — new authentic recovered/reconstructed companion labs, new clearly labeled supplemental projects, backwards-compatible tooling, or substantial new verification/documentation capabilities.
 - **MAJOR** — incompatible changes to repository commands, supported runtime expectations, or established public-code contracts.
 
-Current repository line: **1.2.x**.
+Current repository line: **2.0.x**.
 
-The v1.2 line adds supplemental post-series projects while leaving the completed Parts 1–125 book sequence unchanged.
+v2.0.0 raises the supported runtime floor from Node.js 20 to Node.js 22 because Node.js 20 is end-of-life. Node.js 22 and 24 are the required CI lines, while Node.js 24 is the pinned local/release runtime. The 22-project public inventory remains unchanged from v1.2.0.
 
 ## Book editions
 
@@ -25,12 +25,18 @@ The commercial book may use edition/date metadata independently of the GitHub re
 Public repository tags should use semantic release tags such as:
 
 ```text
-v1.2.0
-v1.2.1
-v1.3.0
+v2.0.0
+v2.0.1
+v2.1.0
 ```
 
 Before a tag is published, run the `Release Readiness` workflow or `npm run release:check`.
+
+## Runtime-support changes
+
+Dropping an officially supported runtime line or materially changing the minimum Node.js requirement is a MAJOR change. Adding a newly maintained runtime to the CI matrix without dropping existing support may be a MINOR or PATCH change depending on whether repository behavior changes.
+
+See [`RUNTIME_SUPPORT.md`](RUNTIME_SUPPORT.md).
 
 ## Provenance changes
 
