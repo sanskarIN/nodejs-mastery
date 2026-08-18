@@ -1,0 +1,1 @@
+import assert from 'node:assert/strict'; import {loadConfig,redact} from './src/index.js'; assert.equal(loadConfig({SERVICE_NAME:'v'}).port,3000); assert.equal(redact({apiKey:'x'}).apiKey,'[REDACTED]'); console.log('config-redaction-kit verify: ok');
