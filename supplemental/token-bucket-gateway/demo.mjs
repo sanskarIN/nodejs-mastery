@@ -1,0 +1,1 @@
+import {TokenBucketLimiter} from './src/index.js'; let t=0; const l=new TokenBucketLimiter({capacity:2,refillPerSecond:1,now:()=>t}); console.log(l.take('client-1')); console.log(l.take('client-1')); console.log(l.take('client-1')); t=1000; console.log(l.take('client-1'));
