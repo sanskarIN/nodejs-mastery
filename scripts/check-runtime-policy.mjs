@@ -1,4 +1,5 @@
-import { readFileSync } from 'node:fs';
+import { readFileSync, readdirSync } from 'node:fs';
+import { join } from 'node:path';
 import { listProjects } from './project-registry.mjs';
 import { listSupplemental } from './supplemental-registry.mjs';
 
@@ -32,6 +33,28 @@ if (/node:\s*\[[^\]]*20/.test(ci)) errors.push('Companion CI must not test the E
 const release = readFileSync('.github/workflows/release-readiness.yml', 'utf8');
 if (!/node-version:\s*24\b/.test(release)) errors.push('Release Readiness must use Node.js 24 LTS');
 
+const historicalDocs = new Set(['RELEASE_NOTES_v1.1.0.md', 'RELEASE_NOTES_v1.2.0.md']);
+const activeDocs = ['README.md', 'CONTRIBUTING.md', '.github/pull_request_template.md'];
+for (const name of readdirSync('docs')) {
+  if (name.endsWith('.md') && !historicalDocs.has(name)) activeDocs.push(join('docs', name));
+}
+
+const stalePatterns = [
+  /Node\.js 20\+/,
+  /Node\.js 20 or newer/,
+  /Node\.js 20 compatibility/,
+  /Node\.js 20 and Node\.js 22/,
+  /Node\.js 20\/22/,
+  /engines\.node[^\n]*>=20/
+];
+
+for (const path of activeDocs) {
+  const text = readFileSync(path, 'utf8');
+  for (const pattern of stalePatterns) {
+    if (pattern.test(text)) errors.push(`${path}: contains stale supported-runtime wording (${pattern})`);
+  }
+}
+
 if (errors.length) {
   console.error('Runtime policy violations:');
   console.error(errors.join('\n'));
@@ -44,5 +67,7 @@ console.log(JSON.stringify({
   requiredCiLines: [22, 24],
   localAndReleaseRuntime: 24,
   numberedProjects: listProjects().length,
-  supplementalProjects: listSupplemental().length
+  supplementalProjects: listSupplemental().length,
+  activeDocumentationFilesChecked: activeDocs.length,
+  staleRuntimeClaims: 0
 }, null, 2));
