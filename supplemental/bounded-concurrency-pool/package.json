@@ -4,7 +4,7 @@
   "private": true,
   "description": "A dependency-free bounded concurrency mapper with stable result ordering, peak-concurrency evidence, and fail-fast task errors.",
   "type": "module",
-  "engines": {"node": ">=20"},
+  "engines": {"node": ">=22"},
   "scripts": {"test": "node --test", "demo": "node demo.mjs", "verify": "node verify.mjs"},
   "homepage": "https://ramsandesh.gumroad.com",
   "repository": {"type": "git", "url": "https://github.com/sanskarIN/nodejs-mastery.git", "directory": "supplemental/bounded-concurrency-pool"},
