@@ -10,7 +10,7 @@
     "verify": "node verify.js"
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=22"
   },
   "homepage": "https://ramsandesh.gumroad.com",
   "repository": {
