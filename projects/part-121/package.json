@@ -5,7 +5,7 @@
   "description": "Dependency-free Node.js lab for distributed data consistency and scalable storage contracts.",
   "type": "commonjs",
   "engines": {
-    "node": ">=20"
+    "node": ">=22"
   },
   "scripts": {
     "test": "node --test",
