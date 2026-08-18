@@ -15,7 +15,7 @@ const errors = [];
 if (bom.bomFormat !== 'CycloneDX') errors.push('bomFormat must be CycloneDX');
 if (bom.specVersion !== '1.5') errors.push('specVersion must be 1.5');
 if (bom.metadata?.component?.name !== 'nodejs-mastery-companion') errors.push('root component name is incorrect');
-if (bom.metadata?.component?.version !== '1.2.0') errors.push('root component version is incorrect');
+if (bom.metadata?.component?.version !== '2.0.0') errors.push('root component version must be 2.0.0');
 if (!Array.isArray(bom.components) || bom.components.length !== expectedComponents) errors.push(`expected ${expectedComponents} public-code components, found ${bom.components?.length ?? 0}`);
 
 const refs = new Set();
@@ -25,6 +25,8 @@ for (const component of bom.components ?? []) {
   else refs.add(component['bom-ref']);
   const license = component.licenses?.[0]?.license?.id;
   if (license !== 'MIT') errors.push(`${component.name ?? '<unknown>'} must declare MIT in the public-code SBOM`);
+  const engine = component.properties?.find((entry) => entry.name === 'nodejs-mastery:node-engine')?.value;
+  if (engine !== '>=22') errors.push(`${component.name ?? '<unknown>'} must record Node.js >=22 in the SBOM`);
 }
 
 if (!Array.isArray(bom.dependencies) || bom.dependencies.length !== expectedComponents) {
@@ -46,6 +48,8 @@ console.log(JSON.stringify({
   verified: true,
   format: `${bom.bomFormat} ${bom.specVersion}`,
   rootComponent: bom.metadata.component.name,
+  rootVersion: bom.metadata.component.version,
+  nodeEngine: '>=22',
   numberedCompanionComponents: projects.length,
   supplementalComponents: supplemental.length,
   publicCodeComponents: bom.components.length,
