@@ -20,6 +20,7 @@ if (!readme.includes(gumroad)) throw new Error('README is missing Gumroad link')
 if (!readme.includes('actions/workflows/ci.yml/badge.svg')) throw new Error('README is missing CI badge');
 if (!readme.includes('actions/workflows/codeql.yml/badge.svg')) throw new Error('README is missing CodeQL badge');
 if (!readme.includes('docs/SUPPLEMENTAL_PROJECTS.md')) throw new Error('README is missing the supplemental project index');
+if (!readme.includes('12 projects are new educational labs')) throw new Error('README must state the v1.2.0 supplemental inventory');
 
 const pkg = JSON.parse(readFileSync('package.json', 'utf8'));
 if (pkg.version !== '1.2.0') throw new Error(`Unexpected repository version: ${pkg.version}`);
@@ -40,7 +41,7 @@ if (!pkg.scripts?.check?.includes('check:sbom')) throw new Error('Root repositor
 const hostChecklist = readFileSync('docs/HOST_RELEASE_CHECKLIST.md', 'utf8');
 if (!hostChecklist.includes('v1.2.0')) throw new Error('Host release checklist must target v1.2.0');
 const releaseNotes = readFileSync('docs/RELEASE_NOTES_v1.2.0.md', 'utf8');
-if (!releaseNotes.includes('eight new dependency-free')) throw new Error('v1.2.0 release notes must describe the supplemental project collection');
+if (!releaseNotes.includes('12 new dependency-free Node.js practice laboratories')) throw new Error('v1.2.0 release notes must describe all twelve supplemental projects');
 
 const ci = readFileSync('.github/workflows/ci.yml', 'utf8');
 const codeql = readFileSync('.github/workflows/codeql.yml', 'utf8');
@@ -63,7 +64,7 @@ console.log(JSON.stringify({
   ciBadge: true,
   codeqlBadge: true,
   numberedProjects: true,
-  supplementalProjects: true,
+  supplementalProjects: 12,
   supplementalPolicyCheck: true,
   supplementalStandard: true,
   sbomIncludesSupplementalLabs: true,
