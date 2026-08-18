@@ -24,7 +24,7 @@ for (const project of projects) {
   if (!pkg) { errors.push(`${project.id}: missing package.json`); continue; }
   if (pkg.private !== true) errors.push(`${project.id}: package must remain private from npm publication`);
   if (pkg.license !== 'MIT') errors.push(`${project.id}: license must be MIT`);
-  if (!String(pkg.engines?.node ?? '').includes('>=20')) errors.push(`${project.id}: engines.node must require Node.js 20+`);
+  if (pkg.engines?.node !== '>=22') errors.push(`${project.id}: engines.node must be exactly '>=22'`);
   for (const script of ['test', 'demo', 'verify']) if (!pkg.scripts?.[script]) errors.push(`${project.id}: missing npm script '${script}'`);
   if (pkg.homepage !== GUMROAD) errors.push(`${project.id}: homepage must point to Gumroad`);
   if (pkg.repository?.url !== REPO) errors.push(`${project.id}: repository URL is inconsistent`);
@@ -59,7 +59,7 @@ for (const project of projects) {
   }
 }
 
-if (projects.length !== 12) errors.push(`expected exactly 12 supplemental projects for v1.2.0, found ${projects.length}`);
+if (projects.length !== 12) errors.push(`expected exactly 12 supplemental projects for v2.0.0, found ${projects.length}`);
 
 if (errors.length) {
   console.error('Supplemental project policy violations:');
@@ -71,7 +71,7 @@ console.log(JSON.stringify({
   verified: true,
   supplementalProjects: projects.length,
   expectedForRelease: 12,
-  node: '>=20',
+  node: '>=22',
   license: 'MIT',
   dependencies: 0,
   challengeDocs: projects.length,
