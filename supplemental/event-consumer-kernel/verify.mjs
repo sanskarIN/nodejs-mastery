@@ -1,0 +1,1 @@
+import assert from 'node:assert/strict'; import {EventConsumer} from './src/index.js'; const c=new EventConsumer(); const r=await c.consume({id:'v',partition:0,offset:0},async()=>42); assert.equal(r.status,'processed'); assert.equal(c.offsets.get(0),0); console.log('event-consumer-kernel verify: ok');
