@@ -6,7 +6,9 @@
 
 # Node.js Full Mastery - Part 122 Companion Laboratory
 
-Dependency-free Node.js 20+ reference implementation for deadline propagation, retry budgets, circuit breaking, bulkheads, adaptive concurrency, readiness, service discovery, deterministic canary routing, idempotent API admission, hedging safety, and trace context.
+Dependency-free Node.js 22+ reference implementation for deadline propagation, retry budgets, circuit breaking, bulkheads, adaptive concurrency, readiness, service discovery, deterministic canary routing, idempotent API admission, hedging safety, and trace context.
+
+**Runtime:** Node.js 22+; Node.js 24 LTS is recommended.
 
 ```bash
 npm test
