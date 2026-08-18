@@ -1,0 +1,1 @@
+import {ServiceHealth} from './src/index.js'; const h=new ServiceHealth(['db']); console.log('initial',h.readiness()); h.setDependency('db',true); console.log('ready',h.readiness()); h.beginDrain(); console.log('draining',h.readiness());
