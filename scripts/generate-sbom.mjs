@@ -1,9 +1,10 @@
-import { mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
+import { mkdirSync, readFileSync, readdirSync, writeFileSync, existsSync } from 'node:fs';
 import { resolve } from 'node:path';
 
 const repository = 'https://github.com/sanskarIN/nodejs-mastery';
 const root = process.cwd();
 const projectsRoot = resolve(root, 'projects');
+const supplementalRoot = resolve(root, 'supplemental');
 const output = resolve(root, 'dist', 'nodejs-mastery-sbom.cdx.json');
 
 function readPackage(path) {
@@ -27,17 +28,24 @@ function componentFromPackage(pkg, path, type = 'application') {
   };
 }
 
-const rootPackage = readPackage(resolve(root, 'package.json'));
-const components = [];
-
-for (const entry of readdirSync(projectsRoot, { withFileTypes: true })) {
-  if (!entry.isDirectory() || !/^part-\d{3}$/.test(entry.name)) continue;
-  const packagePath = resolve(projectsRoot, entry.name, 'package.json');
-  const pkg = readPackage(packagePath);
-  components.push(componentFromPackage(pkg, `projects/${entry.name}`));
+function collectPackages(directory, prefix, predicate = () => true) {
+  if (!existsSync(directory)) return [];
+  const result = [];
+  for (const entry of readdirSync(directory, { withFileTypes: true })) {
+    if (!entry.isDirectory() || !predicate(entry.name)) continue;
+    const packagePath = resolve(directory, entry.name, 'package.json');
+    if (!existsSync(packagePath)) continue;
+    const pkg = readPackage(packagePath);
+    result.push(componentFromPackage(pkg, `${prefix}/${entry.name}`));
+  }
+  return result;
 }
 
-components.sort((a, b) => a.name.localeCompare(b.name));
+const rootPackage = readPackage(resolve(root, 'package.json'));
+const components = [
+  ...collectPackages(projectsRoot, 'projects', (name) => /^part-\d{3}$/.test(name)),
+  ...collectPackages(supplementalRoot, 'supplemental')
+].sort((a, b) => a.name.localeCompare(b.name));
 
 const bom = {
   bomFormat: 'CycloneDX',
@@ -47,7 +55,8 @@ const bom = {
     component: componentFromPackage(rootPackage, '.', 'application'),
     properties: [
       { name: 'nodejs-mastery:source', value: repository },
-      { name: 'nodejs-mastery:commercial-edition', value: 'https://ramsandesh.gumroad.com' }
+      { name: 'nodejs-mastery:commercial-edition', value: 'https://ramsandesh.gumroad.com' },
+      { name: 'nodejs-mastery:supplemental-labs', value: String(components.filter((c) => c.properties.some((p) => p.value.startsWith('supplemental/'))).length) }
     ]
   },
   components,
