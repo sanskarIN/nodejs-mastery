@@ -4,7 +4,7 @@
   "private": true,
   "description": "A Node.js stream laboratory that demonstrates bounded transforms, byte accounting, line framing, and pipeline-based error propagation.",
   "type": "module",
-  "engines": {"node": ">=20"},
+  "engines": {"node": ">=22"},
   "scripts": {"test": "node --test", "demo": "node demo.mjs", "verify": "node verify.mjs"},
   "homepage": "https://ramsandesh.gumroad.com",
   "repository": {"type": "git", "url": "https://github.com/sanskarIN/nodejs-mastery.git", "directory": "supplemental/stream-backpressure-lab"},
