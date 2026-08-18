@@ -1,0 +1,1 @@
+import {TtlLruCache} from './src/index.js'; let now=0; const c=new TtlLruCache({maxEntries:2,ttlMs:50,now:()=>now}); c.set('user:1',{name:'A'}); console.log(c.get('user:1')); now=60; console.log(c.get('user:1')); console.log(c.stats());
