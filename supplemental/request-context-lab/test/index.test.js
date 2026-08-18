@@ -1,0 +1,4 @@
+import test from 'node:test'; import assert from 'node:assert/strict'; import { setTimeout as delay } from 'node:timers/promises'; import { RequestContext } from '../src/index.js';
+test('propagates context through async work', async()=>{const c=new RequestContext(); const value=await c.run({requestId:'r1',traceId:'t1'},async()=>{await delay(1); return c.require();}); assert.deepEqual(value,{requestId:'r1',traceId:'t1',tenantId:null});});
+test('isolates concurrent requests',async()=>{const c=new RequestContext(); const values=await Promise.all(['a','b'].map((id,i)=>c.run({requestId:id},async()=>{await delay(2-i); return c.require().requestId;}))); assert.deepEqual(values,['a','b']);});
+test('requires explicit request boundary',()=>{const c=new RequestContext(); assert.equal(c.get(),null); assert.throws(()=>c.require(),/unavailable/);});
