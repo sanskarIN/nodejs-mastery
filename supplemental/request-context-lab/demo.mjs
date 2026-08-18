@@ -1,0 +1,1 @@
+import { RequestContext } from './src/index.js'; const context=new RequestContext(); await context.run({requestId:'demo-1',traceId:'trace-1'},async()=>{await Promise.resolve(); console.log(context.require());});
