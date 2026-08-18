@@ -1,44 +1,42 @@
 # Node.js Mastery Companion v1.2.0
 
-## New supplemental project collection
+## Supplemental project collection
 
-v1.2.0 adds eight new dependency-free Node.js practice laboratories without changing the completed Parts 1–125 eBook sequence or misrepresenting the new code as recovered historical companions.
+v1.2.0 adds **12 new dependency-free Node.js practice laboratories**. These are new post-series educational projects and do not change or replace the completed Parts 1–125 sequence.
 
 ### Added projects
 
-- `bounded-job-queue` — bounded admission, retry classification, exponential backoff, dead-letter handling, duplicate IDs.
-- `ttl-lru-cache` — TTL expiration, LRU eviction, deterministic clocks, cache metrics.
-- `token-bucket-gateway` — per-key token buckets, continuous refill, retry-after calculations.
-- `idempotent-api-kernel` — idempotency keys, request fingerprints, replay-safe effects, conflicts and retention.
-- `stream-backpressure-lab` — bounded line framing, byte accounting, Node.js pipeline error propagation.
-- `service-health-kernel` — liveness, readiness, dependency gates and graceful draining.
-- `event-consumer-kernel` — partition offsets, duplicate suppression and poison-event quarantine.
-- `config-redaction-kit` — bounded configuration parsing and safe diagnostic redaction.
+- `bounded-job-queue` — bounded queues, retries, backoff and dead letters.
+- `ttl-lru-cache` — TTL expiration, LRU eviction and cache metrics.
+- `token-bucket-gateway` — per-key rate limiting and retry-after calculations.
+- `idempotent-api-kernel` — request fingerprints and replay-safe effects.
+- `stream-backpressure-lab` — bounded stream processing and pipeline errors.
+- `service-health-kernel` — liveness, readiness, dependency gates and draining.
+- `event-consumer-kernel` — partition offsets, duplicates and poison-event quarantine.
+- `config-redaction-kit` — configuration validation and safe diagnostics.
+- `request-context-lab` — AsyncLocalStorage request context and concurrent isolation.
+- `graceful-shutdown-coordinator` — ordered cleanup and idempotent shutdown.
+- `circuit-breaker-kernel` — closed/open/half-open transitions and recovery probes.
+- `bounded-concurrency-pool` — bounded parallel work and stable result ordering.
 
-Every supplemental project includes package metadata, README, implementation, automated tests, demo, verification gate, and architecture documentation.
+Each lab includes package metadata, README, implementation, tests, demo, verification gate, architecture notes and mastery challenges.
 
-## Root automation
+## Repository integration
 
-- Added dynamic supplemental discovery and execution.
-- `npm test`, `npm run verify`, and `npm run demo` now cover both numbered and supplemental inventories.
-- Added `npm run supplemental`, `test:supplemental`, `verify:supplemental`, and `demo:supplemental`.
-- Added executable supplemental metadata, zero-dependency, Gumroad, documentation, and evergreen-link policy checks.
-- Extended cross-project import isolation to supplemental labs.
+- Root tests, demos and verification cover numbered and supplemental inventories.
+- Supplemental projects are discovered dynamically.
+- `check:supplemental` verifies Node.js 20+, MIT, repository metadata, Gumroad, zero third-party npm dependencies, required docs and run commands.
+- Supplemental docs reject permanent X/Twitter profile URLs.
+- Supplemental project directories reject native promotional image assets.
+- Cross-project isolation now covers both inventories.
+- v1.2.0 expects exactly 12 supplemental projects.
 
 ## Supply-chain evidence
 
-The CycloneDX 1.5 SBOM now inventories both numbered companion projects and supplemental labs. SBOM validation checks the v1.2.0 root version, public-code component count, MIT licensing, empty dependency edges, Gumroad metadata, and supplemental-lab count.
+The CycloneDX 1.5 SBOM inventories numbered companion projects and supplemental labs. Validation checks the root version, public component count, MIT licenses, dependency graph, Gumroad metadata and supplemental count.
 
-## Documentation and provenance
+## Commercial boundary
 
-- Added `SUPPLEMENTAL_PROJECTS.md` and `SUPPLEMENTAL_PROJECT_STANDARD.md`.
-- Updated repository README, documentation index, project index, learning path, command reference, and running guide.
-- Supplemental projects are explicitly classified as new post-series educational code.
-- Evergreen supplemental READMEs intentionally avoid X/Twitter profile URLs.
-- New image guidance excludes human portraits, faces, and profile avatars from repository/publication promotional assets.
-
-## Commercial-content boundary
-
-The complete PDF, DOCX, EPUB, manuscript sources, answer keys, and other paid publishing assets remain outside the public repository. The MIT license applies to public source code only.
+Paid PDF, DOCX, EPUB, manuscript, answer-key, source-archive and publication-package files remain outside this public repository. MIT applies to the public source code only.
 
 **Complete eBook storefront:** https://ramsandesh.gumroad.com
