@@ -6,7 +6,9 @@
 
 # Node.js Full Mastery - Part 119 Companion Lab
 
-Dependency-free Node.js 20+ laboratory for **Durable Background Execution and Distributed Workflow Orchestration**.
+Dependency-free Node.js 22+ laboratory for **Durable Background Execution and Distributed Workflow Orchestration**.
+
+**Runtime:** Node.js 22+; Node.js 24 LTS is recommended.
 
 ## Run
 
