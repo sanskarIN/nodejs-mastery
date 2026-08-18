@@ -5,7 +5,7 @@
   "description": "Educational marketplace settlement, commission, payout, and reconciliation laboratory.",
   "type": "module",
   "engines": {
-    "node": ">=20"
+    "node": ">=22"
   },
   "scripts": {
     "test": "node --test",
