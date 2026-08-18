@@ -1,0 +1,1 @@
+import {IdempotencyStore} from './src/index.js'; const s=new IdempotencyStore(); let charges=0; console.log(await s.execute('order-1',{amount:9900},async()=>({chargeId:`c-${++charges}`}))); console.log(await s.execute('order-1',{amount:9900},async()=>({chargeId:`c-${++charges}`})));
