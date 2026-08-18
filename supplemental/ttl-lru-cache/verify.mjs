@@ -1,0 +1,1 @@
+import assert from 'node:assert/strict'; import {TtlLruCache} from './src/index.js'; const c=new TtlLruCache({maxEntries:1,ttlMs:100,now:()=>0}); c.set('x',1); c.set('y',2); assert.equal(c.get('x'),undefined); assert.equal(c.get('y'),2); console.log('ttl-lru-cache verify: ok');
