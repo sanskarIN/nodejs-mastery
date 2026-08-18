@@ -2,6 +2,30 @@
 
 > 📘 Node.js Full Mastery: https://ramsandesh.gumroad.com
 
+## 2.0.0 — 2026-08-18
+
+### Breaking changes
+
+- Removed Node.js 20 from the supported runtime contract because it is end-of-life.
+- Raised root, numbered-project, and supplemental-project `engines.node` requirements to `>=22`.
+- Required CI now targets Node.js 22 and Node.js 24; Node.js 24 is the pinned development and Release Readiness runtime.
+
+### Added
+
+- Repository-wide JavaScript/CommonJS/ESM syntax validation through `npm run check:syntax`.
+- Repository-wide JSON/package/config parsing validation through `npm run check:json`.
+- Executable runtime-policy validation through `npm run check:runtime`.
+- `docs/RUNTIME_SUPPORT.md` with the maintained-runtime compatibility contract.
+- `docs/RELEASE_NOTES_v2.0.0.md` for the major runtime-hardening release.
+
+### Changed
+
+- Companion CI now runs tests, verifiers, deterministic demos, and the complete repository policy suite on both supported CI runtimes.
+- Release Readiness now uses Node.js 24 LTS and reports runtime/npm versions before the release gate.
+- SBOM validation requires v2.0.0 root metadata and Node.js `>=22` engine metadata for every public-code component.
+- README, development, CI, runtime, project-standard, running, supply-chain, versioning, maintenance, and release documentation were aligned with v2.0.0.
+- The existing public inventory remains 10 numbered companion labs plus 12 supplemental labs.
+
 ## 1.2.0 — 2026-08-18
 
 ### Added
