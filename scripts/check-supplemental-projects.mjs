@@ -59,7 +59,7 @@ for (const project of projects) {
   }
 }
 
-if (projects.length < 8) errors.push(`expected at least 8 supplemental projects, found ${projects.length}`);
+if (projects.length !== 12) errors.push(`expected exactly 12 supplemental projects for v1.2.0, found ${projects.length}`);
 
 if (errors.length) {
   console.error('Supplemental project policy violations:');
@@ -70,6 +70,7 @@ if (errors.length) {
 console.log(JSON.stringify({
   verified: true,
   supplementalProjects: projects.length,
+  expectedForRelease: 12,
   node: '>=20',
   license: 'MIT',
   dependencies: 0,
