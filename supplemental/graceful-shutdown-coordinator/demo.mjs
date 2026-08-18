@@ -1,0 +1,1 @@
+import {ShutdownCoordinator} from './src/index.js'; const shutdown=new ShutdownCoordinator(); shutdown.add('stop-admission',async()=>console.log('stop admission')).add('close-database',async()=>console.log('close database')); console.log(await shutdown.shutdown('demo'));
