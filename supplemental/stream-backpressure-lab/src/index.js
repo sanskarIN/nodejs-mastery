@@ -1,0 +1,3 @@
+import { Transform, Writable } from 'node:stream';
+export function createLineCounter({ maxLineBytes=1024 }={}){ let carry=''; let lines=0; let bytes=0; return new Transform({ transform(chunk,enc,cb){ bytes+=chunk.length; carry+=chunk.toString('utf8'); const parts=carry.split(/\r?\n/); carry=parts.pop(); if(Buffer.byteLength(carry)>maxLineBytes) return cb(new Error('line-too-large')); lines+=parts.length; cb(null,chunk); }, flush(cb){ if(carry.length) lines++; this.emit('summary',{lines,bytes}); cb(); } }); }
+export function createByteSink(){ let bytes=0; const sink=new Writable({write(chunk,enc,cb){bytes+=chunk.length; cb();}}); sink.bytes=()=>bytes; return sink; }
