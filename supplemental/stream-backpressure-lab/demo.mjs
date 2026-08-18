@@ -1,0 +1,1 @@
+import {Readable} from 'node:stream'; import {pipeline} from 'node:stream/promises'; import {createLineCounter,createByteSink} from './src/index.js'; const counter=createLineCounter(); const sink=createByteSink(); counter.on('summary',s=>console.log('summary',s)); await pipeline(Readable.from(['alpha\n','beta\n']),counter,sink); console.log('sink bytes',sink.bytes());
