@@ -1,0 +1,1 @@
+import {CircuitBreaker} from './src/index.js'; let now=0; const breaker=new CircuitBreaker({failureThreshold:1,cooldownMs:100,now:()=>now}); try{await breaker.execute(async()=>{throw new Error('dependency down');});}catch{} console.log(breaker.snapshot()); now=100; console.log(await breaker.execute(async()=> 'recovered')); console.log(breaker.snapshot());
