@@ -12,7 +12,7 @@ npm run demo
 npm run verify
 ```
 
-Requires Node.js 20 or newer and has no third-party dependencies.
+Requires Node.js 22 or newer; Node.js 24 LTS is recommended. The lab has no third-party dependencies.
 
 ## Learning focus
 
