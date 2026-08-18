@@ -43,9 +43,6 @@ for (const [name, script] of [
 for (const name of ['check:syntax', 'check:json', 'check:runtime', 'check:supplemental', 'check:sbom']) {
   if (!pkg.scripts?.check?.includes(name)) throw new Error(`Root npm run check must include ${name}`);
 }
-if (!pkg.scripts?.release?.includes?.('release:check')) {
-  // No standalone release alias is required; release:check below is authoritative.
-}
 if (!pkg.scripts?.['release:check']?.includes('npm run demo')) throw new Error('release:check must execute demos');
 
 const citation = readFileSync('CITATION.cff', 'utf8');
