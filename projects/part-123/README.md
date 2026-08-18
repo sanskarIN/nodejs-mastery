@@ -6,7 +6,9 @@
 
 # Node.js Full Mastery - Part 123 Companion Laboratory
 
-Dependency-free Node.js 20+ security contracts: signed short-lived tokens, default-deny authorization, nonce replay protection, secret leases and rotation overlap, abuse limits, privacy redaction, artifact hashing, constant-time comparison, and tamper-evident audit evidence.
+Dependency-free Node.js 22+ security contracts: signed short-lived tokens, default-deny authorization, nonce replay protection, secret leases and rotation overlap, abuse limits, privacy redaction, artifact hashing, constant-time comparison, and tamper-evident audit evidence.
+
+**Runtime:** Node.js 22+; Node.js 24 LTS is recommended.
 
 ```bash
 npm test
