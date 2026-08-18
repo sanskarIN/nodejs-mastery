@@ -5,7 +5,7 @@
   "description": "Educational preference-optimization evidence laboratory for Node.js Full Mastery Part 84.",
   "type": "module",
   "engines": {
-    "node": ">=20"
+    "node": ">=22"
   },
   "scripts": {
     "test": "node --test",
