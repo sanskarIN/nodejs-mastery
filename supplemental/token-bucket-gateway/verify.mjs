@@ -1,0 +1,1 @@
+import assert from 'node:assert/strict'; import {TokenBucketLimiter} from './src/index.js'; const l=new TokenBucketLimiter({capacity:1,refillPerSecond:1,now:()=>0}); assert.equal(l.take('v').allowed,true); assert.equal(l.take('v').allowed,false); console.log('token-bucket-gateway verify: ok');
