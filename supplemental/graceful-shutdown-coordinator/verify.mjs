@@ -1,0 +1,1 @@
+import assert from 'node:assert/strict'; import {ShutdownCoordinator} from './src/index.js'; const s=new ShutdownCoordinator(); s.add('close',async()=>{}); const r=await s.shutdown('verify'); assert.deepEqual(r,{reason:'verify',completed:['close'],failures:[]}); assert.equal(s.snapshot().state,'stopped'); console.log('graceful-shutdown-coordinator verify: ok');
