@@ -1,0 +1,13 @@
+{
+  "name": "nodejs-mastery-idempotent-api-kernel",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A small API-effect kernel that models idempotency keys, request fingerprints, replay-safe results, conflict detection, and bounded record retention.",
+  "type": "module",
+  "engines": {"node": ">=20"},
+  "scripts": {"test": "node --test", "demo": "node demo.mjs", "verify": "node verify.mjs"},
+  "homepage": "https://ramsandesh.gumroad.com",
+  "repository": {"type": "git", "url": "https://github.com/sanskarIN/nodejs-mastery.git", "directory": "supplemental/idempotent-api-kernel"},
+  "keywords": ["nodejs", "javascript", "education", "supplemental-lab"],
+  "license": "MIT"
+}
