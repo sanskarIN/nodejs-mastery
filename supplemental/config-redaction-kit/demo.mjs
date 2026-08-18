@@ -1,0 +1,1 @@
+import {loadConfig,safeEnvSnapshot} from './src/index.js'; const env={SERVICE_NAME:'demo',PORT:'3000',NODE_ENV:'development',API_TOKEN:'demo-secret',HOME:'/home/user'}; console.log(loadConfig(env)); console.log(safeEnvSnapshot(env));
