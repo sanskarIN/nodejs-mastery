@@ -6,7 +6,7 @@ const required = [
   '.github/workflows/ci.yml', '.github/workflows/codeql.yml', '.github/workflows/dependency-review.yml', '.github/workflows/release-readiness.yml',
   'README.md', 'LICENSE', 'BOOK_LICENSE.md', 'CONTRIBUTING.md', 'CODE_OF_CONDUCT.md', 'SECURITY.md', 'SUPPORT.md', 'CHANGELOG.md', 'GOVERNANCE.md', 'MAINTAINERS.md', 'CITATION.cff',
   'config/dependency-policy.json',
-  'docs/README.md', 'docs/ACCESSIBILITY.md', 'docs/ARCHITECTURE.md', 'docs/CI.md', 'docs/COMMAND_REFERENCE.md', 'docs/COMPANION_PROJECT_STANDARD.md', 'docs/DEPENDENCY_POLICY.md', 'docs/DEVELOPMENT.md', 'docs/FAQ.md', 'docs/GITHUB_SETTINGS.md', 'docs/HOST_RELEASE_CHECKLIST.md', 'docs/LEARNING_PATH.md', 'docs/LICENSE_SCOPE.md', 'docs/MAINTENANCE_STATUS.md', 'docs/PRIVACY.md', 'docs/PROJECT_INDEX.md', 'docs/PROJECT_STATUS.md', 'docs/RECOVERY_POLICY.md', 'docs/RELEASE_NOTES_v1.1.0.md', 'docs/RELEASE_PROCESS.md', 'docs/ROADMAP.md', 'docs/RUNNING_PROJECTS.md', 'docs/SECURITY_MODEL.md', 'docs/STORE.md', 'docs/SUPPLY_CHAIN.md', 'docs/SUPPLEMENTAL_PROJECTS.md', 'docs/TESTING.md', 'docs/TROUBLESHOOTING.md', 'docs/VERSIONING.md',
+  'docs/README.md', 'docs/ACCESSIBILITY.md', 'docs/ARCHITECTURE.md', 'docs/CI.md', 'docs/COMMAND_REFERENCE.md', 'docs/COMPANION_PROJECT_STANDARD.md', 'docs/SUPPLEMENTAL_PROJECT_STANDARD.md', 'docs/DEPENDENCY_POLICY.md', 'docs/DEVELOPMENT.md', 'docs/FAQ.md', 'docs/GITHUB_SETTINGS.md', 'docs/HOST_RELEASE_CHECKLIST.md', 'docs/LEARNING_PATH.md', 'docs/LICENSE_SCOPE.md', 'docs/MAINTENANCE_STATUS.md', 'docs/PRIVACY.md', 'docs/PROJECT_INDEX.md', 'docs/PROJECT_STATUS.md', 'docs/RECOVERY_POLICY.md', 'docs/RELEASE_NOTES_v1.1.0.md', 'docs/RELEASE_NOTES_v1.2.0.md', 'docs/RELEASE_PROCESS.md', 'docs/ROADMAP.md', 'docs/RUNNING_PROJECTS.md', 'docs/SECURITY_MODEL.md', 'docs/STORE.md', 'docs/SUPPLY_CHAIN.md', 'docs/SUPPLEMENTAL_PROJECTS.md', 'docs/TESTING.md', 'docs/TROUBLESHOOTING.md', 'docs/VERSIONING.md',
   'assets/gumroad-storefront-badge.svg',
   'scripts/project-registry.mjs', 'scripts/list-projects.mjs', 'scripts/supplemental-registry.mjs', 'scripts/list-supplemental.mjs', 'scripts/run-supplemental.mjs',
   'scripts/check-dependencies.mjs', 'scripts/check-project-metadata.mjs', 'scripts/check-project-readmes.mjs', 'scripts/check-supplemental-projects.mjs', 'scripts/check-gumroad-links.mjs', 'scripts/check-markdown-links.mjs', 'scripts/check-project-isolation.mjs', 'scripts/check-sensitive-files.mjs', 'scripts/check-secret-patterns.mjs', 'scripts/check-sbom.mjs', 'scripts/check-commercial-boundary.mjs', 'scripts/generate-sbom.mjs'
@@ -19,6 +19,7 @@ const readme = readFileSync('README.md', 'utf8');
 if (!readme.includes(gumroad)) throw new Error('README is missing Gumroad link');
 if (!readme.includes('actions/workflows/ci.yml/badge.svg')) throw new Error('README is missing CI badge');
 if (!readme.includes('actions/workflows/codeql.yml/badge.svg')) throw new Error('README is missing CodeQL badge');
+if (!readme.includes('docs/SUPPLEMENTAL_PROJECTS.md')) throw new Error('README is missing the supplemental project index');
 
 const pkg = JSON.parse(readFileSync('package.json', 'utf8'));
 if (pkg.version !== '1.2.0') throw new Error(`Unexpected repository version: ${pkg.version}`);
@@ -35,6 +36,11 @@ if (!pkg.scripts?.sbom?.includes('generate-sbom.mjs')) throw new Error('Root pac
 if (!pkg.scripts?.['check:secrets']?.includes('check-secret-patterns.mjs')) throw new Error('Root package is missing committed secret scanning');
 if (!pkg.scripts?.['check:sbom']?.includes('check-sbom.mjs')) throw new Error('Root package is missing SBOM validation');
 if (!pkg.scripts?.check?.includes('check:sbom')) throw new Error('Root repository check must include SBOM validation');
+
+const hostChecklist = readFileSync('docs/HOST_RELEASE_CHECKLIST.md', 'utf8');
+if (!hostChecklist.includes('v1.2.0')) throw new Error('Host release checklist must target v1.2.0');
+const releaseNotes = readFileSync('docs/RELEASE_NOTES_v1.2.0.md', 'utf8');
+if (!releaseNotes.includes('eight new dependency-free')) throw new Error('v1.2.0 release notes must describe the supplemental project collection');
 
 const ci = readFileSync('.github/workflows/ci.yml', 'utf8');
 const codeql = readFileSync('.github/workflows/codeql.yml', 'utf8');
@@ -59,6 +65,7 @@ console.log(JSON.stringify({
   numberedProjects: true,
   supplementalProjects: true,
   supplementalPolicyCheck: true,
+  supplementalStandard: true,
   sbomIncludesSupplementalLabs: true,
   hostSettingsDocumented: true,
   releaseNotesPrepared: true,
