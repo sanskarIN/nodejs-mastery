@@ -6,7 +6,9 @@
 
 # Node.js Full Mastery - Part 125 Final Capstone Laboratory
 
-Final dependency-free Node.js 20+ evidence framework for production architecture scoring, release gating, RPO/RTO verification, risk management, change budgets, migration readiness, chaos evidence, and mastery certification.
+Final dependency-free Node.js 22+ evidence framework for production architecture scoring, release gating, RPO/RTO verification, risk management, change budgets, migration readiness, chaos evidence, and mastery certification.
+
+**Runtime:** Node.js 22+; Node.js 24 LTS is recommended.
 
 ```bash
 npm test
