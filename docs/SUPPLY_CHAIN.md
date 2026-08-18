@@ -10,7 +10,13 @@ Numbered companion projects deny third-party npm packages by default through `co
 
 Supplemental projects use a stricter current rule: `npm run check:supplemental` rejects any `dependencies`, `devDependencies`, `optionalDependencies`, or `peerDependencies`. A supplemental lab cannot quietly introduce a third-party npm dependency without an intentional repository-policy revision.
 
-GitHub Actions are maintained separately through Dependabot and pull-request review. Action upgrades must remain compatible with the Node.js 20/22 verification matrix. Current release automation uses `actions/checkout@v7`, `actions/setup-node@v7`, `github/codeql-action@v4`, `actions/dependency-review-action@v5.0.0`, `actions/attest@v4`, and `actions/upload-artifact@v7`.
+GitHub Actions are maintained separately through Dependabot and pull-request review. Action upgrades must remain compatible with the required Node.js **22/24** verification matrix. Current release automation uses `actions/checkout@v7`, `actions/setup-node@v7`, `github/codeql-action@v4`, `actions/dependency-review-action@v5.0.0`, `actions/attest@v4`, and `actions/upload-artifact@v7`.
+
+## Runtime integrity
+
+`npm run check:runtime` enforces the maintained runtime contract across root/project package metadata, `.nvmrc`, `.node-version`, Companion CI, and Release Readiness. EOL Node.js 20 metadata is rejected.
+
+`npm run check:syntax` parses every repository JavaScript/CommonJS/ESM file with the active Node.js runtime, and `npm run check:json` validates all tracked JSON configuration/package files.
 
 ## Secret prevention
 
@@ -45,7 +51,7 @@ The document uses CycloneDX 1.5 and records:
 - every discovered numbered `projects/part-NNN` package;
 - every discovered package under `supplemental/`.
 
-Validation checks the repository version, total public-code component count, unique BOM references, MIT declarations, zero dependency edges while the public npm dependency surface is empty, official Gumroad metadata, and the supplemental-lab count.
+v2.0.0 validation checks repository version, total public-code component count, unique BOM references, MIT declarations, Node.js `>=22` engine metadata for every project component, zero dependency edges while the public npm dependency surface is empty, official Gumroad metadata, and the supplemental-lab count.
 
 ## Artifact attestation
 
@@ -59,7 +65,7 @@ Supplemental labs are new post-series educational code, not reconstructed histor
 
 ## Release evidence
 
-`npm run release:check` executes numbered and supplemental tests, verifiers, demos, repository policy checks, secret checks, SBOM generation, and SBOM validation. A release should not be published while this gate or CodeQL is failing.
+`npm run release:check` executes numbered and supplemental tests, verifiers, demos, syntax/JSON/runtime checks, repository policy checks, secret checks, SBOM generation, and SBOM validation. A release should not be published while this gate or CodeQL is failing.
 
 ## Commercial publication boundary
 
