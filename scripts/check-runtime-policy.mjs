@@ -1,10 +1,12 @@
 import { readFileSync, readdirSync } from 'node:fs';
-import { join } from 'node:path';
+import { join, resolve } from 'node:path';
 import { listProjects } from './project-registry.mjs';
 import { listSupplemental } from './supplemental-registry.mjs';
 
 const errors = [];
 const requiredEngine = '>=22';
+const numbered = listProjects();
+const supplemental = listSupplemental();
 
 function packageJson(path) {
   return JSON.parse(readFileSync(path, 'utf8'));
@@ -18,8 +20,8 @@ function checkPackage(label, pkg) {
 
 const rootPackage = packageJson('package.json');
 checkPackage('root', rootPackage);
-for (const project of listProjects()) checkPackage(project.id, project.package);
-for (const project of listSupplemental()) checkPackage(`supplemental/${project.id}`, project.package);
+for (const project of numbered) checkPackage(project.id, project.package);
+for (const project of supplemental) checkPackage(`supplemental/${project.id}`, project.package);
 
 for (const pin of ['.nvmrc', '.node-version']) {
   const value = readFileSync(pin, 'utf8').trim();
@@ -38,6 +40,8 @@ const activeDocs = ['README.md', 'CONTRIBUTING.md', '.github/pull_request_templa
 for (const name of readdirSync('docs')) {
   if (name.endsWith('.md') && !historicalDocs.has(name)) activeDocs.push(join('docs', name));
 }
+for (const project of numbered) activeDocs.push(resolve(project.cwd, 'README.md'));
+for (const project of supplemental) activeDocs.push(resolve(project.cwd, 'README.md'));
 
 const stalePatterns = [
   /Node\.js 20\+/,
@@ -66,8 +70,9 @@ console.log(JSON.stringify({
   packageEngine: requiredEngine,
   requiredCiLines: [22, 24],
   localAndReleaseRuntime: 24,
-  numberedProjects: listProjects().length,
-  supplementalProjects: listSupplemental().length,
+  numberedProjects: numbered.length,
+  supplementalProjects: supplemental.length,
+  projectReadmesChecked: numbered.length + supplemental.length,
   activeDocumentationFilesChecked: activeDocs.length,
   staleRuntimeClaims: 0
 }, null, 2));
