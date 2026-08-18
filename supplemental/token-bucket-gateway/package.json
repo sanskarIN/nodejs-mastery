@@ -1,0 +1,13 @@
+{
+  "name": "nodejs-mastery-token-bucket-gateway",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A dependency-free token-bucket rate limiter with per-key isolation, refill math, retry-after calculation, and bounded bucket cleanup.",
+  "type": "module",
+  "engines": {"node": ">=20"},
+  "scripts": {"test": "node --test", "demo": "node demo.mjs", "verify": "node verify.mjs"},
+  "homepage": "https://ramsandesh.gumroad.com",
+  "repository": {"type": "git", "url": "https://github.com/sanskarIN/nodejs-mastery.git", "directory": "supplemental/token-bucket-gateway"},
+  "keywords": ["nodejs", "javascript", "education", "supplemental-lab"],
+  "license": "MIT"
+}
