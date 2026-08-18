@@ -1,0 +1,13 @@
+{
+  "name": "nodejs-mastery-request-context-lab",
+  "version": "1.0.0",
+  "private": true,
+  "description": "An AsyncLocalStorage laboratory for request-scoped context, correlation IDs, async propagation, and concurrent request isolation.",
+  "type": "module",
+  "engines": {"node": ">=20"},
+  "scripts": {"test": "node --test", "demo": "node demo.mjs", "verify": "node verify.mjs"},
+  "homepage": "https://ramsandesh.gumroad.com",
+  "repository": {"type": "git", "url": "https://github.com/sanskarIN/nodejs-mastery.git", "directory": "supplemental/request-context-lab"},
+  "keywords": ["nodejs", "javascript", "education", "supplemental-lab"],
+  "license": "MIT"
+}
