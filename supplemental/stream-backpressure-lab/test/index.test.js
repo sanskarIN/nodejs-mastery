@@ -1,0 +1,3 @@
+import test from 'node:test'; import assert from 'node:assert/strict'; import {Readable} from 'node:stream'; import {pipeline} from 'node:stream/promises'; import {createLineCounter,createByteSink} from '../src/index.js';
+test('counts lines and bytes across chunk boundaries',async()=>{const c=createLineCounter(); const s=createByteSink(); let summary; c.on('summary',x=>summary=x); await pipeline(Readable.from([Buffer.from('a\nb'),Buffer.from('\nc')]),c,s); assert.deepEqual(summary,{lines:3,bytes:5}); assert.equal(s.bytes(),5);});
+test('rejects oversized unterminated lines',async()=>{const c=createLineCounter({maxLineBytes:3}); await assert.rejects(()=>pipeline(Readable.from(['abcd']),c,createByteSink()),/line-too-large/);});
