@@ -19,16 +19,20 @@ The available numbered public labs are mostly advanced companion material. If yo
 
 ## Suggested supplemental-lab order
 
-After you are comfortable with the foundations, the new supplemental projects can be used as smaller focused drills:
+The 12 new supplemental projects work well as smaller focused drills:
 
 1. `config-redaction-kit` — configuration validation and safe diagnostics.
-2. `ttl-lru-cache` — cache bounds, TTL and eviction.
-3. `token-bucket-gateway` — request admission and quota math.
-4. `stream-backpressure-lab` — bounded streaming and error propagation.
-5. `service-health-kernel` — liveness, readiness and graceful draining.
-6. `bounded-job-queue` — retries, backoff and dead letters.
-7. `idempotent-api-kernel` — replay-safe external effects.
-8. `event-consumer-kernel` — offsets, duplicate suppression and poison events.
+2. `request-context-lab` — AsyncLocalStorage and request correlation.
+3. `ttl-lru-cache` — cache bounds, TTL and eviction.
+4. `token-bucket-gateway` — request admission and quota math.
+5. `stream-backpressure-lab` — bounded streaming and error propagation.
+6. `bounded-concurrency-pool` — concurrency limits and stable results.
+7. `service-health-kernel` — liveness, readiness and graceful draining.
+8. `graceful-shutdown-coordinator` — lifecycle cleanup ordering and idempotent shutdown.
+9. `bounded-job-queue` — retries, backoff and dead letters.
+10. `idempotent-api-kernel` — replay-safe external effects.
+11. `circuit-breaker-kernel` — dependency failure isolation and recovery probes.
+12. `event-consumer-kernel` — offsets, duplicate suppression and poison events.
 
 These are new post-series labs rather than replacements for missing historical companion archives.
 
@@ -42,7 +46,7 @@ npm run demo
 npm run verify
 ```
 
-Then read the test cases and intentionally vary inputs to see which invariant rejects the change. Use [`TESTING.md`](TESTING.md) to understand the difference between a passing demo and production acceptance evidence.
+Then read `docs/architecture.md`, attempt `docs/challenges.md`, and intentionally vary inputs to see which invariant rejects the change. Use [`TESTING.md`](TESTING.md) to understand the difference between a passing demo and production acceptance evidence.
 
 ## Repository map
 
