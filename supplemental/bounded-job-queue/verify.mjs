@@ -1,0 +1,1 @@
+import assert from 'node:assert/strict'; import { BoundedJobQueue } from './src/index.js'; const q=new BoundedJobQueue({capacity:2}); assert.equal(q.submit({id:'v1'}).accepted,true); assert.equal((await q.runOne(async()=> 'ok')).status,'completed'); assert.deepEqual(q.stats(),{pending:0,completed:1,deadLetters:0}); console.log('bounded-job-queue verify: ok');
