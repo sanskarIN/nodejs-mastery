@@ -2,6 +2,8 @@
 
 > 📘 **Complete Node.js Full Mastery eBook:** https://ramsandesh.gumroad.com
 
+## Numbered companion projects
+
 | Part | Project | Main focus |
 |---:|---|---|
 | 77 | `projects/part-077` | Marketplace settlement, commissions, payouts, reconciliation |
@@ -15,8 +17,12 @@
 | 124 | `projects/part-124` | Observability, SLOs, performance, capacity, and cost |
 | 125 | `projects/part-125` | Final production architecture and mastery evidence capstone |
 
-Run `npm run projects` to generate the current inventory directly from repository metadata.
+Run `npm run projects` to generate the current numbered inventory directly from repository metadata.
 
-For provenance and unavailable historical archives, see [`PROJECT_STATUS.md`](PROJECT_STATUS.md).
+## Supplemental projects
+
+Eight new, dependency-free practice labs live under `supplemental/`. They are not historical Part 1–125 recoveries. Run `npm run supplemental` to list them and see [`SUPPLEMENTAL_PROJECTS.md`](SUPPLEMENTAL_PROJECTS.md) for their focus and policy.
+
+For numbered provenance and unavailable historical archives, see [`PROJECT_STATUS.md`](PROJECT_STATUS.md).
 
 For the complete learning sequence across Parts 1–125, visit **https://ramsandesh.gumroad.com**.
