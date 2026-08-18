@@ -2,7 +2,15 @@
 
 > 📘 Full eBook and explanations: https://ramsandesh.gumroad.com
 
-Requirements: **Node.js 20+** and npm.
+Requirements: **Node.js 22+** and npm. Node.js 24 LTS is the repository's default local/release runtime.
+
+## Select the pinned development runtime
+
+```bash
+nvm use
+node --version
+npm --version
+```
 
 ## Inspect what is currently available
 
@@ -33,13 +41,21 @@ npm run verify
 npm run demo
 ```
 
-## Run repository-policy checks
+## Run focused repository checks
+
+```bash
+npm run check:syntax
+npm run check:json
+npm run check:runtime
+```
+
+## Run all repository-policy checks
 
 ```bash
 npm run check
 ```
 
-This verifies repository structure, numbered-project metadata, supplemental-project policy, Gumroad visibility, SBOM integrity, evergreen link rules, and the public-code/commercial-book boundary.
+This validates syntax, JSON, runtime support, repository structure, numbered-project metadata, supplemental-project policy, Gumroad visibility, SBOM integrity, evergreen link rules, isolation, sensitive files/secrets, and the public-code/commercial-book boundary.
 
 ## Run the complete release gate
 
@@ -66,5 +82,7 @@ npm run verify
 ```
 
 Each lab remains independently runnable so learners can inspect one correctness boundary at a time. Supplemental projects are new educational extensions and must not be represented as recovered historical Part 1–125 companion archives.
+
+See [`RUNTIME_SUPPORT.md`](RUNTIME_SUPPORT.md) for the maintained Node.js compatibility policy.
 
 **Gumroad:** https://ramsandesh.gumroad.com
