@@ -6,7 +6,7 @@
 
 ### Added
 
-- Eight new dependency-free supplemental Node.js laboratories under `supplemental/`.
+- Twelve new dependency-free supplemental Node.js laboratories under `supplemental/`.
 - Bounded job queue with retry/backoff/dead-letter semantics.
 - TTL + LRU cache with deterministic time injection and cache metrics.
 - Token-bucket rate limiter with refill and retry-after math.
@@ -15,19 +15,25 @@
 - Service health kernel separating liveness, readiness, dependency state, and graceful draining.
 - Idempotent event-consumer kernel with partition offsets, duplicate suppression, and poison-event quarantine.
 - Configuration/redaction kit with bounded parsing and safe diagnostic snapshots.
+- AsyncLocalStorage request-context lab with concurrent request isolation.
+- Graceful-shutdown coordinator with ordered cleanup and idempotent lifecycle handling.
+- Circuit-breaker kernel with closed/open/half-open transitions and recovery probes.
+- Bounded-concurrency pool with stable result ordering and peak-concurrency evidence.
+- Architecture notes and mastery challenge sets for every supplemental project.
 - Dynamic supplemental registry, listing command, test/demo/verify runner, and policy checker.
 - `docs/SUPPLEMENTAL_PROJECTS.md`, `docs/SUPPLEMENTAL_PROJECT_STANDARD.md`, and `docs/RELEASE_NOTES_v1.2.0.md`.
 
 ### Changed
 
 - Root version advanced to `1.2.0`.
-- Root `npm test`, `npm run verify`, and `npm run demo` now execute both numbered and supplemental inventories.
+- Root `npm test`, `npm run verify`, and `npm run demo` execute both numbered and supplemental inventories.
 - Added `npm run supplemental`, `test:supplemental`, `verify:supplemental`, and `demo:supplemental` commands.
-- Repository checks now validate supplemental metadata, zero-dependency policy, Gumroad visibility, README contracts, and evergreen X/Twitter-link avoidance.
-- Cross-project import isolation now covers supplemental labs.
-- CycloneDX 1.5 SBOM generation and validation now inventory both numbered companion projects and supplemental labs.
-- README, documentation index, project index, learning path, running guide, command reference, citation metadata, and release documentation updated for the new project collection.
-- Supplemental project policy explicitly distinguishes new post-series labs from historical Part 1–125 provenance and excludes person/avatar imagery from new promotional assets.
+- Repository checks validate supplemental metadata, exact v1.2 inventory, zero-dependency policy, Gumroad visibility, README/architecture/challenge contracts, and evergreen X/Twitter-link avoidance.
+- Supplemental project trees reject native promotional image assets.
+- Cross-project import isolation covers supplemental labs.
+- CycloneDX 1.5 SBOM generation and validation inventory both numbered companion projects and supplemental labs.
+- README, documentation index, project index, learning path, running guide, command reference, CI guide, supply-chain guide, versioning policy, release process, citation metadata, maintenance status, and release checklist were updated for the new collection.
+- Supplemental provenance remains separate from historical Parts 1–125 and the paid book remains outside the public repository.
 
 ## 1.1.0 — 2026-08-17
 
