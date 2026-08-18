@@ -1,0 +1,1 @@
+import assert from 'node:assert/strict'; import {IdempotencyStore} from './src/index.js'; const s=new IdempotencyStore({now:()=>0}); let n=0; await s.execute('v',{a:1},async()=>++n); await s.execute('v',{a:1},async()=>++n); assert.equal(n,1); console.log('idempotent-api-kernel verify: ok');
