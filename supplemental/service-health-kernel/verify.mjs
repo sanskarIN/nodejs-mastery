@@ -1,0 +1,1 @@
+import assert from 'node:assert/strict'; import {ServiceHealth} from './src/index.js'; const h=new ServiceHealth([]); assert.equal(h.readiness().ok,true); h.beginDrain(); assert.equal(h.readiness().ok,false); assert.equal(h.liveness().ok,true); console.log('service-health-kernel verify: ok');
