@@ -6,11 +6,13 @@
 
 # Node.js Full Mastery - Part 118 Companion Laboratory
 
-A dependency-free Node.js 20+ laboratory for authoritative real-time simulation systems.
+A dependency-free Node.js 22+ laboratory for authoritative real-time simulation systems.
 It demonstrates fixed-timestep execution, validated input commands, server authority,
 client prediction and reconciliation, snapshot baselines and deltas, interest management,
 lag-compensation history, rollback replay, anti-abuse boundaries, session migration,
 privacy-safe observability, tamper-evident audit evidence, and executable release gates.
+
+**Runtime:** Node.js 22+; Node.js 24 LTS is recommended.
 
 ## Run
 
