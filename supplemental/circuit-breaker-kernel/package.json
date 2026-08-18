@@ -1,0 +1,13 @@
+{
+  "name": "nodejs-mastery-circuit-breaker-kernel",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A deterministic circuit-breaker laboratory with closed/open/half-open transitions, failure thresholds, cooldown timing, and recovery probes.",
+  "type": "module",
+  "engines": {"node": ">=20"},
+  "scripts": {"test": "node --test", "demo": "node demo.mjs", "verify": "node verify.mjs"},
+  "homepage": "https://ramsandesh.gumroad.com",
+  "repository": {"type": "git", "url": "https://github.com/sanskarIN/nodejs-mastery.git", "directory": "supplemental/circuit-breaker-kernel"},
+  "keywords": ["nodejs", "javascript", "education", "supplemental-lab"],
+  "license": "MIT"
+}
