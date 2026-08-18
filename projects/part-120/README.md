@@ -6,7 +6,9 @@
 
 # Node.js Full Mastery - Part 120 Companion Project
 
-A dependency-free Node.js 20+ laboratory for the contracts behind durable event streaming and partitioned event platforms.
+A dependency-free Node.js 22+ laboratory for the contracts behind durable event streaming and partitioned event platforms.
+
+**Runtime:** Node.js 22+; Node.js 24 LTS is recommended.
 
 ## What it models
 
