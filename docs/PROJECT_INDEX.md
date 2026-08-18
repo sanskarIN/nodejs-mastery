@@ -21,7 +21,7 @@ Run `npm run projects` to generate the current numbered inventory directly from 
 
 ## Supplemental projects
 
-Eight new, dependency-free practice labs live under `supplemental/`. They are not historical Part 1–125 recoveries. Run `npm run supplemental` to list them and see [`SUPPLEMENTAL_PROJECTS.md`](SUPPLEMENTAL_PROJECTS.md) for their focus and policy.
+Twelve new dependency-free practice labs live under `supplemental/`. They are not historical Part 1–125 recoveries. Run `npm run supplemental` to list them and see [`SUPPLEMENTAL_PROJECTS.md`](SUPPLEMENTAL_PROJECTS.md) for focus, architecture, challenges, and policy.
 
 For numbered provenance and unavailable historical archives, see [`PROJECT_STATUS.md`](PROJECT_STATUS.md).
 
