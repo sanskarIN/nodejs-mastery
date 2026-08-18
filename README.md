@@ -8,7 +8,7 @@
 [![CodeQL](https://github.com/sanskarIN/nodejs-mastery/actions/workflows/codeql.yml/badge.svg)](https://github.com/sanskarIN/nodejs-mastery/actions/workflows/codeql.yml)
 [![Gumroad](https://img.shields.io/badge/Gumroad-Complete_eBook-ff4fa3?style=for-the-badge)](https://ramsandesh.gumroad.com)
 [![License: MIT](https://img.shields.io/badge/Code%20License-MIT-blue.svg)](LICENSE)
-[![Node.js](https://img.shields.io/badge/Node.js-20%2B-339933?logo=node.js&logoColor=white)](https://nodejs.org/)
+[![Node.js](https://img.shields.io/badge/Node.js-22%2B-339933?logo=node.js&logoColor=white)](https://nodejs.org/)
 
 Public companion code, practical laboratories, examples, tests, and production-oriented Node.js learning resources for the **Node.js Full Mastery** eBook by **Ram Sandesh**. The repository also includes clearly labeled **supplemental laboratories** that extend practice beyond the completed numbered series without pretending to be recovered historical parts.
 
@@ -20,6 +20,15 @@ The commercial book contains the full Parts 1–125 learning sequence, explanati
 
 > The paid PDF/DOCX/EPUB manuscript and commercial publication package are intentionally **not** stored in this public repository.
 
+## Runtime support
+
+- **Minimum supported runtime:** Node.js 22.
+- **Required CI matrix:** Node.js 22 and Node.js 24.
+- **Default development/release runtime:** Node.js 24 LTS.
+- Node.js 20 is intentionally unsupported because it is end-of-life.
+
+See [docs/RUNTIME_SUPPORT.md](docs/RUNTIME_SUPPORT.md) for the compatibility contract and upgrade policy.
+
 ## Repository health
 
 ```bash
@@ -27,12 +36,15 @@ npm run projects             # list recovered/reconstructed numbered companion l
 npm run supplemental         # list new supplemental Node.js labs
 npm test                     # test numbered + supplemental projects
 npm run verify               # run all verification gates
-npm run demo                 # run all demonstrations
-npm run check                # validate metadata, policies, docs, SBOM and boundaries
-npm run release:check        # complete pre-release gate
+npm run demo                 # run all deterministic demonstrations
+npm run check:syntax         # parse every JS/MJS/CJS file with Node.js
+npm run check:json           # parse every tracked JSON config/package file
+npm run check:runtime        # validate package engines, local pins and CI/release runtimes
+npm run check                # run the complete repository policy suite
+npm run release:check        # tests + verifiers + demos + complete policy suite
 ```
 
-GitHub Actions verifies the normal CI path on **Node.js 20 and Node.js 22**. CodeQL performs static security analysis, Dependabot proposes dependency/workflow updates, and pull requests receive dependency review. Repository checks enforce dependency rules, Markdown-link integrity, project isolation, sensitive-file screening, evergreen X/Twitter-link avoidance for supplemental documentation, Gumroad visibility, image-free supplemental project trees, SBOM integrity, and the commercial-book boundary.
+GitHub Actions executes **tests, verification gates, demos, and repository checks on Node.js 22 and Node.js 24**. CodeQL performs static security analysis, Dependabot proposes dependency/workflow updates, and pull requests receive dependency review. Repository checks enforce syntax/JSON validity, runtime policy, dependency rules, metadata, documentation, Markdown-link integrity, project isolation, sensitive-file screening, committed-secret patterns, evergreen X/Twitter-link avoidance for supplemental documentation, Gumroad visibility, image-free supplemental project trees, SBOM integrity, and the commercial-book boundary.
 
 ## Available numbered companion projects
 
@@ -77,11 +89,10 @@ See [docs/SUPPLEMENTAL_PROJECTS.md](docs/SUPPLEMENTAL_PROJECTS.md) and [docs/SUP
 ```bash
 git clone https://github.com/sanskarIN/nodejs-mastery.git
 cd nodejs-mastery
+nvm use
 npm run projects
 npm run supplemental
-npm test
-npm run verify
-npm run check
+npm run release:check
 ```
 
 Run a numbered project:
@@ -107,6 +118,7 @@ npm run verify
 | Guide | Purpose |
 |---|---|
 | [Documentation index](docs/README.md) | Central index for all repository guides |
+| [Runtime support](docs/RUNTIME_SUPPORT.md) | Supported Node.js lines, local pin and upgrade policy |
 | [Learning path](docs/LEARNING_PATH.md) | Suggested order for the currently available labs |
 | [Project index](docs/PROJECT_INDEX.md) | Quick index of numbered public companion projects |
 | [Supplemental projects](docs/SUPPLEMENTAL_PROJECTS.md) | Index of the new post-series practice labs |
@@ -127,7 +139,7 @@ npm run verify
 | [FAQ](docs/FAQ.md) | Licensing, versions, availability, and reuse |
 | [Versioning](docs/VERSIONING.md) | Semantic versioning and book-edition boundaries |
 | [Release process](docs/RELEASE_PROCESS.md) | Public code release gate and versioning |
-| [v1.2.0 release notes](docs/RELEASE_NOTES_v1.2.0.md) | Current supplemental-project release notes |
+| [v2.0.0 release notes](docs/RELEASE_NOTES_v2.0.0.md) | Current runtime-hardening release notes |
 | [Roadmap](docs/ROADMAP.md) | Public repository maintenance direction |
 | [Store](docs/STORE.md) | Official complete-book storefront |
 
