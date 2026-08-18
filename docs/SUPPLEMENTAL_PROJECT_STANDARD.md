@@ -8,7 +8,7 @@ Supplemental projects are **new educational laboratories** added after the compl
 
 Every direct child of `supplemental/` must include:
 
-- `package.json` with `private: true`, MIT, Node.js 20+, repository directory, and the Gumroad homepage;
+- `package.json` with `private: true`, MIT, Node.js 22+, repository directory, and the Gumroad homepage;
 - `README.md` identifying the project as supplemental;
 - `src/index.js` or an equivalent clear implementation entry point;
 - automated tests runnable with `npm test`;
@@ -16,6 +16,10 @@ Every direct child of `supplemental/` must include:
 - an executable verification gate runnable with `npm run verify`;
 - `docs/architecture.md` describing boundaries and deliberate simplifications;
 - `docs/challenges.md` containing follow-up exercises that preserve the project's core invariants.
+
+## Runtime rule
+
+Supplemental labs follow [`RUNTIME_SUPPORT.md`](RUNTIME_SUPPORT.md). Their package metadata must declare exactly `engines.node: >=22`, and they must pass the required Node.js 22/24 CI matrix.
 
 ## Dependency rule
 
@@ -35,6 +39,6 @@ Supplemental project directories do not contain native promotional image assets.
 
 ## Release evidence
 
-A supplemental project is accepted only when its tests, demo, verification gate, challenge documentation, metadata policy, zero-dependency rule, evergreen-link rule, image rule, and root CI all pass.
+A supplemental project is accepted only when its tests, demo, verification gate, challenge documentation, syntax/JSON/runtime checks, metadata policy, zero-dependency rule, evergreen-link rule, image rule, and root CI all pass.
 
 **Storefront:** https://ramsandesh.gumroad.com
