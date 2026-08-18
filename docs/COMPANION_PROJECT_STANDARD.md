@@ -18,17 +18,21 @@ At minimum, a project under `projects/part-NNN/` must contain:
 ## Required package metadata
 
 - `private: true` — these labs are repository projects, not npm registry packages;
-- `engines.node` requiring Node.js 20+;
+- `engines.node: >=22`;
 - `license: MIT` for public source code;
 - `homepage: https://ramsandesh.gumroad.com`;
 - repository URL and correct `repository.directory`;
 - `test`, `demo`, and `verify` scripts.
 
-These requirements are enforced by `scripts/check-project-metadata.mjs`.
+These requirements are enforced by `scripts/check-project-metadata.mjs` and the repository runtime policy.
+
+## Runtime expectations
+
+Numbered companion labs must pass the maintained Node.js 22/24 CI matrix. Node.js 24 is the pinned development/release runtime. See [`RUNTIME_SUPPORT.md`](RUNTIME_SUPPORT.md).
 
 ## Correctness expectations
 
-Tests should prioritize invariants and failure behavior rather than only happy-path output. Verification should prove the chapter-specific acceptance evidence. Demos should stay concise and deterministic.
+Tests should prioritize invariants and failure behavior rather than only happy-path output. Verification should prove the chapter-specific acceptance evidence. Demos should stay concise and deterministic. All JavaScript/JSON files must also pass the repository-wide syntax and parse gates.
 
 ## Documentation expectations
 
