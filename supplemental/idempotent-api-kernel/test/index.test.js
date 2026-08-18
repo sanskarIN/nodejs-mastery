@@ -1,0 +1,4 @@
+import test from 'node:test'; import assert from 'node:assert/strict'; import {IdempotencyStore} from '../src/index.js';
+test('replays same request without rerunning effect',async()=>{const s=new IdempotencyStore({now:()=>0}); let n=0; const a=await s.execute('k',{x:1},async()=>++n); const b=await s.execute('k',{x:1},async()=>++n); assert.equal(a.status,'created'); assert.equal(b.status,'replay'); assert.equal(n,1);});
+test('rejects same key with different fingerprint',async()=>{const s=new IdempotencyStore({now:()=>0}); await s.execute('k',{x:1},async()=>1); assert.equal((await s.execute('k',{x:2},async()=>2)).status,'conflict');});
+test('expires old records',async()=>{let t=0; const s=new IdempotencyStore({ttlMs:10,now:()=>t}); let n=0; await s.execute('k',{x:1},async()=>++n); t=11; assert.equal((await s.execute('k',{x:1},async()=>++n)).status,'created'); assert.equal(n,2);});
