@@ -2,6 +2,33 @@
 
 > 📘 Node.js Full Mastery: https://ramsandesh.gumroad.com
 
+## 1.2.0 — 2026-08-18
+
+### Added
+
+- Eight new dependency-free supplemental Node.js laboratories under `supplemental/`.
+- Bounded job queue with retry/backoff/dead-letter semantics.
+- TTL + LRU cache with deterministic time injection and cache metrics.
+- Token-bucket rate limiter with refill and retry-after math.
+- Idempotent API kernel with request fingerprints and replay-safe effects.
+- Stream backpressure lab with bounded line framing and pipeline propagation.
+- Service health kernel separating liveness, readiness, dependency state, and graceful draining.
+- Idempotent event-consumer kernel with partition offsets, duplicate suppression, and poison-event quarantine.
+- Configuration/redaction kit with bounded parsing and safe diagnostic snapshots.
+- Dynamic supplemental registry, listing command, test/demo/verify runner, and policy checker.
+- `docs/SUPPLEMENTAL_PROJECTS.md`, `docs/SUPPLEMENTAL_PROJECT_STANDARD.md`, and `docs/RELEASE_NOTES_v1.2.0.md`.
+
+### Changed
+
+- Root version advanced to `1.2.0`.
+- Root `npm test`, `npm run verify`, and `npm run demo` now execute both numbered and supplemental inventories.
+- Added `npm run supplemental`, `test:supplemental`, `verify:supplemental`, and `demo:supplemental` commands.
+- Repository checks now validate supplemental metadata, zero-dependency policy, Gumroad visibility, README contracts, and evergreen X/Twitter-link avoidance.
+- Cross-project import isolation now covers supplemental labs.
+- CycloneDX 1.5 SBOM generation and validation now inventory both numbered companion projects and supplemental labs.
+- README, documentation index, project index, learning path, running guide, command reference, citation metadata, and release documentation updated for the new project collection.
+- Supplemental project policy explicitly distinguishes new post-series labs from historical Part 1–125 provenance and excludes person/avatar imagery from new promotional assets.
+
 ## 1.1.0 — 2026-08-17
 
 ### Added
