@@ -6,7 +6,7 @@ This repository contains educational companion laboratories. They are not drop-i
 
 ## Supported public code
 
-Security fixes target the current `main` branch and the latest public companion-code release line. Historical code examples may intentionally demonstrate simplified infrastructure and should not be interpreted as production security guidance without the surrounding chapter context and deployment-specific review.
+Security fixes target the current `main` branch and the latest public companion-code release line. Repository v2 requires **Node.js 22+** and validates Node.js 22/24 in required CI. Historical code examples may intentionally demonstrate simplified infrastructure and should not be interpreted as production security guidance without the surrounding chapter context and deployment-specific review.
 
 ## Reporting a repository vulnerability
 
@@ -27,12 +27,16 @@ Repository bugs that are not security-sensitive should use the normal GitHub bug
 
 ## Repository protections
 
-The project uses CI, CodeQL, dependency review, Dependabot, CODEOWNERS, project metadata validation, and commercial-artifact boundary checks. These controls reduce risk but do not replace human review.
+The project uses Node.js 22/24 CI, CodeQL, dependency review, Dependabot, CODEOWNERS, syntax/JSON/runtime validation, project metadata validation, committed-secret checks, SBOM generation/validation and attestation, and commercial-artifact boundary checks. These controls reduce risk but do not replace human review.
+
+## Supported-runtime security
+
+Do not treat EOL Node.js releases as supported merely because a lab happens to start on them. See [`docs/RUNTIME_SUPPORT.md`](docs/RUNTIME_SUPPORT.md).
 
 ## Production-use warning
 
 Before production use, review authentication, authorization, secrets, input validation, dependency posture, data durability, privacy, rate limits, logging, deployment isolation, incident response, backups, threat models, and applicable legal/compliance requirements.
 
-For the repository trust model, see [`docs/SECURITY_MODEL.md`](docs/SECURITY_MODEL.md).
+For the repository trust model, see [`docs/SECURITY_MODEL.md`](docs/SECURITY_MODEL.md). For release-quality evidence, see [`docs/QUALITY_ASSURANCE.md`](docs/QUALITY_ASSURANCE.md).
 
 **Official storefront:** https://ramsandesh.gumroad.com
