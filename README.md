@@ -10,7 +10,7 @@
 [![License: MIT](https://img.shields.io/badge/Code%20License-MIT-blue.svg)](LICENSE)
 [![Node.js](https://img.shields.io/badge/Node.js-20%2B-339933?logo=node.js&logoColor=white)](https://nodejs.org/)
 
-Public companion code, practical laboratories, examples, tests, and production-oriented Node.js learning resources for the **Node.js Full Mastery** eBook by **Ram Sandesh**. The repository now also includes clearly labeled **supplemental laboratories** that extend practice beyond the completed numbered series without pretending to be recovered historical parts.
+Public companion code, practical laboratories, examples, tests, and production-oriented Node.js learning resources for the **Node.js Full Mastery** eBook by **Ram Sandesh**. The repository also includes clearly labeled **supplemental laboratories** that extend practice beyond the completed numbered series without pretending to be recovered historical parts.
 
 ## 📘 Get the complete 125-part eBook
 
@@ -32,7 +32,7 @@ npm run check                # validate metadata, policies, docs, SBOM and bound
 npm run release:check        # complete pre-release gate
 ```
 
-GitHub Actions verifies the normal CI path on **Node.js 20 and Node.js 22**. CodeQL performs static security analysis, Dependabot proposes dependency/workflow updates, and pull requests receive dependency review. Repository checks enforce explicit npm dependency rules, Markdown-link integrity, project isolation, sensitive-file screening, evergreen X/Twitter-link avoidance for supplemental READMEs, Gumroad visibility, SBOM integrity, and the commercial-book boundary.
+GitHub Actions verifies the normal CI path on **Node.js 20 and Node.js 22**. CodeQL performs static security analysis, Dependabot proposes dependency/workflow updates, and pull requests receive dependency review. Repository checks enforce dependency rules, Markdown-link integrity, project isolation, sensitive-file screening, evergreen X/Twitter-link avoidance for supplemental documentation, Gumroad visibility, image-free supplemental project trees, SBOM integrity, and the commercial-book boundary.
 
 ## Available numbered companion projects
 
@@ -53,7 +53,7 @@ See [docs/PROJECT_STATUS.md](docs/PROJECT_STATUS.md) and [docs/RECOVERY_POLICY.m
 
 ## New supplemental projects
 
-These are **new educational projects**, not recovered numbered parts.
+These **12 projects are new educational labs**, not recovered numbered parts.
 
 | Project | Focus |
 |---|---|
@@ -65,8 +65,12 @@ These are **new educational projects**, not recovered numbered parts.
 | `service-health-kernel` | liveness, readiness, dependency gates and graceful draining |
 | `event-consumer-kernel` | partition offsets, duplicate suppression and poison quarantine |
 | `config-redaction-kit` | configuration validation and safe diagnostic redaction |
+| `request-context-lab` | AsyncLocalStorage propagation and concurrent request isolation |
+| `graceful-shutdown-coordinator` | ordered cleanup and idempotent lifecycle shutdown |
+| `circuit-breaker-kernel` | failure thresholds, cooldowns and half-open recovery probes |
+| `bounded-concurrency-pool` | bounded asynchronous work and stable result ordering |
 
-See [docs/SUPPLEMENTAL_PROJECTS.md](docs/SUPPLEMENTAL_PROJECTS.md).
+See [docs/SUPPLEMENTAL_PROJECTS.md](docs/SUPPLEMENTAL_PROJECTS.md) and [docs/SUPPLEMENTAL_PROJECT_STANDARD.md](docs/SUPPLEMENTAL_PROJECT_STANDARD.md).
 
 ## Quick start
 
@@ -106,6 +110,7 @@ npm run verify
 | [Learning path](docs/LEARNING_PATH.md) | Suggested order for the currently available labs |
 | [Project index](docs/PROJECT_INDEX.md) | Quick index of numbered public companion projects |
 | [Supplemental projects](docs/SUPPLEMENTAL_PROJECTS.md) | Index of the new post-series practice labs |
+| [Supplemental standard](docs/SUPPLEMENTAL_PROJECT_STANDARD.md) | Quality, provenance, link, dependency, and image rules for new labs |
 | [Architecture](docs/ARCHITECTURE.md) | Repository layers, isolation, and dependency direction |
 | [Development](docs/DEVELOPMENT.md) | Local setup and maintainer workflow |
 | [Command reference](docs/COMMAND_REFERENCE.md) | Root and per-project command contract |
@@ -121,7 +126,8 @@ npm run verify
 | [Troubleshooting](docs/TROUBLESHOOTING.md) | Common local/CI problems |
 | [FAQ](docs/FAQ.md) | Licensing, versions, availability, and reuse |
 | [Versioning](docs/VERSIONING.md) | Semantic versioning and book-edition boundaries |
-| [Release process](docs/RELEASE_PROCESS.md) | Public companion release gate and versioning |
+| [Release process](docs/RELEASE_PROCESS.md) | Public code release gate and versioning |
+| [v1.2.0 release notes](docs/RELEASE_NOTES_v1.2.0.md) | Current supplemental-project release notes |
 | [Roadmap](docs/ROADMAP.md) | Public repository maintenance direction |
 | [Store](docs/STORE.md) | Official complete-book storefront |
 
