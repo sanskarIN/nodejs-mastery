@@ -14,7 +14,8 @@ Every direct child of `supplemental/` must include:
 - automated tests runnable with `npm test`;
 - a deterministic demonstration runnable with `npm run demo`;
 - an executable verification gate runnable with `npm run verify`;
-- `docs/architecture.md` describing boundaries and deliberate simplifications.
+- `docs/architecture.md` describing boundaries and deliberate simplifications;
+- `docs/challenges.md` containing follow-up exercises that preserve the project's core invariants.
 
 ## Dependency rule
 
@@ -26,14 +27,14 @@ Use language such as **supplemental**, **new lab**, or **post-series practice pr
 
 ## Evergreen-link rule
 
-Long-lived project READMEs must not embed X/Twitter profile URLs because social handles can change. Prefer stable repository, storefront, and business-contact links.
+Long-lived project documentation must not embed X/Twitter profile URLs because social handles can change. Prefer stable repository, storefront, and business-contact links.
 
 ## Image rule
 
-Repository and publication assets created for these projects should use typography, diagrams, code, abstract technical motifs, or non-person logos. Do not include human portraits, faces, profile avatars, or person-like promotional imagery.
+Supplemental project directories do not contain native promotional image assets. This keeps the public labs free of human portraits, faces, profile avatars, and other person-like promotional imagery. If a future visual is genuinely required, it must be reviewed outside the supplemental project tree and follow the publication image policy.
 
 ## Release evidence
 
-A supplemental project is accepted only when its tests, demo, verification gate, metadata policy, link policy, and root CI all pass.
+A supplemental project is accepted only when its tests, demo, verification gate, challenge documentation, metadata policy, zero-dependency rule, evergreen-link rule, image rule, and root CI all pass.
 
 **Storefront:** https://ramsandesh.gumroad.com
