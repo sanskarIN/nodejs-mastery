@@ -43,18 +43,19 @@ for (const name of readdirSync('docs')) {
 for (const project of numbered) activeDocs.push(resolve(project.cwd, 'README.md'));
 for (const project of supplemental) activeDocs.push(resolve(project.cwd, 'README.md'));
 
-const stalePatterns = [
+// These patterns target positive support claims only. Historical text explaining
+// that Node.js 20 was removed or reached EOL is intentionally allowed.
+const staleSupportPatterns = [
   /Node\.js 20\+/,
   /Node\.js 20 or newer/,
   /Node\.js 20 compatibility/,
   /Node\.js 20 and Node\.js 22/,
-  /Node\.js 20\/22/,
-  /engines\.node[^\n]*>=20/
+  /Node\.js 20\/22/
 ];
 
 for (const path of activeDocs) {
   const text = readFileSync(path, 'utf8');
-  for (const pattern of stalePatterns) {
+  for (const pattern of staleSupportPatterns) {
     if (pattern.test(text)) errors.push(`${path}: contains stale supported-runtime wording (${pattern})`);
   }
 }
