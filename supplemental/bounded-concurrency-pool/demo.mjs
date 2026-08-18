@@ -1,0 +1,1 @@
+import { setTimeout as delay } from 'node:timers/promises'; import {mapLimit} from './src/index.js'; const result=await mapLimit([40,10,30,20],2,async ms=>{await delay(ms); return `done-${ms}`;}); console.log(result);
