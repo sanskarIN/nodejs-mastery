@@ -1,0 +1,4 @@
+import test from 'node:test'; import assert from 'node:assert/strict'; import {EventConsumer} from '../src/index.js';
+test('processes once and advances partition offset',async()=>{const c=new EventConsumer(); let n=0; assert.equal((await c.consume({id:'e1',partition:0,offset:1},async()=>++n)).status,'processed'); assert.equal((await c.consume({id:'e1',partition:0,offset:1},async()=>++n)).status,'duplicate'); assert.equal(n,1);});
+test('keeps partitions independent',async()=>{const c=new EventConsumer(); await c.consume({id:'a',partition:0,offset:5},async()=>1); assert.equal((await c.consume({id:'b',partition:1,offset:1},async()=>2)).status,'processed');});
+test('quarantines poison events without advancing offset',async()=>{const c=new EventConsumer(); const r=await c.consume({id:'bad',partition:0,offset:1},async()=>{const e=new Error('schema'); e.poison=true; throw e;}); assert.equal(r.status,'quarantined'); assert.equal(c.offsets.has(0),false);});
