@@ -1,4 +1,4 @@
-# Running the companion projects
+# Running the companion and supplemental projects
 
 > 📘 Full eBook and explanations: https://ramsandesh.gumroad.com
 
@@ -8,15 +8,18 @@ Requirements: **Node.js 20+** and npm.
 
 ```bash
 npm run projects
+npm run supplemental
 ```
 
-The inventory is discovered dynamically from `projects/part-NNN/` directories.
+The numbered inventory is discovered dynamically from `projects/part-NNN/`. New post-series practice labs are discovered independently from `supplemental/`.
 
 ## Run every project's tests
 
 ```bash
 npm test
 ```
+
+Use `npm run test:parts` or `npm run test:supplemental` when you want one inventory only.
 
 ## Run all verification gates
 
@@ -36,7 +39,7 @@ npm run demo
 npm run check
 ```
 
-This verifies repository structure, project metadata, Gumroad visibility, and the public-code/commercial-book boundary.
+This verifies repository structure, numbered-project metadata, supplemental-project policy, Gumroad visibility, SBOM integrity, evergreen link rules, and the public-code/commercial-book boundary.
 
 ## Run the complete release gate
 
@@ -44,7 +47,7 @@ This verifies repository structure, project metadata, Gumroad visibility, and th
 npm run release:check
 ```
 
-## Run one project
+## Run one numbered project
 
 ```bash
 cd projects/part-125
@@ -53,6 +56,15 @@ npm run demo
 npm run verify
 ```
 
-Each part remains independently runnable so learners can inspect one correctness boundary at a time. No project should require implementation code from another part unless that dependency is explicitly documented in a future architecture revision.
+## Run one supplemental project
+
+```bash
+cd supplemental/idempotent-api-kernel
+npm test
+npm run demo
+npm run verify
+```
+
+Each lab remains independently runnable so learners can inspect one correctness boundary at a time. Supplemental projects are new educational extensions and must not be represented as recovered historical Part 1–125 companion archives.
 
 **Gumroad:** https://ramsandesh.gumroad.com
