@@ -14,6 +14,7 @@
 
 - [`ARCHITECTURE.md`](ARCHITECTURE.md) — repository architecture and isolation.
 - [`COMPANION_PROJECT_STANDARD.md`](COMPANION_PROJECT_STANDARD.md) — requirements for numbered companion labs.
+- [`SUPPLEMENTAL_PROJECT_STANDARD.md`](SUPPLEMENTAL_PROJECT_STANDARD.md) — provenance, quality, evergreen-link, and image rules for new labs.
 - [`DEPENDENCY_POLICY.md`](DEPENDENCY_POLICY.md) — explicit third-party dependency allowlisting.
 - [`SUPPLY_CHAIN.md`](SUPPLY_CHAIN.md) — secret checks, CodeQL, SBOMs, and release supply-chain evidence.
 - [`TESTING.md`](TESTING.md) — evidence model and test philosophy.
@@ -30,6 +31,7 @@
 - [`HOST_RELEASE_CHECKLIST.md`](HOST_RELEASE_CHECKLIST.md) — host-only publication/settings checklist.
 - [`VERSIONING.md`](VERSIONING.md) — semantic versioning and book-edition boundaries.
 - [`RELEASE_PROCESS.md`](RELEASE_PROCESS.md) — public release procedure.
+- [`RELEASE_NOTES_v1.2.0.md`](RELEASE_NOTES_v1.2.0.md) — current supplemental-project release notes.
 - [`RELEASE_NOTES_v1.1.0.md`](RELEASE_NOTES_v1.1.0.md) — historical prepared hardening notes.
 - [`ROADMAP.md`](ROADMAP.md) — repository maintenance direction.
 - [`TROUBLESHOOTING.md`](TROUBLESHOOTING.md) — common failures.
