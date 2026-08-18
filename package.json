@@ -1,21 +1,29 @@
 {
   "name": "nodejs-mastery-companion",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "private": true,
-  "description": "Public companion code for the Node.js Full Mastery eBook by Ram Sandesh.",
+  "description": "Public companion code and supplemental Node.js laboratories for the Node.js Full Mastery eBook by Ram Sandesh.",
   "type": "module",
   "engines": {
     "node": ">=20"
   },
   "scripts": {
     "projects": "node scripts/list-projects.mjs",
-    "test": "node scripts/run-all.mjs test",
-    "demo": "node scripts/run-all.mjs demo",
-    "verify": "node scripts/run-all.mjs verify",
+    "supplemental": "node scripts/list-supplemental.mjs",
+    "test:parts": "node scripts/run-all.mjs test",
+    "test:supplemental": "node scripts/run-supplemental.mjs test",
+    "test": "npm run test:parts && npm run test:supplemental",
+    "demo:parts": "node scripts/run-all.mjs demo",
+    "demo:supplemental": "node scripts/run-supplemental.mjs demo",
+    "demo": "npm run demo:parts && npm run demo:supplemental",
+    "verify:parts": "node scripts/run-all.mjs verify",
+    "verify:supplemental": "node scripts/run-supplemental.mjs verify",
+    "verify": "npm run verify:parts && npm run verify:supplemental",
     "sbom": "node scripts/generate-sbom.mjs",
     "check:dependencies": "node scripts/check-dependencies.mjs",
     "check:metadata": "node scripts/check-project-metadata.mjs",
     "check:readmes": "node scripts/check-project-readmes.mjs",
+    "check:supplemental": "node scripts/check-supplemental-projects.mjs",
     "check:gumroad": "node scripts/check-gumroad-links.mjs",
     "check:links": "node scripts/check-markdown-links.mjs",
     "check:isolation": "node scripts/check-project-isolation.mjs",
@@ -23,7 +31,7 @@
     "check:secrets": "node scripts/check-secret-patterns.mjs",
     "check:sbom": "npm run sbom && node scripts/check-sbom.mjs",
     "check:boundary": "node scripts/check-commercial-boundary.mjs",
-    "check": "node scripts/repo-check.mjs && npm run check:dependencies && npm run check:metadata && npm run check:readmes && npm run check:gumroad && npm run check:links && npm run check:isolation && npm run check:sensitive && npm run check:secrets && npm run check:sbom && npm run check:boundary",
+    "check": "node scripts/repo-check.mjs && npm run check:dependencies && npm run check:metadata && npm run check:readmes && npm run check:supplemental && npm run check:gumroad && npm run check:links && npm run check:isolation && npm run check:sensitive && npm run check:secrets && npm run check:sbom && npm run check:boundary",
     "release:check": "npm test && npm run verify && npm run demo && npm run check"
   },
   "homepage": "https://ramsandesh.gumroad.com",
@@ -36,7 +44,8 @@
     "javascript",
     "education",
     "distributed-systems",
-    "companion-code"
+    "companion-code",
+    "supplemental-labs"
   ],
   "license": "MIT"
 }
