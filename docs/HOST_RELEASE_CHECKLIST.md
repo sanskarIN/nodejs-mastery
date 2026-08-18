@@ -11,7 +11,7 @@ This checklist contains the final GitHub-host operations that are intentionally 
 - Confirm there are no unexpected open Dependabot or maintenance pull requests.
 - Review `docs/RELEASE_NOTES_v1.2.0.md`.
 - Confirm the repository version is `1.2.0`.
-- Confirm all eight supplemental projects pass tests, demos, verification, and `check:supplemental`.
+- Confirm all **12 supplemental projects** pass tests, demos, verification, and `check:supplemental`.
 
 ## Run release readiness
 
@@ -21,7 +21,7 @@ The run must:
 
 - pass `npm run release:check` for numbered and supplemental project inventories;
 - generate and validate the CycloneDX 1.5 SBOM;
-- include the supplemental project components in the SBOM;
+- include all 12 supplemental project components in the SBOM;
 - create GitHub artifact provenance for the SBOM;
 - upload the SBOM artifact successfully.
 
