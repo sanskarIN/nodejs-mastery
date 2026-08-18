@@ -1,6 +1,7 @@
 import { readFileSync, readdirSync } from 'node:fs';
 import { dirname, extname, resolve, relative } from 'node:path';
 import { listProjects } from './project-registry.mjs';
+import { listSupplemental } from './supplemental-registry.mjs';
 
 const sourceExtensions = new Set(['.js', '.mjs', '.cjs']);
 const violations = [];
@@ -22,7 +23,12 @@ const specifierPatterns = [
   /\brequire\s*\(\s*['"]([^'"]+)['"]\s*\)/g
 ];
 
-for (const project of listProjects()) {
+const inventories = [
+  ...listProjects().map((project) => ({ ...project, kind: 'numbered' })),
+  ...listSupplemental().map((project) => ({ ...project, kind: 'supplemental' }))
+];
+
+for (const project of inventories) {
   for (const file of sourceFiles(project.cwd)) {
     const text = readFileSync(file, 'utf8');
     for (const pattern of specifierPatterns) {
@@ -31,23 +37,23 @@ for (const project of listProjects()) {
         if (!specifier.startsWith('.')) continue;
         const target = resolve(dirname(file), specifier);
         const rel = relative(project.cwd, target);
-        if (rel.startsWith('..') || resolve(project.cwd, rel) !== target) {
-          violations.push(`${project.id}: ${relative(project.cwd, file)} imports ${specifier}`);
-        }
+        if (rel.startsWith('..') || resolve(project.cwd, rel) !== target) violations.push(`${project.kind}/${project.id}: ${relative(project.cwd, file)} imports ${specifier}`);
       }
     }
   }
 }
 
 if (violations.length) {
-  console.error('Cross-part relative imports are not allowed:');
+  console.error('Cross-project relative imports are not allowed:');
   console.error(violations.join('\n'));
   process.exit(1);
 }
 
 console.log(JSON.stringify({
   verified: true,
-  crossPartImports: 0,
-  isolation: 'independent companion laboratories',
+  numberedProjects: listProjects().length,
+  supplementalProjects: listSupplemental().length,
+  crossProjectImports: 0,
+  isolation: 'independent public laboratories',
   storefront: 'https://ramsandesh.gumroad.com'
 }, null, 2));
