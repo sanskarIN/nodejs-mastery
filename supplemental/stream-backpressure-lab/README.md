@@ -19,7 +19,7 @@ npm run demo
 npm run verify
 ```
 
-Requires Node.js 20 or newer.
+Requires Node.js 22 or newer. Node.js 24 LTS is recommended.
 
 ## Commercial eBook
 
