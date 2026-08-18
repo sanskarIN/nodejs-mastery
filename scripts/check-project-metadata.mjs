@@ -14,8 +14,8 @@ for (const project of projects) {
 
   if (pkg.private !== true) errors.push(`${project.id}: package must remain private`);
   if (pkg.license !== 'MIT') errors.push(`${project.id}: license must be MIT`);
-  if (!String(pkg.engines?.node ?? '').includes('>=20')) {
-    errors.push(`${project.id}: engines.node must require Node.js 20+`);
+  if (pkg.engines?.node !== '>=22') {
+    errors.push(`${project.id}: engines.node must be exactly '>=22'`);
   }
   for (const script of ['test', 'demo', 'verify']) {
     if (!pkg.scripts?.[script]) errors.push(`${project.id}: missing npm script '${script}'`);
@@ -35,7 +35,7 @@ if (errors.length) {
 console.log(JSON.stringify({
   verified: true,
   projects: projects.length,
-  node: '>=20',
+  node: '>=22',
   license: 'MIT',
   storefront: GUMROAD
 }, null, 2));
