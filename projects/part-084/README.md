@@ -8,6 +8,8 @@
 
 Dependency-free educational preference-optimization evidence laboratory **reconstructed** for Node.js Full Mastery Part 84. It demonstrates the mathematics and evidence flow around offline preference objectives; it does **not** download, train, fine-tune, or call external AI models.
 
+**Runtime:** Node.js 22+; Node.js 24 LTS is recommended.
+
 ## What it models
 
 - chosen vs rejected preference pairs;
