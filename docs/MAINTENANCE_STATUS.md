@@ -4,7 +4,7 @@
 
 ## Source-controlled work
 
-The current source candidate is **v1.2.0**. It extends the previously hardened repository with eight new dependency-free supplemental Node.js laboratories, dynamic supplemental discovery/runners, policy checks, and SBOM coverage while preserving the completed Parts 1–125 provenance boundary.
+The current source candidate is **v1.2.0**. It extends the previously hardened repository with **12 new dependency-free supplemental Node.js laboratories**, dynamic supplemental discovery/runners, policy checks, mastery challenges, and SBOM coverage while preserving the completed Parts 1–125 provenance boundary.
 
 Source-controlled v1.2.0 work is complete only when the latest `main` Companion CI and CodeQL runs are green after all supplemental integration commits.
 
