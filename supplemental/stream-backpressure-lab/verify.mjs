@@ -1,0 +1,1 @@
+import assert from 'node:assert/strict'; import {Readable} from 'node:stream'; import {pipeline} from 'node:stream/promises'; import {createLineCounter,createByteSink} from './src/index.js'; const c=createLineCounter(); const s=createByteSink(); await pipeline(Readable.from(['x\ny']),c,s); assert.equal(s.bytes(),3); console.log('stream-backpressure-lab verify: ok');
