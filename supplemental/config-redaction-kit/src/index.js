@@ -1,0 +1,5 @@
+const SECRET_KEY=/(password|secret|token|api[_-]?key|authorization)/i;
+export function parseIntBounded(value,{name='value',min=0,max=Number.MAX_SAFE_INTEGER}={}){const n=Number(value); if(!Number.isInteger(n)||n<min||n>max) throw new Error(`${name} must be an integer from ${min} to ${max}`); return n;}
+export function loadConfig(env){const port=parseIntBounded(env.PORT??'3000',{name:'PORT',min:1,max:65535}); const mode=env.NODE_ENV??'development'; if(!['development','test','production'].includes(mode)) throw new Error('NODE_ENV is invalid'); if(!env.SERVICE_NAME) throw new Error('SERVICE_NAME is required'); return {serviceName:env.SERVICE_NAME,port,mode,databaseUrl:env.DATABASE_URL??null};}
+export function redact(value){if(Array.isArray(value)) return value.map(redact); if(value&&typeof value==='object'){return Object.fromEntries(Object.entries(value).map(([k,v])=>[k,SECRET_KEY.test(k)?'[REDACTED]':redact(v)]));} return value;}
+export function safeEnvSnapshot(env){return redact(Object.fromEntries(Object.entries(env).filter(([k])=>/^(NODE_|SERVICE_|PORT|DATABASE_|API_)/.test(k))));}
