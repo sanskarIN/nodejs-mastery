@@ -15,14 +15,21 @@ permissions:
 jobs:
   release-check:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - name: Checkout repository
         uses: actions/checkout@v7
 
-      - name: Set up Node.js 20
+      - name: Set up Node.js 24 LTS
         uses: actions/setup-node@v7
         with:
-          node-version: 20
+          node-version: 24
+          check-latest: true
+
+      - name: Show runtime versions
+        run: |
+          node --version
+          npm --version
 
       - name: Run complete release gate
         run: npm run release:check
