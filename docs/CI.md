@@ -19,23 +19,30 @@ npm run verify
 npm run check
 ```
 
-The repository check includes structural files, dependency allowlists, package metadata, runnable project READMEs, Gumroad visibility, Markdown links, companion-project isolation, sensitive-file screening, committed secret-pattern scanning, generated CycloneDX SBOM validation, and the commercial-book boundary.
+`npm test` and `npm run verify` now cover two independently discovered inventories:
+
+- numbered companion laboratories under `projects/part-NNN/`;
+- new post-series educational laboratories under `supplemental/`.
+
+The repository check includes structural files, numbered-project dependency allowlists, numbered package metadata, runnable numbered READMEs, supplemental metadata and zero-dependency rules, supplemental challenge/architecture documentation, Gumroad visibility, evergreen X/Twitter-link avoidance for supplemental docs, Markdown links, cross-project isolation, sensitive-file screening, committed secret-pattern scanning, generated CycloneDX SBOM validation, and the commercial-book boundary.
+
+The supplemental policy additionally requires supplemental project directories to remain free of native promotional image files. This keeps the new labs from introducing person portraits, faces, or profile-avatar imagery into their public project trees.
 
 The workflow also prints the official Gumroad learning-edition link so the public-code/commercial-book relationship remains visible in automation output.
 
 ## CodeQL
 
-`github/codeql-action@v4` runs JavaScript/TypeScript static security analysis on pushes, pull requests, and a weekly schedule.
+`github/codeql-action@v4` runs JavaScript/TypeScript static security analysis on pushes, pull requests, and a weekly schedule. Its source analysis includes both numbered and supplemental JavaScript files.
 
 CodeQL findings are security signals, not proof that the code is production-safe. Human review and deployment-specific threat modeling remain necessary.
 
 ## Dependency Review
 
-`actions/dependency-review-action@v5.0.0` runs on pull requests and checks newly introduced dependency changes against GitHub's dependency-review data. Repository policy independently requires third-party npm packages to be listed in `config/dependency-policy.json`.
+`actions/dependency-review-action@v5.0.0` runs on pull requests and checks newly introduced dependency changes against GitHub's dependency-review data. Repository policy independently requires numbered-project third-party npm packages to be listed in `config/dependency-policy.json`, while supplemental labs currently enforce a zero-third-party-dependency rule.
 
 ## Dependabot
 
-Checks GitHub Actions and root npm dependency metadata weekly. The current companion labs intentionally keep the npm dependency allowlist empty.
+Checks GitHub Actions and root npm dependency metadata weekly. The public educational laboratories intentionally keep third-party runtime dependency surface minimal; supplemental labs are dependency-free by policy.
 
 ## Action versions
 
@@ -53,19 +60,21 @@ Runs manually and for `v*` tag pushes. It executes:
 npm run release:check
 ```
 
-This is stricter than the normal CI path because it includes all demos, repository-policy checks, committed-secret scanning, CycloneDX SBOM generation, and structural SBOM validation.
+The release gate runs tests, verifiers, demos, repository policies, secret scanning, and SBOM generation/validation for both public project inventories.
 
 After the gate passes, the release workflow:
 
-1. attests the generated SBOM with `actions/attest@v4`;
-2. uploads the validated SBOM with `actions/upload-artifact@v7`;
-3. retains the artifact for 30 days as workflow evidence.
+1. generates a CycloneDX 1.5 SBOM containing the numbered companion and supplemental project components;
+2. validates component count, MIT licensing, zero dependency edges, Gumroad metadata, and the supplemental-lab count;
+3. attests the generated SBOM with `actions/attest@v4`;
+4. uploads the validated SBOM with `actions/upload-artifact@v7`;
+5. retains the artifact for 30 days as workflow evidence.
 
 The attestation path uses `contents: read`, `id-token: write`, `attestations: write`, and `artifact-metadata: write` permissions.
 
 ## Generated release notes
 
-`.github/release.yml` categorizes generated GitHub Release notes into breaking changes, security, companion-project work, documentation, automation/dependencies, fixes, and other changes.
+`.github/release.yml` categorizes generated GitHub Release notes into breaking changes, security, companion-project work, documentation, automation/dependencies, fixes, and other changes. The prepared current release notes are in `docs/RELEASE_NOTES_v1.2.0.md`.
 
 ## Failure policy
 
