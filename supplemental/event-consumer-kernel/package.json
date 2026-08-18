@@ -1,0 +1,13 @@
+{
+  "name": "nodejs-mastery-event-consumer-kernel",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A partition-aware event consumer model with monotonic offsets, duplicate suppression, poison-event quarantine, and replay-safe processing.",
+  "type": "module",
+  "engines": {"node": ">=20"},
+  "scripts": {"test": "node --test", "demo": "node demo.mjs", "verify": "node verify.mjs"},
+  "homepage": "https://ramsandesh.gumroad.com",
+  "repository": {"type": "git", "url": "https://github.com/sanskarIN/nodejs-mastery.git", "directory": "supplemental/event-consumer-kernel"},
+  "keywords": ["nodejs", "javascript", "education", "supplemental-lab"],
+  "license": "MIT"
+}
