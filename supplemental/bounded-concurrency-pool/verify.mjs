@@ -1,0 +1,1 @@
+import assert from 'node:assert/strict'; import {mapLimit} from './src/index.js'; const result=await mapLimit([1,2,3],2,async x=>x*2); assert.deepEqual(result.results,[2,4,6]); assert.equal(result.peakConcurrency,2); console.log('bounded-concurrency-pool verify: ok');
