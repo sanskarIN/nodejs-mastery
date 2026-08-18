@@ -1,0 +1,13 @@
+{
+  "name": "nodejs-mastery-config-redaction-kit",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A configuration boundary that validates required environment values, parses bounded integers, redacts sensitive fields, and produces safe diagnostic snapshots.",
+  "type": "module",
+  "engines": {"node": ">=20"},
+  "scripts": {"test": "node --test", "demo": "node demo.mjs", "verify": "node verify.mjs"},
+  "homepage": "https://ramsandesh.gumroad.com",
+  "repository": {"type": "git", "url": "https://github.com/sanskarIN/nodejs-mastery.git", "directory": "supplemental/config-redaction-kit"},
+  "keywords": ["nodejs", "javascript", "education", "supplemental-lab"],
+  "license": "MIT"
+}
