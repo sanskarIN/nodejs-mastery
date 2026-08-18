@@ -6,7 +6,9 @@
 
 # Node.js Full Mastery - Part 121 Companion Lab
 
-A dependency-free Node.js 20+ educational laboratory for distributed data consistency and scalable storage architecture.
+A dependency-free Node.js 22+ educational laboratory for distributed data consistency and scalable storage architecture.
+
+**Runtime:** Node.js 22+; Node.js 24 LTS is recommended.
 
 ## What it models
 - bounded connection pools and acquisition timeout
