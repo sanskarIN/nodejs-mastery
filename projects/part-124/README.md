@@ -6,7 +6,9 @@
 
 # Node.js Full Mastery - Part 124 Companion Laboratory
 
-Dependency-free Node.js 20+ observability and capacity primitives: percentile measurements, SLO/error-budget accounting, burn rate, cardinality protection, load shedding, throughput/utilization models, trace sampling, leak slope, queueing pressure, Apdex, and cost attribution.
+Dependency-free Node.js 22+ observability and capacity primitives: percentile measurements, SLO/error-budget accounting, burn rate, cardinality protection, load shedding, throughput/utilization models, trace sampling, leak slope, queueing pressure, Apdex, and cost attribution.
+
+**Runtime:** Node.js 22+; Node.js 24 LTS is recommended.
 
 ```bash
 npm test
