@@ -8,6 +8,8 @@
 
 Dependency-free educational Node.js laboratory **reconstructed** from the Node.js Full Mastery Part 77 series record. It is intentionally labeled reconstructed rather than recovered because the original stored source archive was not retrievable during the final publication build.
 
+**Runtime:** Node.js 22+; Node.js 24 LTS is recommended.
+
 ## What it models
 
 - deterministic money arithmetic in minor units;
