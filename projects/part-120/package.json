@@ -5,7 +5,7 @@
   "description": "Dependency-free Node.js laboratory for partitioned append-only event streaming contracts.",
   "type": "module",
   "engines": {
-    "node": ">=20"
+    "node": ">=22"
   },
   "scripts": {
     "test": "node --test",
