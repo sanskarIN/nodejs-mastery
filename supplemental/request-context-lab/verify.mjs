@@ -1,0 +1,1 @@
+import assert from 'node:assert/strict'; import { RequestContext } from './src/index.js'; const c=new RequestContext(); const id=await c.run({requestId:'verify'},async()=>c.require().requestId); assert.equal(id,'verify'); assert.equal(c.get(),null); console.log('request-context-lab verify: ok');
