@@ -2,8 +2,8 @@ cff-version: 1.2.0
 message: "If you use this companion code, please cite this repository. Complete Node.js Full Mastery eBook: https://ramsandesh.gumroad.com"
 title: "Node.js Full Mastery Companion Code"
 type: software
-version: 1.1.0
-date-released: 2026-08-17
+version: 1.2.0
+date-released: 2026-08-18
 authors:
   - family-names: "Sandesh"
     given-names: "Ram"
@@ -12,9 +12,10 @@ repository-code: "https://github.com/sanskarIN/nodejs-mastery"
 url: "https://github.com/sanskarIN/nodejs-mastery"
 license: MIT
 abstract: >-
-  Public companion laboratories, tests, executable verification gates, and
-  production-oriented Node.js learning examples for the Node.js Full Mastery
-  eBook. The complete commercial 125-part edition is available from
+  Public numbered companion laboratories, new supplemental Node.js practice
+  projects, tests, executable verification gates, and production-oriented
+  learning examples for the Node.js Full Mastery eBook. The complete
+  commercial 125-part edition is available from
   https://ramsandesh.gumroad.com.
 keywords:
   - nodejs
@@ -22,3 +23,4 @@ keywords:
   - education
   - distributed-systems
   - companion-code
+  - supplemental-labs
