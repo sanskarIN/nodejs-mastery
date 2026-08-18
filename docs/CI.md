@@ -6,29 +6,41 @@
 
 Runs on pushes and pull requests targeting `main`.
 
-Matrix:
+Required runtime matrix:
 
-- Node.js 20
-- Node.js 22
+- Node.js 22 — maintained LTS compatibility floor.
+- Node.js 24 — active LTS and default release runtime.
 
 For each runtime it executes:
 
 ```bash
 npm test
 npm run verify
+npm run demo
 npm run check
 ```
 
-`npm test` and `npm run verify` now cover two independently discovered inventories:
+`npm test`, `npm run verify`, and `npm run demo` cover two independently discovered inventories:
 
 - numbered companion laboratories under `projects/part-NNN/`;
 - new post-series educational laboratories under `supplemental/`.
 
-The repository check includes structural files, numbered-project dependency allowlists, numbered package metadata, runnable numbered READMEs, supplemental metadata and zero-dependency rules, supplemental challenge/architecture documentation, Gumroad visibility, evergreen X/Twitter-link avoidance for supplemental docs, Markdown links, cross-project isolation, sensitive-file screening, committed secret-pattern scanning, generated CycloneDX SBOM validation, and the commercial-book boundary.
+`npm run check` now begins with repository-wide JavaScript syntax validation, JSON parsing validation, and runtime-policy validation. It then enforces structural files, dependency rules, package metadata, runnable READMEs, supplemental zero-dependency and documentation rules, Gumroad visibility, evergreen X/Twitter-link avoidance for supplemental docs, Markdown links, cross-project isolation, sensitive-file screening, committed secret-pattern scanning, CycloneDX SBOM validation, and the commercial-book boundary.
 
 The supplemental policy additionally requires supplemental project directories to remain free of native promotional image files. This keeps the new labs from introducing person portraits, faces, or profile-avatar imagery into their public project trees.
 
-The workflow also prints the official Gumroad learning-edition link so the public-code/commercial-book relationship remains visible in automation output.
+The workflow prints Node/npm versions before validation and also surfaces the official Gumroad learning-edition link.
+
+## Runtime policy
+
+`npm run check:runtime` verifies that:
+
+- the root package and every public lab require `engines.node: >=22`;
+- `.nvmrc` and `.node-version` pin Node.js 24;
+- Companion CI tests Node.js 22 and 24 and does not reintroduce Node.js 20;
+- Release Readiness runs on Node.js 24.
+
+See [`RUNTIME_SUPPORT.md`](RUNTIME_SUPPORT.md).
 
 ## CodeQL
 
@@ -54,18 +66,18 @@ CI and CodeQL cancel obsolete in-progress runs for the same ref so a rapid seque
 
 ## Release Readiness
 
-Runs manually and for `v*` tag pushes. It executes:
+Runs manually and for `v*` tag pushes using Node.js 24. It executes:
 
 ```bash
 npm run release:check
 ```
 
-The release gate runs tests, verifiers, demos, repository policies, secret scanning, and SBOM generation/validation for both public project inventories.
+The release gate runs tests, verifiers, demos, syntax/JSON/runtime checks, repository policies, secret scanning, and SBOM generation/validation for both public project inventories.
 
 After the gate passes, the release workflow:
 
-1. generates a CycloneDX 1.5 SBOM containing the numbered companion and supplemental project components;
-2. validates component count, MIT licensing, zero dependency edges, Gumroad metadata, and the supplemental-lab count;
+1. generates a CycloneDX 1.5 SBOM containing numbered and supplemental project components;
+2. validates component count, MIT licensing, Node.js `>=22` engine metadata, zero dependency edges, Gumroad metadata, and the supplemental-lab count;
 3. attests the generated SBOM with `actions/attest@v4`;
 4. uploads the validated SBOM with `actions/upload-artifact@v7`;
 5. retains the artifact for 30 days as workflow evidence.
@@ -74,7 +86,7 @@ The attestation path uses `contents: read`, `id-token: write`, `attestations: wr
 
 ## Generated release notes
 
-`.github/release.yml` categorizes generated GitHub Release notes into breaking changes, security, companion-project work, documentation, automation/dependencies, fixes, and other changes. The prepared current release notes are in `docs/RELEASE_NOTES_v1.2.0.md`.
+`.github/release.yml` categorizes generated GitHub Release notes into breaking changes, security, companion-project work, documentation, automation/dependencies, fixes, and other changes. The current prepared release notes are in `docs/RELEASE_NOTES_v2.0.0.md`.
 
 ## Failure policy
 
