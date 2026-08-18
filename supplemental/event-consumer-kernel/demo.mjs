@@ -1,0 +1,1 @@
+import {EventConsumer} from './src/index.js'; const c=new EventConsumer(); console.log(await c.consume({id:'order-1',partition:0,offset:1},async e=>({handled:e.id}))); console.log(await c.consume({id:'order-1',partition:0,offset:1},async e=>({handled:e.id})));
