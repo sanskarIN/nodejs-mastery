@@ -12,7 +12,7 @@ The public repository contains the companion archives that were actually recover
 
 ## Which Node.js version should I use?
 
-Node.js 20 or newer. CI currently verifies Node.js 20 and Node.js 22.
+Use Node.js **22 or newer**. Node.js 24 LTS is the pinned development/release runtime, and required CI validates Node.js 22 and 24. See [`RUNTIME_SUPPORT.md`](RUNTIME_SUPPORT.md).
 
 ## Do I need to install dependencies?
 
@@ -22,7 +22,11 @@ The currently published labs are intentionally dependency-free or use only built
 
 - `test` checks correctness invariants.
 - `demo` illustrates the modeled behavior.
-- `verify` checks the executable evidence expected by the part.
+- `verify` checks the executable evidence expected by the part or supplemental lab.
+
+## How do I perform the strongest repository check?
+
+Run `npm run release:check`. It executes all project tests, verification gates, demos, and the full repository quality/security/policy suite. See [`QUALITY_ASSURANCE.md`](QUALITY_ASSURANCE.md).
 
 ## Can I use the companion code commercially?
 
