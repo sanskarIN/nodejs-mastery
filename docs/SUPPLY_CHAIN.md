@@ -2,11 +2,13 @@
 
 > 📘 **Complete Node.js Full Mastery eBook:** https://ramsandesh.gumroad.com
 
-This repository keeps its public companion-code supply chain intentionally small and reviewable.
+This repository keeps its public companion and supplemental-code supply chain intentionally small and reviewable.
 
 ## Dependency admission
 
-Third-party npm packages are denied by default. Any future package must be deliberately listed in `config/dependency-policy.json` and then pass `npm run check:dependencies`.
+Numbered companion projects deny third-party npm packages by default through `config/dependency-policy.json` and `npm run check:dependencies`. Any future package addition requires an explicit allowlist change and review.
+
+Supplemental projects use a stricter current rule: `npm run check:supplemental` rejects any `dependencies`, `devDependencies`, `optionalDependencies`, or `peerDependencies`. A supplemental lab cannot quietly introduce a third-party npm dependency without an intentional repository-policy revision.
 
 GitHub Actions are maintained separately through Dependabot and pull-request review. Action upgrades must remain compatible with the Node.js 20/22 verification matrix. Current release automation uses `actions/checkout@v7`, `actions/setup-node@v7`, `github/codeql-action@v4`, `actions/dependency-review-action@v5.0.0`, `actions/attest@v4`, and `actions/upload-artifact@v7`.
 
@@ -21,7 +23,7 @@ These checks complement GitHub-host secret scanning; they do not replace provide
 
 ## Static analysis
 
-CodeQL v4 runs on pushes, pull requests, and a weekly schedule. Dependency Review v5.0.0 runs for pull requests. Both are treated as evidence inputs, not as proof that an educational lab is production-safe.
+CodeQL v4 runs on pushes, pull requests, and a weekly schedule. Dependency Review v5.0.0 runs for pull requests. Both numbered and supplemental JavaScript sources are in the CodeQL analysis surface. These tools are evidence inputs, not proof that an educational lab is production-safe.
 
 ## CycloneDX SBOM
 
@@ -37,7 +39,13 @@ The dependency-free generator writes and validates:
 dist/nodejs-mastery-sbom.cdx.json
 ```
 
-The document uses CycloneDX 1.5 and records the root companion repository plus every discovered `projects/part-NNN` package. Validation checks the component count, unique BOM references, MIT declarations, dependency graph, repository version, and official Gumroad metadata.
+The document uses CycloneDX 1.5 and records:
+
+- the root `nodejs-mastery-companion` application component;
+- every discovered numbered `projects/part-NNN` package;
+- every discovered package under `supplemental/`.
+
+Validation checks the repository version, total public-code component count, unique BOM references, MIT declarations, zero dependency edges while the public npm dependency surface is empty, official Gumroad metadata, and the supplemental-lab count.
 
 ## Artifact attestation
 
@@ -45,12 +53,16 @@ Release-readiness runs give the generated SBOM a GitHub artifact attestation usi
 
 The same workflow uploads the validated SBOM with `actions/upload-artifact@v7` so the release run retains a downloadable evidence artifact.
 
+## Supplemental provenance and asset boundary
+
+Supplemental labs are new post-series educational code, not reconstructed historical Parts 1–125. Their policy checker also enforces stable Gumroad navigation, no evergreen X/Twitter profile links in project documentation, and no native promotional image assets inside supplemental project trees.
+
 ## Release evidence
 
-`npm run release:check` executes tests, project verifiers, demos, repository policy checks, secret checks, SBOM generation, and SBOM validation. A release should not be published while this gate or CodeQL is failing.
+`npm run release:check` executes numbered and supplemental tests, verifiers, demos, repository policy checks, secret checks, SBOM generation, and SBOM validation. A release should not be published while this gate or CodeQL is failing.
 
 ## Commercial publication boundary
 
-The SBOM and repository automation describe only the MIT-licensed public companion source. They do not include the proprietary PDF, DOCX, EPUB, master manuscript, publishing bundle, or paid learning edition.
+The SBOM and repository automation describe only the MIT-licensed public source code. They do not include the proprietary PDF, DOCX, EPUB, master manuscript, publishing bundle, source archive, or paid learning edition.
 
 **Official storefront:** https://ramsandesh.gumroad.com
