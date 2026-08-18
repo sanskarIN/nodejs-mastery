@@ -20,11 +20,13 @@ Recommended rules for `main`:
 2. Require at least one approving review when collaborators are active.
 3. Dismiss stale approvals when new commits change the reviewed diff.
 4. Require conversation resolution before merge.
-5. Require successful status checks from the supported CI/security workflows.
+5. Require successful Companion CI and CodeQL checks before merge.
 6. Require the branch to be up to date before merge when practical.
 7. Block force pushes.
 8. Block branch deletion.
 9. Restrict bypass privileges to trusted maintainers and use them only for documented emergencies.
+
+The required Companion CI matrix for v2.0.0 is Node.js **22 and 24**.
 
 ## Security features
 
@@ -38,7 +40,7 @@ Enable where the GitHub plan/repository supports them:
 - Code scanning / CodeQL alerts.
 - Dependency graph.
 
-The repository already contains `SECURITY.md`, CodeQL, dependency review, Dependabot configuration, and executable policy checks; GitHub-hosted security toggles complement those controls.
+The repository already contains `SECURITY.md`, CodeQL, dependency review, Dependabot configuration, committed-secret checks, runtime checks, and executable policy checks; GitHub-hosted security toggles complement those controls.
 
 ## Actions
 
@@ -54,14 +56,14 @@ For a readable educational history, prefer **squash merge** for external feature
 ## Releases
 
 - Public GitHub releases contain companion-code source and public release notes only.
-- Never attach the complete paid PDF, DOCX, EPUB, source manuscript, answer-key package, or commercial publication bundle.
-- Use semantic version tags such as `v1.1.0`.
+- Never attach the complete paid PDF, DOCX, EPUB, source manuscript, answer-key package, source archive, or commercial publication bundle.
+- Use semantic version tags such as `v2.0.0`.
 - Run the `Release Readiness` workflow before publishing a tag/release.
 - Direct readers to the official commercial edition at `https://ramsandesh.gumroad.com`.
 
 ## Social preview
 
-Use a public companion-repository graphic that promotes the code repository and may link viewers toward the Gumroad storefront. Do not upload paid manuscript pages as the repository social preview.
+Use a typography/code/diagram-based public companion-repository graphic. Do not use human portraits, faces, profile avatars, or paid manuscript pages. Do not include a permanent X/Twitter profile URL in the social-preview artwork.
 
 ## Periodic review
 
