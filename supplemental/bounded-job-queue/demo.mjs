@@ -1,0 +1,1 @@
+import { BoundedJobQueue } from './src/index.js'; const q=new BoundedJobQueue({capacity:3,maxAttempts:2}); q.submit({id:'email-1',kind:'email'}); console.log(await q.runOne(async j=>({sent:j.id}))); console.log(q.stats());
