@@ -1,0 +1,4 @@
+import test from 'node:test'; import assert from 'node:assert/strict'; import { setTimeout as delay } from 'node:timers/promises'; import {mapLimit} from '../src/index.js';
+test('bounds active work and preserves result order',async()=>{let active=0; let observed=0; const {results,peakConcurrency}=await mapLimit([30,10,20],2,async(ms,index)=>{active++; observed=Math.max(observed,active); try{await delay(ms); return index*10;} finally{active--;}}); assert.deepEqual(results,[0,10,20]); assert.equal(peakConcurrency,2); assert.equal(observed,2);});
+test('uses less concurrency when input is small',async()=>{const r=await mapLimit([1],4,async x=>x+1); assert.deepEqual(r,{results:[2],peakConcurrency:1});});
+test('rejects invalid limits and propagates worker errors',async()=>{await assert.rejects(()=>mapLimit([1],0,async x=>x),/limit/); await assert.rejects(()=>mapLimit([1,2],2,async x=>{if(x===2) throw new Error('task-failed'); return x;}),/task-failed/);});
