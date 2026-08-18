@@ -10,7 +10,7 @@
 [![License: MIT](https://img.shields.io/badge/Code%20License-MIT-blue.svg)](LICENSE)
 [![Node.js](https://img.shields.io/badge/Node.js-20%2B-339933?logo=node.js&logoColor=white)](https://nodejs.org/)
 
-Public companion code, practical laboratories, examples, tests, and production-oriented Node.js learning resources for the **Node.js Full Mastery** eBook by **Ram Sandesh**.
+Public companion code, practical laboratories, examples, tests, and production-oriented Node.js learning resources for the **Node.js Full Mastery** eBook by **Ram Sandesh**. The repository now also includes clearly labeled **supplemental laboratories** that extend practice beyond the completed numbered series without pretending to be recovered historical parts.
 
 ## 📘 Get the complete 125-part eBook
 
@@ -22,20 +22,19 @@ The commercial book contains the full Parts 1–125 learning sequence, explanati
 
 ## Repository health
 
-The repository is designed so claims are executable rather than decorative:
-
 ```bash
-npm run projects       # list every discovered public companion lab
-npm test               # run all automated tests
-npm run verify         # run all project verification gates
-npm run demo           # run all project demonstrations
-npm run check          # validate metadata, dependencies, docs and repository policy
-npm run release:check  # run the complete pre-release gate
+npm run projects             # list recovered/reconstructed numbered companion labs
+npm run supplemental         # list new supplemental Node.js labs
+npm test                     # test numbered + supplemental projects
+npm run verify               # run all verification gates
+npm run demo                 # run all demonstrations
+npm run check                # validate metadata, policies, docs, SBOM and boundaries
+npm run release:check        # complete pre-release gate
 ```
 
-GitHub Actions verifies the normal CI path on **Node.js 20 and Node.js 22**. CodeQL performs static security analysis, Dependabot proposes dependency/workflow updates, and pull requests receive dependency review. Repository checks also enforce explicit npm dependency allowlists, Markdown-link integrity, project isolation, sensitive-file screening, and the commercial-book boundary.
+GitHub Actions verifies the normal CI path on **Node.js 20 and Node.js 22**. CodeQL performs static security analysis, Dependabot proposes dependency/workflow updates, and pull requests receive dependency review. Repository checks enforce explicit npm dependency rules, Markdown-link integrity, project isolation, sensitive-file screening, evergreen X/Twitter-link avoidance for supplemental READMEs, Gumroad visibility, SBOM integrity, and the commercial-book boundary.
 
-## Available companion projects
+## Available numbered companion projects
 
 | Part | Focus | Provenance |
 |---:|---|---|
@@ -52,21 +51,48 @@ GitHub Actions verifies the normal CI path on **Node.js 20 and Node.js 22**. Cod
 
 See [docs/PROJECT_STATUS.md](docs/PROJECT_STATUS.md) and [docs/RECOVERY_POLICY.md](docs/RECOVERY_POLICY.md) for provenance and the intentionally unavailable historical companion archives.
 
+## New supplemental projects
+
+These are **new educational projects**, not recovered numbered parts.
+
+| Project | Focus |
+|---|---|
+| `bounded-job-queue` | bounded capacity, retries, backoff, dead letters, idempotent IDs |
+| `ttl-lru-cache` | TTL expiration, LRU eviction, cache metrics |
+| `token-bucket-gateway` | per-key rate limiting and retry-after math |
+| `idempotent-api-kernel` | request fingerprints, replay-safe effects, conflicts |
+| `stream-backpressure-lab` | bounded stream transforms and pipeline error propagation |
+| `service-health-kernel` | liveness, readiness, dependency gates and graceful draining |
+| `event-consumer-kernel` | partition offsets, duplicate suppression and poison quarantine |
+| `config-redaction-kit` | configuration validation and safe diagnostic redaction |
+
+See [docs/SUPPLEMENTAL_PROJECTS.md](docs/SUPPLEMENTAL_PROJECTS.md).
+
 ## Quick start
 
 ```bash
 git clone https://github.com/sanskarIN/nodejs-mastery.git
 cd nodejs-mastery
 npm run projects
+npm run supplemental
 npm test
 npm run verify
 npm run check
 ```
 
-Run one project directly:
+Run a numbered project:
 
 ```bash
 cd projects/part-125
+npm test
+npm run demo
+npm run verify
+```
+
+Run a supplemental project:
+
+```bash
+cd supplemental/bounded-job-queue
 npm test
 npm run demo
 npm run verify
@@ -78,7 +104,8 @@ npm run verify
 |---|---|
 | [Documentation index](docs/README.md) | Central index for all repository guides |
 | [Learning path](docs/LEARNING_PATH.md) | Suggested order for the currently available labs |
-| [Project index](docs/PROJECT_INDEX.md) | Quick index of public companion projects |
+| [Project index](docs/PROJECT_INDEX.md) | Quick index of numbered public companion projects |
+| [Supplemental projects](docs/SUPPLEMENTAL_PROJECTS.md) | Index of the new post-series practice labs |
 | [Architecture](docs/ARCHITECTURE.md) | Repository layers, isolation, and dependency direction |
 | [Development](docs/DEVELOPMENT.md) | Local setup and maintainer workflow |
 | [Command reference](docs/COMMAND_REFERENCE.md) | Root and per-project command contract |
@@ -89,13 +116,12 @@ npm run verify
 | [Privacy](docs/PRIVACY.md) | Public repository data-handling expectations |
 | [Accessibility](docs/ACCESSIBILITY.md) | Accessible documentation and terminal conventions |
 | [GitHub settings](docs/GITHUB_SETTINGS.md) | Recommended branch protection, topics, security, and release settings |
-| [Companion project standard](docs/COMPANION_PROJECT_STANDARD.md) | Requirements for adding a lab |
+| [Companion project standard](docs/COMPANION_PROJECT_STANDARD.md) | Requirements for adding a numbered lab |
 | [Recovery policy](docs/RECOVERY_POLICY.md) | Recovered vs reconstructed vs unavailable |
 | [Troubleshooting](docs/TROUBLESHOOTING.md) | Common local/CI problems |
 | [FAQ](docs/FAQ.md) | Licensing, versions, availability, and reuse |
 | [Versioning](docs/VERSIONING.md) | Semantic versioning and book-edition boundaries |
 | [Release process](docs/RELEASE_PROCESS.md) | Public companion release gate and versioning |
-| [v1.1.0 release notes](docs/RELEASE_NOTES_v1.1.0.md) | Prepared public release notes for the hardening release |
 | [Roadmap](docs/ROADMAP.md) | Public repository maintenance direction |
 | [Store](docs/STORE.md) | Official complete-book storefront |
 
@@ -105,9 +131,10 @@ npm run verify
 .
 ├── .github/                 # CI, security workflows, ownership, issue templates
 ├── assets/                  # Gumroad/storefront public promotional asset
-├── config/                  # Explicit repository policies such as dependency allowlists
+├── config/                  # Explicit repository policies
 ├── docs/                    # Architecture, testing, recovery, release and learning guides
-├── projects/                # Independently runnable companion laboratories
+├── projects/                # Recovered/reconstructed numbered companion laboratories
+├── supplemental/            # New post-series Node.js practice laboratories
 ├── scripts/                 # Discovery and executable repository-policy checks
 ├── CITATION.cff             # Software citation metadata
 ├── GOVERNANCE.md            # Repository decision model
@@ -119,10 +146,10 @@ npm run verify
 
 ## Licensing boundary
 
-- **Public companion source code:** MIT License.
+- **Public companion and supplemental source code:** MIT License.
 - **Complete eBook and commercial publishing content:** Copyright © 2026 Ram Sandesh. All rights reserved.
 - See [BOOK_LICENSE.md](BOOK_LICENSE.md) and [docs/LICENSE_SCOPE.md](docs/LICENSE_SCOPE.md).
-- CI runs `scripts/check-commercial-boundary.mjs` to prevent accidental public commits of paid PDF/DOCX/EPUB artifacts.
+- CI prevents accidental public commits of paid PDF/DOCX/EPUB artifacts.
 
 ## Contributing and security
 
