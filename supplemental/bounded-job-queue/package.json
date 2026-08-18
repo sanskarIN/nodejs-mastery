@@ -4,7 +4,7 @@
   "private": true,
   "description": "A deterministic in-memory job queue that demonstrates bounded capacity, retry classification, exponential backoff, dead-letter handling, and idempotent submission.",
   "type": "module",
-  "engines": {"node": ">=20"},
+  "engines": {"node": ">=22"},
   "scripts": {"test": "node --test", "demo": "node demo.mjs", "verify": "node verify.mjs"},
   "homepage": "https://ramsandesh.gumroad.com",
   "repository": {"type": "git", "url": "https://github.com/sanskarIN/nodejs-mastery.git", "directory": "supplemental/bounded-job-queue"},
