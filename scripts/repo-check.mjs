@@ -22,7 +22,10 @@ if (!readme.includes('actions/workflows/ci.yml/badge.svg')) throw new Error('REA
 if (!readme.includes('actions/workflows/codeql.yml/badge.svg')) throw new Error('README is missing CodeQL badge');
 if (!readme.includes('Node.js-22%2B')) throw new Error('README Node.js badge must advertise 22+');
 if (!readme.includes('docs/RUNTIME_SUPPORT.md')) throw new Error('README is missing runtime-support navigation');
+if (!readme.includes('docs/QUALITY_ASSURANCE.md')) throw new Error('README is missing quality-assurance navigation');
 if (!readme.includes('docs/RELEASE_NOTES_v2.0.0.md')) throw new Error('README must link current v2 release notes');
+if (!readme.includes('NEXT_WORK.md')) throw new Error('README must link NEXT_WORK.md');
+if (!readme.includes('what_changed.md')) throw new Error('README must link what_changed.md');
 if (!readme.includes('12 projects are new educational labs')) throw new Error('README must state the supplemental inventory');
 
 const nextWork = readFileSync('NEXT_WORK.md', 'utf8');
