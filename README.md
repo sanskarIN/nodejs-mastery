@@ -117,8 +117,11 @@ npm run verify
 
 | Guide | Purpose |
 |---|---|
+| [Next work](NEXT_WORK.md) | Final GitHub-host/release checklist after source hardening |
+| [What changed](what_changed.md) | Final v2.0.0 source-controlled change record |
 | [Documentation index](docs/README.md) | Central index for all repository guides |
 | [Runtime support](docs/RUNTIME_SUPPORT.md) | Supported Node.js lines, local pin and upgrade policy |
+| [Quality assurance](docs/QUALITY_ASSURANCE.md) | Release acceptance, regression policy and correctness evidence |
 | [Learning path](docs/LEARNING_PATH.md) | Suggested order for the currently available labs |
 | [Project index](docs/PROJECT_INDEX.md) | Quick index of numbered public companion projects |
 | [Supplemental projects](docs/SUPPLEMENTAL_PROJECTS.md) | Index of the new post-series practice labs |
@@ -154,6 +157,8 @@ npm run verify
 ├── projects/                # Recovered/reconstructed numbered companion laboratories
 ├── supplemental/            # New post-series Node.js practice laboratories
 ├── scripts/                 # Discovery and executable repository-policy checks
+├── NEXT_WORK.md             # Remaining GitHub-host/release work only
+├── what_changed.md          # Final v2 source-controlled change record
 ├── CITATION.cff             # Software citation metadata
 ├── GOVERNANCE.md            # Repository decision model
 ├── MAINTAINERS.md           # Maintainer/contact information
