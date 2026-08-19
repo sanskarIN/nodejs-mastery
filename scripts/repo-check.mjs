@@ -4,7 +4,7 @@ const required = [
   '.editorconfig', '.gitattributes', '.nvmrc', '.node-version', '.npmrc',
   '.github/CODEOWNERS', '.github/dependabot.yml', '.github/release.yml', '.github/pull_request_template.md',
   '.github/workflows/ci.yml', '.github/workflows/codeql.yml', '.github/workflows/dependency-review.yml', '.github/workflows/release-readiness.yml',
-  'README.md', 'LICENSE', 'BOOK_LICENSE.md', 'CONTRIBUTING.md', 'CODE_OF_CONDUCT.md', 'SECURITY.md', 'SUPPORT.md', 'CHANGELOG.md', 'GOVERNANCE.md', 'MAINTAINERS.md', 'CITATION.cff',
+  'README.md', 'NEXT_WORK.md', 'what_changed.md', 'LICENSE', 'BOOK_LICENSE.md', 'CONTRIBUTING.md', 'CODE_OF_CONDUCT.md', 'SECURITY.md', 'SUPPORT.md', 'CHANGELOG.md', 'GOVERNANCE.md', 'MAINTAINERS.md', 'CITATION.cff',
   'config/dependency-policy.json',
   'docs/README.md', 'docs/ACCESSIBILITY.md', 'docs/ARCHITECTURE.md', 'docs/CI.md', 'docs/COMMAND_REFERENCE.md', 'docs/COMPANION_PROJECT_STANDARD.md', 'docs/SUPPLEMENTAL_PROJECT_STANDARD.md', 'docs/DEPENDENCY_POLICY.md', 'docs/DEVELOPMENT.md', 'docs/FAQ.md', 'docs/GITHUB_SETTINGS.md', 'docs/HOST_RELEASE_CHECKLIST.md', 'docs/LEARNING_PATH.md', 'docs/LICENSE_SCOPE.md', 'docs/MAINTENANCE_STATUS.md', 'docs/PRIVACY.md', 'docs/PROJECT_INDEX.md', 'docs/PROJECT_STATUS.md', 'docs/QUALITY_ASSURANCE.md', 'docs/RECOVERY_POLICY.md', 'docs/RELEASE_NOTES_v1.1.0.md', 'docs/RELEASE_NOTES_v1.2.0.md', 'docs/RELEASE_NOTES_v2.0.0.md', 'docs/RELEASE_PROCESS.md', 'docs/ROADMAP.md', 'docs/RUNNING_PROJECTS.md', 'docs/RUNTIME_SUPPORT.md', 'docs/SECURITY_MODEL.md', 'docs/STORE.md', 'docs/SUPPLY_CHAIN.md', 'docs/SUPPLEMENTAL_PROJECTS.md', 'docs/TESTING.md', 'docs/TROUBLESHOOTING.md', 'docs/VERSIONING.md',
   'assets/gumroad-storefront-badge.svg',
@@ -24,6 +24,17 @@ if (!readme.includes('Node.js-22%2B')) throw new Error('README Node.js badge mus
 if (!readme.includes('docs/RUNTIME_SUPPORT.md')) throw new Error('README is missing runtime-support navigation');
 if (!readme.includes('docs/RELEASE_NOTES_v2.0.0.md')) throw new Error('README must link current v2 release notes');
 if (!readme.includes('12 projects are new educational labs')) throw new Error('README must state the supplemental inventory');
+
+const nextWork = readFileSync('NEXT_WORK.md', 'utf8');
+if (!nextWork.includes('v2.0.0')) throw new Error('NEXT_WORK.md must target v2.0.0');
+if (!nextWork.includes('Node.js 22') || !nextWork.includes('Node.js 24')) throw new Error('NEXT_WORK.md must retain the final supported CI matrix');
+if (!nextWork.includes('Issue #5')) throw new Error('NEXT_WORK.md must retain the host-release tracking issue');
+if (!nextWork.includes('no human portrait, face, person image, or profile avatar')) throw new Error('NEXT_WORK.md must retain the social-preview image rule');
+
+const whatChanged = readFileSync('what_changed.md', 'utf8');
+if (!whatChanged.includes('v2.0.0')) throw new Error('what_changed.md must record v2.0.0');
+if (!whatChanged.includes('22 public project laboratories')) throw new Error('what_changed.md must record the final 22-project inventory');
+if (!whatChanged.includes(gumroad)) throw new Error('what_changed.md must retain the official storefront');
 
 const pkg = JSON.parse(readFileSync('package.json', 'utf8'));
 if (pkg.version !== '2.0.0') throw new Error(`Unexpected repository version: ${pkg.version}`);
@@ -56,6 +67,8 @@ const runtimeSupport = readFileSync('docs/RUNTIME_SUPPORT.md', 'utf8');
 if (!runtimeSupport.includes('Node.js 22') || !runtimeSupport.includes('Node.js 24')) throw new Error('Runtime support document must describe Node.js 22 and 24');
 const qa = readFileSync('docs/QUALITY_ASSURANCE.md', 'utf8');
 if (!qa.includes('npm run release:check')) throw new Error('Quality assurance document must define the release gate');
+const maintenance = readFileSync('docs/MAINTENANCE_STATUS.md', 'utf8');
+if (!maintenance.includes('NEXT_WORK.md') || !maintenance.includes('what_changed.md')) throw new Error('Maintenance status must link final continuation records');
 
 const ci = readFileSync('.github/workflows/ci.yml', 'utf8');
 const codeql = readFileSync('.github/workflows/codeql.yml', 'utf8');
@@ -89,6 +102,8 @@ console.log(JSON.stringify({
   runtimePolicy: true,
   deterministicDemosInCi: true,
   qualityAssuranceDocumented: true,
+  nextWorkDocumented: true,
+  finalChangeRecord: true,
   sbomValidation: true,
   sbomAttestation: true,
   codeqlActionV4: true,
