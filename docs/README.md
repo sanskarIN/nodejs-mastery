@@ -27,6 +27,8 @@
 
 ## Maintenance and releases
 
+- [`../NEXT_WORK.md`](../NEXT_WORK.md) — remaining host/release work only; use this as the next-action checklist.
+- [`../what_changed.md`](../what_changed.md) — final v2 source-controlled change record.
 - [`DEVELOPMENT.md`](DEVELOPMENT.md) — local development workflow.
 - [`MAINTENANCE_STATUS.md`](MAINTENANCE_STATUS.md) — source-controlled vs host-controlled completion boundary.
 - [`GITHUB_SETTINGS.md`](GITHUB_SETTINGS.md) — canonical host-level GitHub settings checklist.
